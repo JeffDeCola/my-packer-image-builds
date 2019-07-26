@@ -1,0 +1,19 @@
+# my-vagrant-boxes task-readme-github-pages.yml
+
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
+    tag: 1.7.1
+
+inputs:
+- name: my-vagrant-boxes
+
+outputs:
+- name: my-vagrant-boxes-updated
+
+run:
+  path: ./my-vagrant-boxes/ci/scripts/readme-github-pages.sh
+  # args: [-debug]
