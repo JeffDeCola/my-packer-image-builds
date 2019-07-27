@@ -1,6 +1,6 @@
 # my-packer-image-builds
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/8b4765d37169a21f7f72/maintainability)](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/23dab087af17b9177ed8/maintainability)](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/maintainability)
 [![Issue Count](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/issues)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
