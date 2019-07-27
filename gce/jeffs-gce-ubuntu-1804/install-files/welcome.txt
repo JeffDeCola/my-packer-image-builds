@@ -1,1 +1,1 @@
-Hi Everyone.  this is a test of packer provisioning
+Hi Everyone.  This is a test of packer provisioning for jeffs-gce-ubuntu-1804

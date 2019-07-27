@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# hello-go-deploy-gce add-user-jeff.sh
+# my-packer-image-builds add-user-jeff.sh
 
 echo " " 
 echo "************************************************************************"
