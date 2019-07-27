@@ -22,6 +22,10 @@ My packer builds at Google Computer Engine.
 
 ### jeffs-gce-ubuntu-1804
 
+Using gce resources,
+
+* us-west1-a
+
 Configuration,
 
 * tdb
