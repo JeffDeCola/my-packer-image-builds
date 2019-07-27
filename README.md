@@ -6,7 +6,7 @@
 
 `my-packer-image-builds` _is a place for me to create images via packer._
 
-My
+There will be no explanation on how this is done, refer to my
 [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/orchestration/builds-deployment-containers/packer-cheat-sheet).
 
 [GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/).
@@ -18,7 +18,11 @@ My
 
 ## GCE
 
+My packer builds at Google Computer Engine.
+
 ### jeffs-gce-ubuntu-1804
+
+Configuration,
 
 * tdb
 * tbd
@@ -26,7 +30,7 @@ My
 To build
 
 ```bash
-build.sh
+sh build.sh
 ```
 
 To ssh onto running docker container,
@@ -38,18 +42,21 @@ vagrant docker-exec -it -- /bin/sh
 
 ## VAGRANT
 
+My packer builds for vagrant.
+
 ### jeffs-ubuntu-1804-virtualbox-vm-box
+
+Configuration,
 
 * Goal - Create a vagrant box of ubuntu 18.04
 * Using
   `iso/ubuntu-18.04.2-server-amd64.iso`
   ubuntu 18.04 .iso file.
-* [Packer template](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
+* [Packer template file](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
   to manage/configure this development environment
 
-Refer to
-[my-vagrant-boxes](https://github.com/JeffDeCola/my-vagrant-boxes#jeffs-ubuntu-1804-virtualbox-vm-box)
-repo for the build.
+This build is located in my repo
+[my-vagrant-boxes](https://github.com/JeffDeCola/my-vagrant-boxes#jeffs-ubuntu-1804-virtualbox-vm-box).
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
