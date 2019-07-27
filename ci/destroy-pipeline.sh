@@ -1,4 +1,4 @@
 #!/bin/bash
-# my-vagrant-boxes destroy-pipeline.sh
+# my-packer-image-builds destroy-pipeline.sh
 
-fly -t ci destroy-pipeline --pipeline my-vagrant-boxes
+fly -t ci destroy-pipeline --pipeline my-packer-image-builds

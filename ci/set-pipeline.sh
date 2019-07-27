@@ -1,4 +1,4 @@
 #!/bin/bash
-# my-vagrant-boxes set-pipeline.sh
+# my-packer-image-builds set-pipeline.sh
 
-fly -t ci set-pipeline -p my-vagrant-boxes -c pipeline.yml --load-vars-from ../../../.credentials.yml
+fly -t ci set-pipeline -p my-packer-image-builds -c pipeline.yml --load-vars-from ../../../.credentials.yml

@@ -1,38 +1,38 @@
-# my-vagrant-boxes pipeline.yml
+# my-packer-image-builds pipeline.yml
 
 jobs:
 
 - name: job-readme-github-pages
   plan:
-  - get: my-vagrant-boxes
+  - get: my-packer-image-builds
     trigger: true
   - put: resource-slack-alert
     params:
       channel: '#jeff-builds'
-      text: "From my-vagrant-boxes: STARTED job-readme-github-pages in concourse ci."
+      text: "From my-packer-image-builds: STARTED job-readme-github-pages in concourse ci."
   - put: resource-repo-status
-    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "my-vagrant-boxes" }
+    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "my-packer-image-builds" }
   - task: task-readme-github-pages
-    file: my-vagrant-boxes/ci/tasks/task-readme-github-pages.yml
+    file: my-packer-image-builds/ci/tasks/task-readme-github-pages.yml
     on_success:
       do:
-      - put: my-vagrant-boxes
+      - put: my-packer-image-builds
         params:
-          repository: my-vagrant-boxes-updated  
+          repository: my-packer-image-builds-updated  
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          text: "From my-vagrant-boxes: PASSED job-readme-github-pages in concourse ci."
+          text: "From my-packer-image-builds: PASSED job-readme-github-pages in concourse ci."
       - put: resource-repo-status
-        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "my-vagrant-boxes" }
+        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "my-packer-image-builds" }
     on_failure:
       do:
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          text: "From my-vagrant-boxes: FAILED job-readme-github-pages in concourse ci."
+          text: "From my-packer-image-builds: FAILED job-readme-github-pages in concourse ci."
       - put: resource-repo-status
-        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "my-vagrant-boxes" }
+        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "my-packer-image-builds" }
 
 resource_types:
 
@@ -49,11 +49,11 @@ resource_types:
 
 resources:
 
-- name: my-vagrant-boxes
+- name: my-packer-image-builds
   type: git
   source:
-    #uri: https://github.com/jeffdecola/my-vagrant-boxes
-    uri: git@github.com:jeffdecola/my-vagrant-boxes.git
+    #uri: https://github.com/jeffdecola/my-packer-image-builds
+    uri: git@github.com:jeffdecola/my-packer-image-builds.git
     branch: master
     private_key: {{git_private_key}}
 - name: resource-slack-alert
@@ -63,5 +63,5 @@ resources:
 - name: resource-repo-status 
   type: github-status
   source:
-    repository: jeffdecola/my-vagrant-boxes 
+    repository: jeffdecola/my-packer-image-builds 
     access_token: {{repo_github_token}}

@@ -1,4 +1,4 @@
-# my-vagrant-boxes task-readme-github-pages.yml
+# my-packer-image-builds task-readme-github-pages.yml
 
 platform: linux
 
@@ -9,11 +9,11 @@ image_resource:
     tag: 1.7.1
 
 inputs:
-- name: my-vagrant-boxes
+- name: my-packer-image-builds
 
 outputs:
-- name: my-vagrant-boxes-updated
+- name: my-packer-image-builds-updated
 
 run:
-  path: ./my-vagrant-boxes/ci/scripts/readme-github-pages.sh
+  path: ./my-packer-image-builds/ci/scripts/readme-github-pages.sh
   # args: [-debug]

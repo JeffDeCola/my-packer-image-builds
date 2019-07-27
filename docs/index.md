@@ -1,8 +1,8 @@
 ---
 layout: default
-title: JeffDeCola/my-vagrant-boxes
-projectname : my-vagrant-boxes
-summary: A place for me to use vagrant boxes and create vagrant boxes.
+title: JeffDeCola/my-packer-image-builds
+projectname : my-packer-image-builds
+summary: A place for me to create images via packer.
 ---
 
 {% include README.md %}
