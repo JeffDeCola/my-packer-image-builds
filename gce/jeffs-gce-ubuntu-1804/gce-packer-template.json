@@ -1,6 +1,6 @@
 {
     "variables": {
-        "prefix": "jeff",
+        "prefix": "jeffs",
         "user_home":"{{env `HOME`}}",
         "postfix": "{{isotime \"20060102\"}}",
         "ssh_username": "packer",
@@ -8,7 +8,7 @@
         "project_id": "",
         "zone": "us-west1-a",
         "source_image": "ubuntu-1604-xenial-v20190628",
-        "image_name": "jeffs-gce-ubuntu-1804",
+        "image_name": "gce-ubuntu-1804",
         "image_description": "GCE custom machine image for Jeffs Repo my-packer-image-builds",
         "disk_size": "10",
         "disk_type": "pd-standard",

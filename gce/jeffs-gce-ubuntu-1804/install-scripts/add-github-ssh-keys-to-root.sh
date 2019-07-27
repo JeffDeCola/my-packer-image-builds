@@ -11,8 +11,8 @@ echo "Make /root/.ssh"
 [ -d /root/.ssh ] || mkdir /root/.ssh
 
 echo "mv /tmp/gce-github-vm* /root/.ssh"
-mv /tmp/gce-github-vm /root/.ssh/id_rsa
-mv /tmp/gce-github-vm.pub /root/.ssh/id_rsa.pub
+cp /tmp/gce-github-vm /root/.ssh/id_rsa
+cp /tmp/gce-github-vm.pub /root/.ssh/id_rsa.pub
 echo " "
 
 echo "chmod 600 for both keys"
