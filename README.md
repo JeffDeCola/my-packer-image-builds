@@ -22,26 +22,47 @@ My packer builds at Google Computer Engine.
 
 ### jeffs-gce-ubuntu-1804
 
-Using gce resources,
+Using gce resources for build,
 
+* ubuntu-1604-xenial-v20190628
 * us-west1-a
+* n1-standard-1
 
 Configuration,
 
-* tdb
-* tbd
+* [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/update-upgrade-system.sh)
+  Update & upgrade, turn off periodic updates and auto-upgrades
+* [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-user-jeff.sh)
+  Add user Jeff
+* [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/[move-welcome-file-to-jeff.sh)
+  Test to add file to /home/jeff
+* [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
+  Add a universal key so VMs can ssh into each other
+* [add-github-ssh-keys-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-root.sh)
+  Add keys for github to root
+* [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-jeff.sh)
+  Add keys for github to jeff
+* [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-packages.sh)
+  Install packages like htop, tmux, unzip, etc...
+* [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-docker.sh)
+  Install docker
+* [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-go-and-config-for-root.sh)
+  Install go and config for user root
+* [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/config-go-for-jeff.sh)
+  Config go for user jeff
+* [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/pull-private-repos-for-jeff.sh)
+  Pull my-global-repo-scripts-private
 
-To build
+To build,
 
 ```bash
 sh build.sh
 ```
 
-To ssh onto running docker container,
+To deploy,
 
 ```bash
-docker exec -i -t jeffs-ubuntu-container /bin/bash
-vagrant docker-exec -it -- /bin/sh
+
 ```
 
 ## VAGRANT

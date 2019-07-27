@@ -1,15 +1,16 @@
 #!/bin/bash
-# hello-go-deploy-gce upgrade-system.sh
+# my-packer-image-builds update-upgrade-system.sh
 
-echo " " 
-echo "******************************* upgrade-system.sh (START)"
+echo " "
+echo "********************************************************************"
+echo "********************************* update-upgrade-system.sh (START) *" 
 echo "You are root in /home/packer"
 echo " "
 
-echo "update/upgrade system"
+echo "update & upgrade system"
 while true; do
   apt-get -y update
-  # apt-get -y upgrade
+  apt-get -y upgrade
 
   if [ $? -eq 0 ]; then
     break
@@ -35,5 +36,6 @@ echo " "
 #echo "fs.inotify.max_user_watches=100000" >> /etc/sysctl.conf
 #echo " "
 
-echo "******************************* upgrade-system.sh (END)"
+echo "*************************************** update-upgrade-system.sh (END) *"
+echo "************************************************************************"
 echo " "

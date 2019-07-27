@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# hello-go-deploy-gce install-docker.sh
+# my-packer-image-builds install-docker.sh
 
 echo " " 
 echo "************************************************************************"
