@@ -7,10 +7,8 @@ echo "********************** pull-private-repos-for-jeff-for-jeff.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
-export GOPATH="/home/jeff"
-export GOROOT="/usr/local/go"
-export GOBIN=$GOPATH/bin
-export PATH=$GOROOT/bin::$GOBIN:$PATH
+echo "Switch to user jeff"
+su - jeff
 
 echo "cd into your go src directory"
 cd "$GOPATH/src/github.com/JeffDeCola"

@@ -7,6 +7,9 @@ echo "******************************* add-github-ssh-keys-to-jeff.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
+echo "Switch to user jeff"
+su - jeff
+
 echo "Make /home/jeff/.ssh"
 [ -d /home/jeff/.ssh ] || mkdir /home/jeff/.ssh
 
@@ -17,6 +20,10 @@ echo " "
 
 echo "chmod 600 for both keys"
 chmod 600 /home/jeff/.ssh/id_rsa*
+
+echo "chown owner to jeff"
+chown /home/jeff/.ssh/id_rsa jeff
+chown /home/jeff/.ssh/id_rsa.pub jeff
 
 echo "Start ssh agent for root"
 eval $(ssh-agent -s)
@@ -32,6 +39,13 @@ echo "Connect to github with public key (you already put public key on github)"
 ssh -T git@github.com || :
 # ssh -i ~/.ssh/id_rsa.pub git@github.com || :
 echo " "
+
+echo "Add some github configuration"
+git config --global user.name "Jeff DeCola (jeffs-gce-ubuntu-1804)"
+git config --global user.email jeff@keeperlabs.com
+git config --global core.editor nano
+git config --global push.default simple
+git config --list
 
 echo "********************************* add-github-ssh-keys-to-jeff.sh (END) *"
 echo "************************************************************************"

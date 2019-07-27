@@ -7,6 +7,8 @@ echo "**************************************** config-go-for-jeff.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
+echo "Switch to user jeff"
+su - jeff
 
 echo "Create go environment variables and place in /home/jeff/.bashrc"
 export GOPATH="/home/jeff"

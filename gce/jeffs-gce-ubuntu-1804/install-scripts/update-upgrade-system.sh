@@ -7,10 +7,10 @@ echo "********************************* update-upgrade-system.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
-echo "update & upgrade system"
+echo "update & upgrade system (quiet mode)"
 while true; do
-  apt-get -y update
-  apt-get -y upgrade
+  apt-get -qq -y update
+  apt-get -qq -y upgrade
 
   if [ $? -eq 0 ]; then
     break

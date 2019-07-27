@@ -13,8 +13,8 @@ echo " "
 
 echo "Download go1.12.7 (wget quiet mode), untar and move to /usr/local"
 FileName='go1.12.7.linux-amd64.tar.gz'
-wget https://storage.googleapis.com/golang/$FileName
-tar -xvf $FileName
+wget -q https://storage.googleapis.com/golang/$FileName
+tar -xf $FileName
 sudo mv go /usr/local
 rm $FileName
 echo " "

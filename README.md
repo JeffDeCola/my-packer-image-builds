@@ -16,11 +16,13 @@ There will be no explanation on how this is done, refer to my
 * [VAGRANT]()
   * jeffs-ubuntu-1804-virtualbox-vm-box
 
-## GCE
+## GOOGLE COMPUTE ENGINE (GCE)
 
 My packer builds at Google Computer Engine.
 
 ### jeffs-gce-ubuntu-1804
+
+Packer file [gce-packer-template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/gce-packer-template.json).
 
 Using gce resources for build,
 
@@ -28,41 +30,57 @@ Using gce resources for build,
 * us-west1-a
 * n1-standard-1
 
-Configuration,
+Configure and provision,
 
 * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/update-upgrade-system.sh)
-  Update & upgrade, turn off periodic updates and auto-upgrades
+  Update & upgrade, turn off periodic updates and auto-upgrades.
 * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-user-jeff.sh)
-  Add user Jeff
-* [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/[move-welcome-file-to-jeff.sh)
-  Test to add file to /home/jeff
+  Add user jeff.
+* [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/move-welcome-file-to-jeff.sh)
+  Test to add file to /home/jeff.
 * [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
-  Add a universal key so VMs can ssh into each other
-* [add-github-ssh-keys-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-root.sh)
-  Add keys for github to root
+  Add a universal key so VMs can ssh into each other.
+* [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-root.sh)
+  Add keys for github to root.
 * [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-jeff.sh)
-  Add keys for github to jeff
+  Add keys for github to jeff.
 * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-packages.sh)
   Install packages like htop, tmux, unzip, etc...
 * [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-docker.sh)
-  Install docker
+  Install docker.
 * [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-go-and-config-for-root.sh)
-  Install go and config for user root
+  Install go and config for user root.
 * [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/config-go-for-jeff.sh)
-  Config go for user jeff
+  Config go for user jeff.
 * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/pull-private-repos-for-jeff.sh)
-  Pull my-global-repo-scripts-private
+  Pull my-global-repo-scripts-private.
 
-To build,
+To build use
+[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh),
 
 ```bash
 sh build.sh
 ```
 
-To deploy,
+To deploy use
+[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
+and
+[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh).
+
+Will use,
+
+* f1-micro
+* us-west1
 
 ```bash
+sh create-instance-template.sh
+sh create-instance-group.sh
+```
 
+``ssh into your machine,
+
+```bash
+ssh -i ~/.ssh/google_compute_engine jeff@IP
 ```
 
 ## VAGRANT
