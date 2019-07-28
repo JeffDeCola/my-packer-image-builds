@@ -9,12 +9,13 @@
 There will be no explanation on how this is done, refer to my
 [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/orchestration/builds-deployment-containers/packer-cheat-sheet).
 
-[GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/).
+* [GOOGLE COMPUTE ENGINE (GCE)](https://github.com/JeffDeCola/my-packer-image-builds#google-compute-engine-gce)
+  * [jeffs-gce-ubuntu-1804](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-gce-ubuntu-1804)
+* [VAGRANT](https://github.com/JeffDeCola/my-packer-image-builds#vagrant)
+  * [jeffs-ubuntu-1804-virtualbox-vm-box](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-ubuntu-1804-virtualbox-vm-box)
+* [UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)](https://github.com/JeffDeCola/my-packer-image-builds#update-github-webpage-using-concourse-optional)
 
-* [GCE]()
-  * jeffs-gce-ubuntu-1804
-* [VAGRANT]()
-  * jeffs-ubuntu-1804-virtualbox-vm-box
+[GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/).
 
 ## GOOGLE COMPUTE ENGINE (GCE)
 
@@ -69,10 +70,10 @@ To deploy with,
 * f1-micro
 * us-west1
 
-Use,
-
-* [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
-* [create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh)
+Use
+[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
+and
+[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh),
 
 ```bash
 sh create-instance-template.sh
@@ -103,7 +104,7 @@ Configuration,
 * Using
   `iso/ubuntu-18.04.2-server-amd64.iso`
   ubuntu 18.04 .iso file.
-* [Packer template file](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
+* [Packer template file](https://github.com/JeffDeCola/my-vagrant-boxes/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
   to manage/configure this development environment
 
 This build is located in my repo

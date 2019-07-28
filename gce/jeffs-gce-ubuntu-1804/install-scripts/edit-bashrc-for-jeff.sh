@@ -7,9 +7,10 @@ echo "************************************** edit-bashrc-for-jeff.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
+echo "Git clone git-aware-prompt.git"
+echo "You must cd into the directory in same command"
 runuser -l jeff -c 'mkdir /home/jeff/.bash'
-cd /home/jeff/.bash
-runuser -l jeff -c 'git clone git://github.com/jimeh/git-aware-prompt.git'
+runuser -l jeff -c 'cd /home/jeff/.bash; git clone git://github.com/jimeh/git-aware-prompt.git'
 
 echo "Add to .bashrc"
 echo ' 
