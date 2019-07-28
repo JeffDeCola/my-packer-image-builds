@@ -1,6 +1,8 @@
 #!/bin/bash -e
 # my-packer-image-builds create-instance-template.sh
 
+echo " "
+
 if [ "$1" = "-debug" ]
 then
     echo "************************************************************************"
