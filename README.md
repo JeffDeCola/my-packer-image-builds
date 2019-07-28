@@ -10,7 +10,7 @@ There will be no explanation on how this is done, refer to my
 [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/orchestration/builds-deployment-containers/packer-cheat-sheet).
 
 * [GOOGLE COMPUTE ENGINE (GCE)](https://github.com/JeffDeCola/my-packer-image-builds#google-compute-engine-gce)
-  * [jeffs-gce-ubuntu-1904](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-gce-ubuntu-1904)
+  * [jeffs-gce-ubuntu-1904-xxxx](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-gce-ubuntu-1904-xxxx)
 * [VAGRANT](https://github.com/JeffDeCola/my-packer-image-builds#vagrant)
   * [jeffs-ubuntu-1804-virtualbox-vm-box](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-ubuntu-1804-virtualbox-vm-box)
 * [UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)](https://github.com/JeffDeCola/my-packer-image-builds#update-github-webpage-using-concourse-optional)
@@ -21,7 +21,7 @@ There will be no explanation on how this is done, refer to my
 
 My packer builds at Google Computer Engine.
 
-### jeffs-gce-ubuntu-1904
+### jeffs-gce-ubuntu-1904-xxxx
 
 Packer file [gce-packer-template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/gce-packer-template.json).
 
