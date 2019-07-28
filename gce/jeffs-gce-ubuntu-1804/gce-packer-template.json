@@ -68,6 +68,7 @@
             "scripts": [
                 "./install-scripts/update-upgrade-system.sh",
                 "./install-scripts/add-user-jeff.sh",
+                "./install-scripts/edit-bashrc-for-jeff.sh",
                 "./install-scripts/move-welcome-file-to-jeff.sh",
                 "./install-scripts/add-gce-universal-ssh-keys-to-jeff.sh",
                 "./install-scripts/add-github-ssh-keys-to-root.sh",
