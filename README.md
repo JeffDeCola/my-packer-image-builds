@@ -9,35 +9,87 @@
 There will be no explanation on how this is done, refer to my
 [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/orchestration/builds-deployment-containers/packer-cheat-sheet).
 
+* [GOOGLE COMPUTE ENGINE (GCE)](https://github.com/JeffDeCola/my-packer-image-builds#google-compute-engine-gce)
+  * [jeffs-gce-ubuntu-1904-xxxx](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-gce-ubuntu-1904-xxxx)
+* [VAGRANT](https://github.com/JeffDeCola/my-packer-image-builds#vagrant)
+  * [jeffs-ubuntu-1804-virtualbox-vm-box](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-ubuntu-1804-virtualbox-vm-box)
+* [UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)](https://github.com/JeffDeCola/my-packer-image-builds#update-github-webpage-using-concourse-optional)
+
 [GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/).
 
-* [GCE]()
-  * jeffs-gce-ubuntu-1804
-* [VAGRANT]()
-  * jeffs-ubuntu-1804-virtualbox-vm-box
-
-## GCE
+## GOOGLE COMPUTE ENGINE (GCE)
 
 My packer builds at Google Computer Engine.
 
-### jeffs-gce-ubuntu-1804
+### jeffs-gce-ubuntu-1904-xxxx
 
-Configuration,
+Packer file [gce-packer-template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/gce-packer-template.json).
 
-* tdb
-* tbd
+Using gce resources for build,
 
-To build
+* ubuntu-1904-disco-v20190724 (gce base image)
+* us-west1-a
+* n1-standard-1
+
+Configure and provision,
+
+* [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/update-upgrade-system.sh)
+  Update & upgrade, turn off periodic updates and auto-upgrades.
+* [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/add-user-jeff.sh)
+  Add user jeff.
+* [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/edit-bashrc-for-jeff.sh)
+  Add git-aware prompt.
+* [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/move-welcome-file-to-jeff.sh)
+  Test to add file to /home/jeff.
+* [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
+  Add a universal key so VMs can ssh into each other.
+* [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/add-github-ssh-keys-to-root.sh)
+  Add keys for github to root.
+* [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/add-github-ssh-keys-to-jeff.sh)
+  Add keys for github to jeff.
+* [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/install-packages.sh)
+  Install packages like htop, tmux, unzip, etc...
+* [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/install-docker.sh)
+  Install docker.
+* [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/install-go-and-config-for-root.sh)
+  Install go and config for user root.
+* [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/config-go-for-jeff.sh)
+  Config go for user jeff.
+* [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/pull-private-repos-for-jeff.sh)
+  Pull my-global-repo-scripts-private.
+
+To build use
+[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/build-image.sh),
 
 ```bash
 sh build.sh
 ```
 
-To ssh onto running docker container,
+To deploy with,
+
+* f1-micro
+* us-west1
+
+Use
+[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/build-image.sh)
+and
+[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/create-instance-group.sh),
 
 ```bash
-docker exec -i -t jeffs-ubuntu-container /bin/bash
-vagrant docker-exec -it -- /bin/sh
+sh create-instance-template.sh
+sh create-instance-group.sh
+```
+
+ssh into your machine,
+
+```bash
+ssh -i ~/.ssh/google_compute_engine jeff@<IP>
+```
+
+You can also ssh from VM to VM using gce's internal DNS,
+
+```bash
+ssh -i ~/.ssh/gce_universal_id_rsa <USERNAME>@<HOSTNAME/INSTANCE_NAME>.us-west1-a.c.<PROJECT>.internal
 ```
 
 ## VAGRANT
@@ -52,7 +104,7 @@ Configuration,
 * Using
   `iso/ubuntu-18.04.2-server-amd64.iso`
   ubuntu 18.04 .iso file.
-* [Packer template file](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
+* [Packer template file](https://github.com/JeffDeCola/my-vagrant-boxes/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
   to manage/configure this development environment
 
 This build is located in my repo

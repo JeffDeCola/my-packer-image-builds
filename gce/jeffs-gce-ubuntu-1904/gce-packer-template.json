@@ -1,15 +1,16 @@
 {
     "variables": {
-        "prefix": "jeff",
+        "prefix": "jeffs",
         "user_home":"{{env `HOME`}}",
         "postfix": "{{isotime \"20060102\"}}",
         "ssh_username": "packer",
         "account_file": "",
         "project_id": "",
         "zone": "us-west1-a",
-        "source_image": "ubuntu-1604-xenial-v20190628",
-        "image_name": "hello-go",
-        "image_description": "GCE custom machine image for Jeffs Repo hello-go-deploy-gce",
+        "source_image": "ubuntu-1904-disco-v20190724",
+        "source_image_family": "ubuntu-1904",
+        "image_name": "gce-ubuntu-1904",
+        "image_description": "GCE custom machine image for Jeffs Repo my-packer-image-builds",
         "disk_size": "10",
         "disk_type": "pd-standard",
         "machine_type": "n1-standard-1"
@@ -26,9 +27,10 @@
             "project_id": "{{user `project_id`}}",
             "zone": "{{user `zone`}}",
             "source_image": "{{user `source_image`}}",
-            "image_name": "{{user `prefix`}}-{{user `image_name`}}-image-{{user `postfix`}}",
+            "source_image_family": "{{user `source_image_family`}}",
+            "image_name": "{{user `prefix`}}-{{user `image_name`}}-image",
             "image_description": "{{user `image_description`}}",
-            "instance_name": "packer-{{user `image_name`}}-instance-{{user `postfix`}}",
+            "instance_name": "packer-{{user `image_name`}}-instance",
             "disk_size": "{{user `disk_size`}}",
             "disk_type": "{{user `disk_type`}}",
             "machine_type": "{{user `machine_type`}}"
@@ -36,6 +38,12 @@
     ],
 
     "provisioners": [
+        {
+            "type": "shell",
+            "pause_before": "3s",
+            "inline": ["echo THIS IS NEEDED!!! Only doing this to add a pause before file transfers"],
+            "pause_after": "3s"
+        },
         {
             "type": "file",
             "source": "./install-files/welcome.txt",
@@ -66,19 +74,18 @@
             "pause_before": "4s",
             "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E {{ .Path }}",
             "scripts": [
+                "./install-scripts/update-upgrade-system.sh",
                 "./install-scripts/add-user-jeff.sh",
-                "./install-scripts/add-gce-universal-key-to-jeff.sh",
-                "./install-scripts/move-welcome-file.sh",
-                "./install-scripts/setup-github-ssh-keys.sh",
-                "./install-scripts/upgrade-system.sh",
+                "./install-scripts/edit-bashrc-for-jeff.sh",
+                "./install-scripts/move-welcome-file-to-jeff.sh",
+                "./install-scripts/add-gce-universal-ssh-keys-to-jeff.sh",
+                "./install-scripts/add-github-ssh-keys-to-root.sh",
+                "./install-scripts/add-github-ssh-keys-to-jeff.sh",
                 "./install-scripts/install-packages.sh",
                 "./install-scripts/install-docker.sh",
-                "./install-scripts/install-go.sh",
-                "./install-scripts/pull-private-repos.sh",
-                "./install-scripts/install-service.sh",
-                "./install-scripts/enable-service-boot.sh",
-                "./install-scripts/enable-docker-container-boot.sh",
-                "./install-scripts/remove-github-ssh-keys.sh"
+                "./install-scripts/install-go-and-config-for-root.sh",
+                "./install-scripts/config-go-for-jeff.sh",
+                "./install-scripts/pull-private-repos-for-jeff.sh"
             ]
         }
     ]

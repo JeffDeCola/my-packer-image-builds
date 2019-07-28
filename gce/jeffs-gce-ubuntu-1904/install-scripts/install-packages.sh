@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# hello-go-deploy-gce install-packages.sh
+# my-packer-image-builds install-packages.sh
 
 echo " "
 echo "************************************************************************"

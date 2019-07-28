@@ -1,9 +1,9 @@
 #!/bin/bash -e
-# hello-go-deploy-gce move-welcome-file.sh
+# my-packer-image-builds move-welcome-file-to-jeff.sh
 
 echo " "
 echo "************************************************************************"
-echo "***************************************** move-welcome-file.sh (START) *"
+echo "********************************* move-welcome-file-to-jeff.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
@@ -15,6 +15,9 @@ echo "mv /tmp/welcome.txt /home/jeff"
 mv /tmp/welcome.txt /home/jeff
 echo " "
 
-echo "******************************************* move-welcome-file.sh (END) *"
+echo "chown owner to jeff"
+chown jeff /home/jeff/welcome.txt 
+
+echo "*********************************** move-welcome-file-to-jeff.sh (END) *"
 echo "************************************************************************"
 echo " "

@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# hello-go-deploy-gce install-docker.sh
+# my-packer-image-builds install-docker.sh
 
 echo " " 
 echo "************************************************************************"
@@ -44,6 +44,12 @@ echo " "
 echo "Check that it will run at boot"
 systemctl status docker
 echo " "
+
+echo "Create docker group"
+groupadd docker
+
+echo "Add user jeff to docker group"
+usermod -aG docker jeff
 
 echo "********************************************** install-docker.sh (END) *"
 echo "************************************************************************"
