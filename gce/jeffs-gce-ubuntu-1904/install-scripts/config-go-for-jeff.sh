@@ -7,29 +7,24 @@ echo "**************************************** config-go-for-jeff.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
-echo "Switch to user jeff"
-su - jeff
-
 echo "Create go environment variables and place in /home/jeff/.bashrc"
 export GOPATH="/home/jeff"
 export GOROOT="/usr/local/go"
 export GOBIN=$GOPATH/bin
 export PATH=$GOROOT/bin::$GOBIN:$PATH
-echo 'export GOPATH="/home/jeff"
+echo ' 
+# Added by Jeff
+export GOPATH="/home/jeff"
 export GOROOT="/usr/local/go"
 export GOBIN=$GOPATH/bin
 export PATH=$GOROOT/bin::$GOBIN:$PATH
-CDPATH=$CDPATH:$GOPATH/src/github.com' >> /home/jeff/.bashrc
+CDPATH=$CDPATH:$GOPATH/src/github.com
+ ' >> /home/jeff/.bashrc
 echo " "
 
 echo "make go directories"
-mkdir -p $GOPATH/bin
-mkdir -p $GOPATH/src/github.com/JeffDeCola
-echo " "
-
-echo "check version and your go env"
-go version
-go env
+runuser -l jeff -c 'mkdir -p /home/jeff/bin'
+runuser -l jeff -c 'mkdir -p /home/jeff/src/github.com/JeffDeCola'
 echo " "
 
 echo "****************************************** config-go-for-jeff.sh (END) *"

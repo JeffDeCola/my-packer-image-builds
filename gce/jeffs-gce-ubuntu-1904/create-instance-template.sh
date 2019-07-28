@@ -1,6 +1,8 @@
 #!/bin/bash -e
 # my-packer-image-builds create-instance-template.sh
 
+echo " "
+
 if [ "$1" = "-debug" ]
 then
     echo "************************************************************************"
@@ -19,9 +21,9 @@ fi
 echo "The goal is to create an instance template on gce."
 echo " "
 
-IMAGENAME="jeffs-gce-ubuntu-1804-image"
+IMAGENAME="jeffs-gce-ubuntu-1904-image"
 PREFIX="jeffs"
-SERVICE="gce-ubuntu-1804"
+SERVICE="gce-ubuntu-1904"
 #POSTFIX=$(date -u +%Y%m%d-%H%M)
 
 echo "gcloud compute command"
