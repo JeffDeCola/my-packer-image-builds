@@ -24,11 +24,14 @@ export GOPATH="/root"
 export GOROOT="/usr/local/go"
 export GOBIN=$GOPATH/bin
 export PATH=$GOROOT/bin::$GOBIN:$PATH
-echo 'export GOPATH="/root"
+echo ' 
+# Added by Jeff
+export GOPATH="/root"
 export GOROOT="/usr/local/go"
 export GOBIN=$GOPATH/bin
 export PATH=$GOROOT/bin::$GOBIN:$PATH
-CDPATH=$CDPATH:$GOPATH/src/github.com' >> /root/.bashrc
+CDPATH=$CDPATH:$GOPATH/src/github.com
+ ' >> /root/.bashrc
 echo " "
 
 echo "make go directories"

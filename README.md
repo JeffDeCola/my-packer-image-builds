@@ -36,6 +36,8 @@ Configure and provision,
   Update & upgrade, turn off periodic updates and auto-upgrades.
 * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-user-jeff.sh)
   Add user jeff.
+* [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/edit-bashrc-for-jeff.sh)
+  Add git-aware prompt.
 * [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/move-welcome-file-to-jeff.sh)
   Test to add file to /home/jeff.
 * [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
@@ -62,25 +64,31 @@ To build use
 sh build.sh
 ```
 
-To deploy use
-[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
-and
-[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh).
-
-Will use,
+To deploy with,
 
 * f1-micro
 * us-west1
+
+Use,
+
+* [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
+* [create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh)
 
 ```bash
 sh create-instance-template.sh
 sh create-instance-group.sh
 ```
 
-``ssh into your machine,
+ssh into your machine,
 
 ```bash
-ssh -i ~/.ssh/google_compute_engine jeff@IP
+ssh -i ~/.ssh/google_compute_engine jeff@<IP>
+```
+
+You can also ssh from VM to VM using gce's internal DNS,
+
+```bash
+ssh -i ~/.ssh/gce_universal_id_rsa <USERNAME>@<HOSTNAME/INSTANCE_NAME>.us-west1-a.c.<PROJECT>.internal
 ```
 
 ## VAGRANT
