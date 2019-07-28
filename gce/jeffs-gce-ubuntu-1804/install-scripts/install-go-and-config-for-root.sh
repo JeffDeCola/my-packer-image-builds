@@ -1,9 +1,9 @@
 #!/bin/bash -e
-# hello-go-deploy-gce install-go.sh
+# my-packer-image-builds install-go-and-config-for-root.sh
 
 echo " " 
 echo "************************************************************************"
-echo "************************************************ install-go.sh (START) *"
+echo "**************************** install-go-and-config-for-root.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
@@ -11,10 +11,12 @@ echo "mkdir /tmp/go"
 mkdir -p /tmp/go
 echo " "
 
-echo "Download go1.10.3 (wget quiet mode), untar and move to /usr/local"
-wget -q https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz
-tar -xf go1.10.3.linux-amd64.tar.gz
-mv go /usr/local
+echo "Download go1.12.7 (wget quiet mode), untar and move to /usr/local"
+FileName='go1.12.7.linux-amd64.tar.gz'
+wget -q https://storage.googleapis.com/golang/$FileName
+tar -xf $FileName
+sudo mv go /usr/local
+rm $FileName
 echo " "
 
 echo "Create go environment variables and place in /root/.bashrc"
@@ -39,6 +41,6 @@ go version
 go env
 echo " "
 
-echo "************************************************** install-go.sh (END) *"
+echo "****************************** install-go-and-config-for-root.sh (END) *"
 echo "************************************************************************"
 echo " "

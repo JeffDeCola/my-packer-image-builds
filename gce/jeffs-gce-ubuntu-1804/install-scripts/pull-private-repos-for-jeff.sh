@@ -1,25 +1,23 @@
 #!/bin/bash -e
-# hello-go-deploy-gce pull-private-repos.sh
+# my-packer-image-builds pull-private-repos-for-jeff.sh
 
 echo " "
 echo "************************************************************************"
-echo "**************************************** pull-private-repos.sh (START) *"
+echo "********************** pull-private-repos-for-jeff-for-jeff.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
-export GOPATH="/root"
-export GOROOT="/usr/local/go"
-export GOBIN=$GOPATH/bin
-export PATH=$GOROOT/bin::$GOBIN:$PATH
+echo "Switch to user jeff"
+su - jeff
 
 echo "cd into your go src directory"
 cd "$GOPATH/src/github.com/JeffDeCola"
 echo " "
 
 echo "Git clone any public or private repo"
-git clone git@github.com:JeffDeCola/hello-go-deploy-gce
+git clone git@github.com:JeffDeCola/hellog-go-deploy-gce
 echo " "
 
-echo "****************************************** pull-private-repos.sh (END) *"
+echo "************************ pull-private-repos-for-jeff-for-jeff.sh (END) *"
 echo "************************************************************************"
 echo " "

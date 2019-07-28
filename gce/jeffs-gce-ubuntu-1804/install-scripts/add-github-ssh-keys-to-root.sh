@@ -1,9 +1,9 @@
 #!/bin/bash -e
-# hello-go-deploy-gce setup-github-ssh-keys.sh
+# my-packer-image-builds add-github-ssh-keys-to-root.sh
 
 echo " " 
 echo "************************************************************************"
-echo "************************************* setup-github-ssh-keys.sh (START) *"
+echo "******************************* add-github-ssh-keys-to-root.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
@@ -11,8 +11,8 @@ echo "Make /root/.ssh"
 [ -d /root/.ssh ] || mkdir /root/.ssh
 
 echo "mv /tmp/gce-github-vm* /root/.ssh"
-mv /tmp/gce-github-vm /root/.ssh/id_rsa
-mv /tmp/gce-github-vm.pub /root/.ssh/id_rsa.pub
+cp /tmp/gce-github-vm /root/.ssh/id_rsa
+cp /tmp/gce-github-vm.pub /root/.ssh/id_rsa.pub
 echo " "
 
 echo "chmod 600 for both keys"
@@ -33,6 +33,6 @@ ssh -T git@github.com || :
 # ssh -i ~/.ssh/id_rsa.pub git@github.com || :
 echo " "
 
-echo "**************************************** setup-github-ssh-key.sh (END) *"
+echo "********************************* add-github-ssh-keys-to-root.sh (END) *"
 echo "************************************************************************"
 echo " "
