@@ -45,6 +45,12 @@ echo "Check that it will run at boot"
 systemctl status docker
 echo " "
 
+echo "Create docker group"
+groupadd docker
+
+echo "Add user jeff to docker group"
+usermod -aG docker jeff
+
 echo "********************************************** install-docker.sh (END) *"
 echo "************************************************************************"
 echo " "
