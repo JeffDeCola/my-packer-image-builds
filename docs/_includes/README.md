@@ -1,188 +1,121 @@
 
-* ubuntu-docker-container
-  * Run an ubuntu 18.04 in a docker container
-  * Use
-    [tknerr/baseimage-ubuntu-16.04](https://app.vagrantup.com/tknerr/boxes/baseimage-ubuntu-16.04)
-    Vagrant Box (for docker)
- 
+* [GCE]()
+  * jeffs-gce-ubuntu-1804
+* [VAGRANT]()
+  * jeffs-ubuntu-1804-virtualbox-vm-box
 
-## CREATE VAGRANT BOX
+# GOOGLE COMPUTE ENGINE (GCE)
 
+My packer builds at Google Computer Engine.
 
-### ubuntu-1604-virtualbox-vm
+### jeffs-gce-ubuntu-1804
 
-* Development Environment Goal - Run ubuntu 16.04 in a VirtualBox VM (WINDOWS)
-* Using
-  [ubuntu/xenial64](https://app.vagrantup.com/ubuntu/boxes/xenial64)
-  Vagrant Box (for virtualbox)
-* [Vagrantfile](https://github.com/JeffDeCola/my-vagrant-boxes/blob/master/ubuntu-1604-virtualbox-vm/Vagrantfile)
-  to manage/configure this development environment
+Packer file [gce-packer-template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/gce-packer-template.json).
 
-To run enter directory,
+Using gce resources for build,
 
-```bash
-vagrant up
-```
+* ubuntu-1604-xenial-v20190628
+* us-west1-a
+* n1-standard-1
 
-To ssh onto this VM,
+Configure and provision,
 
-```bash
-vagrant ssh
-```
+* [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/update-upgrade-system.sh)
+  Update & upgrade, turn off periodic updates and auto-upgrades.
+* [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-user-jeff.sh)
+  Add user jeff.
+* [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/edit-bashrc-for-jeff.sh)
+  Add git-aware prompt.
+* [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/move-welcome-file-to-jeff.sh)
+  Test to add file to /home/jeff.
+* [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
+  Add a universal key so VMs can ssh into each other.
+* [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-root.sh)
+  Add keys for github to root.
+* [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-jeff.sh)
+  Add keys for github to jeff.
+* [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-packages.sh)
+  Install packages like htop, tmux, unzip, etc...
+* [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-docker.sh)
+  Install docker.
+* [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-go-and-config-for-root.sh)
+  Install go and config for user root.
+* [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/config-go-for-jeff.sh)
+  Config go for user jeff.
+* [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/pull-private-repos-for-jeff.sh)
+  Pull my-global-repo-scripts-private.
 
-We are also able to use another ssh client because we are using
-vagrant insecure keys. We have the private key in `~/.vagrant.d`.
-And we places the public key on the box in `~/.ssh/authorized_keys`
-(See Vagrantfile). Also, you may have to delete previous fingerprints
-in your ~/.ssh/known_hosts. Hence,
-
-```bash
-ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@127.0.0.1
-```
-
-A gui should also pop up.  User and password is vagrant.
-
-Here is an illustration of what we did,
-
-![IMAGE - ubuntu-1604-virtualbox-vm - IMAGE](pics/ubuntu-1604-virtualbox-vm.jpg)
-
-### jeffs-ubuntu-1804-virtualbox-vm
-
-Using the box we created below,
-
-* Development Environment Goal - Run ubuntu 18.04 in a VirtualBox VM (WINDOWS)
-* Using
-  [ubuntu/jeffs-ubuntu-1804-virtualbox-vm-box](https://github.com/JeffDeCola/my-vagrant-boxes#jeffs-ubuntu-1804-virtualbox-vm-box)
-  Vagrant Box (for virtualbox) that was created below.
-* [Vagrantfile](https://github.com/JeffDeCola/my-vagrant-boxes/blob/master/jeffs-ubuntu-1804-virtualbox-vm/Vagrantfile)
-  to manage/configure this development environment
-
-To run enter directory,
+To build use
+[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh),
 
 ```bash
-vagrant up
+sh build.sh
 ```
 
-To ssh onto this VM,
+To deploy with,
+
+* f1-micro
+* us-west1
+
+Use,
+
+* [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
+* [create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh)
 
 ```bash
-vagrant ssh
+sh create-instance-template.sh
+sh create-instance-group.sh
 ```
 
-We are also able to use another ssh client because we are using
-vagrant insecure keys. We have the private key in `~/.vagrant.d`.
-And we places the public key on the box in `~/.ssh/authorized_keys`
-(See Vagrantfile). Also, you may have to delete previous fingerprints
-in your ~/.ssh/known_hosts. Hence,
+ssh into your machine,
 
 ```bash
-ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@127.0.0.1
+ssh -i ~/.ssh/google_compute_engine jeff@<IP>
 ```
 
-A gui should also pop up.  User and password is vagrant.
-
-### concourse-lite-321-vm
-
-Using the box we created below,
-
-* Development Environment Goal - Run concourse 3.2.1 in a VirtualBox VM (WINDOWS)
-* Using
-  [concourse/lite](https://app.vagrantup.com/concourse/boxes/lite)
-  Vagrant Box (for virtualbox) that was created below.
-* [Vagrantfile](https://github.com/JeffDeCola/my-vagrant-boxes/blob/master/concourse-lite-321-vm/Vagrantfile)
-  to manage/configure this development environment
-
-To run enter directory,
+You can also ssh from VM to VM using gce's internal DNS,
 
 ```bash
-vagrant up
+ssh -i ~/.ssh/gce_universal_id_rsa <USERNAME>@<HOSTNAME/INSTANCE_NAME>.us-west1-a.c.<PROJECT>.internal
 ```
 
-To ssh onto this VM,
+## VAGRANT
 
-```bash
-vagrant ssh
-```
-
-We are also able to use another ssh client because we are using
-vagrant insecure keys. We have the private key in `~/.vagrant.d`.
-And we places the public key on the box in `~/.ssh/authorized_keys`
-(See Vagrantfile). Also, you may have to delete previous fingerprints
-in your ~/.ssh/known_hosts. Hence,
-
-```bash
-ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@127.0.0.1
-```
-
-
-A gui should also pop up.  User and password is vagrant.
-
-You can check it out on your machine
-[192.168.100.4:8080](http://192.168.100.4:8080/).
-
-Refer to my cheat sheet on concourse
-[here](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/continuous-integration-continuous-deployment/concourse-cheat-sheet).
-
-## CREATE VAGRANT BOXES (FOR VIRTUALBOX ON WINDOWS) USING PACKER
-
-Packer is great at creating images, so lets create our own
-custom vagrant box using packer.
+My packer builds for vagrant.
 
 ### jeffs-ubuntu-1804-virtualbox-vm-box
+
+Configuration,
 
 * Goal - Create a vagrant box of ubuntu 18.04
 * Using
   `iso/ubuntu-18.04.2-server-amd64.iso`
   ubuntu 18.04 .iso file.
-* [Packer template](https://github.com/JeffDeCola/my-vagrant-boxes/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
+* [Packer template file](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
   to manage/configure this development environment
 
-We will use a base image and add `htop` to it.
-
-I got this box creation from [serainville](https://github.com/serainville/packer_templates)
-and very slightly modified it.
-
-To run enter directory,
-
-```bash
-packer build vagrant-packer-template.json
-```
-
-Now we have the box in `/box/jeffs-ubuntu-1804-virtualbox-vm-box.box`.
-
-Add/list/remove box to/from vagrant,
-
-```bash
-vagrant box add --name "ubuntu/jeffs-ubuntu-1804-virtualbox-vm-box" --force jeffs-ubuntu-1804-virtualbox-vm-box.box
-vagrant box list
-vagrant box remove ubuntu/jeffs-ubuntu-1804-virtualbox-vm-box
-```
-
-Now use the box like normal.
-
-Here is an illustration of what we did,
-
-![IMAGE - jeffs-ubuntu-1804-virtualbox-vm-box - IMAGE](pics/jeffs-ubuntu-1804-virtualbox-vm-box.jpg)
+This build is located in my repo
+[my-vagrant-boxes](https://github.com/JeffDeCola/my-vagrant-boxes#jeffs-ubuntu-1804-virtualbox-vm-box).
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
 For fun, I use concourse to update
-[my-vagrant-boxes GitHub Webpage](https://jeffdecola.github.io/my-vagrant-boxes/)
+[my-packer-image-builds GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/)
 and alert me of the changes via repo status and slack.
 
-A pipeline file [pipeline.yml](https://github.com/JeffDeCola/my-vagrant-boxes/tree/master/ci/pipeline.yml)
+A pipeline file [pipeline.yml](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/ci/pipeline.yml)
 shows the entire ci flow. Visually, it looks like,
 
-![IMAGE - my-vagrant-boxes concourse ci pipeline - IMAGE](pics/my-vagrant-boxes-pipeline.jpg)
+![IMAGE - my-packer-image-builds concourse ci pipeline - IMAGE](pics/my-packer-image-builds-pipeline.jpg)
 
 The `jobs` and `tasks` are,
 
 * `job-readme-github-pages` runs task
-  [readme-github-pages.sh](https://github.com/JeffDeCola/my-vagrant-boxes/tree/master/ci/scripts/readme-github-pages.sh).
+  [readme-github-pages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/ci/scripts/readme-github-pages.sh).
 
 The concourse `resources types` are,
 
-* `my-vagrant-boxes` uses a resource type
+* `my-packer-image-builds` uses a resource type
   [docker-image](https://hub.docker.com/r/concourse/git-resource/)
   to PULL a repo from github.
 * `resource-slack-alert` uses a resource type
