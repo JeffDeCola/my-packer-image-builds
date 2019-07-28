@@ -1,9 +1,4 @@
 
-* [GCE]()
-  * jeffs-gce-ubuntu-1804
-* [VAGRANT]()
-  * jeffs-ubuntu-1804-virtualbox-vm-box
-
 # GOOGLE COMPUTE ENGINE (GCE)
 
 My packer builds at Google Computer Engine.
@@ -57,10 +52,10 @@ To deploy with,
 * f1-micro
 * us-west1
 
-Use,
-
-* [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
-* [create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh)
+Use
+[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
+and
+[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh),
 
 ```bash
 sh create-instance-template.sh
@@ -91,7 +86,7 @@ Configuration,
 * Using
   `iso/ubuntu-18.04.2-server-amd64.iso`
   ubuntu 18.04 .iso file.
-* [Packer template file](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
+* [Packer template file](https://github.com/JeffDeCola/my-vagrant-boxes/blob/master/jeffs-ubuntu-1804-virtualbox-vm-box/vagrant-packer-template.json)
   to manage/configure this development environment
 
 This build is located in my repo
