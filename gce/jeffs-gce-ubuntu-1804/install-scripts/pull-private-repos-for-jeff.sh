@@ -16,8 +16,10 @@ runuser -l jeff -c 'git clone git@github.com:JeffDeCola/hello-go-deploy-gce.git'
 echo " "
 
 echo "mkdir /home/jeff/other"
+pwd
 [ -d /home/jeff/other ] || runuser -l jeff -c 'mkdir /home/jeff/other'
 cd /home/jeff/other
+pwd
 
 echo "Git clone my-global-repo-scripts-private"
 runuser -l jeff -c 'pwd'
