@@ -8,6 +8,7 @@
         "project_id": "",
         "zone": "us-west1-a",
         "source_image": "ubuntu-1904-disco-v20190724",
+        "source_image_family": "ubuntu-1904",
         "image_name": "gce-ubuntu-1904",
         "image_description": "GCE custom machine image for Jeffs Repo my-packer-image-builds",
         "disk_size": "10",
@@ -26,6 +27,7 @@
             "project_id": "{{user `project_id`}}",
             "zone": "{{user `zone`}}",
             "source_image": "{{user `source_image`}}",
+            "source_image_family": "{{user `source_image_family`}}",
             "image_name": "{{user `prefix`}}-{{user `image_name`}}-image",
             "image_description": "{{user `image_description`}}",
             "instance_name": "packer-{{user `image_name`}}-instance",
@@ -36,6 +38,12 @@
     ],
 
     "provisioners": [
+        {
+            "type": "shell",
+            "pause_before": "3s",
+            "inline": ["echo THIS IS NEEDED!!! Only doing this to add a pause before file transfers"],
+            "pause_after": "3s"
+        },
         {
             "type": "file",
             "source": "./install-files/welcome.txt",
