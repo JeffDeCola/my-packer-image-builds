@@ -41,7 +41,7 @@ runuser -l jeff -c 'ssh -T git@github.com || :'
 echo " "
 
 echo "Add some github configuration"
-runuser -l jeff -c 'git config --global user.name "Jeff DeCola (jeffs-gce-ubuntu-1804)"'
+runuser -l jeff -c 'git config --global user.name "Jeff DeCola (jeffs-gce-ubuntu-1904)"'
 runuser -l jeff -c 'git config --global user.email jeff@keeperlabs.com'
 runuser -l jeff -c 'git config --global core.editor nano'
 runuser -l jeff -c 'git config --global push.default simple'

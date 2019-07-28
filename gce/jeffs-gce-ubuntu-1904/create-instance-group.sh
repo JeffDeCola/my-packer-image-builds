@@ -21,9 +21,9 @@ fi
 echo "The goal is to create a managed instance group on gce."
 echo " "
 
-TEMPLATENAME="jeffs-gce-ubuntu-1804-instance-template"
+TEMPLATENAME="jeffs-gce-ubuntu-1904-instance-template"
 PREFIX="jeffs"
-SERVICE="gce-ubuntu-1804"
+SERVICE="gce-ubuntu-1904"
 
 echo "gcloud compute command"
 gcloud compute \

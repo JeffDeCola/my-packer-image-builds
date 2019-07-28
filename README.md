@@ -10,7 +10,7 @@ There will be no explanation on how this is done, refer to my
 [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/orchestration/builds-deployment-containers/packer-cheat-sheet).
 
 * [GOOGLE COMPUTE ENGINE (GCE)](https://github.com/JeffDeCola/my-packer-image-builds#google-compute-engine-gce)
-  * [jeffs-gce-ubuntu-1804](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-gce-ubuntu-1804)
+  * [jeffs-gce-ubuntu-1904](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-gce-ubuntu-1904)
 * [VAGRANT](https://github.com/JeffDeCola/my-packer-image-builds#vagrant)
   * [jeffs-ubuntu-1804-virtualbox-vm-box](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-ubuntu-1804-virtualbox-vm-box)
 * [UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)](https://github.com/JeffDeCola/my-packer-image-builds#update-github-webpage-using-concourse-optional)
@@ -21,45 +21,45 @@ There will be no explanation on how this is done, refer to my
 
 My packer builds at Google Computer Engine.
 
-### jeffs-gce-ubuntu-1804
+### jeffs-gce-ubuntu-1904
 
-Packer file [gce-packer-template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/gce-packer-template.json).
+Packer file [gce-packer-template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/gce-packer-template.json).
 
 Using gce resources for build,
 
-* ubuntu-1604-xenial-v20190628
+* ubuntu-1904-disco-v20190724 (gce base image)
 * us-west1-a
 * n1-standard-1
 
 Configure and provision,
 
-* [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/update-upgrade-system.sh)
+* [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/update-upgrade-system.sh)
   Update & upgrade, turn off periodic updates and auto-upgrades.
-* [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-user-jeff.sh)
+* [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/add-user-jeff.sh)
   Add user jeff.
-* [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/edit-bashrc-for-jeff.sh)
+* [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/edit-bashrc-for-jeff.sh)
   Add git-aware prompt.
-* [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/move-welcome-file-to-jeff.sh)
+* [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/move-welcome-file-to-jeff.sh)
   Test to add file to /home/jeff.
-* [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
+* [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
   Add a universal key so VMs can ssh into each other.
-* [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-root.sh)
+* [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/add-github-ssh-keys-to-root.sh)
   Add keys for github to root.
-* [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/add-github-ssh-keys-to-jeff.sh)
+* [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/add-github-ssh-keys-to-jeff.sh)
   Add keys for github to jeff.
-* [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-packages.sh)
+* [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/install-packages.sh)
   Install packages like htop, tmux, unzip, etc...
-* [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-docker.sh)
+* [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/install-docker.sh)
   Install docker.
-* [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/install-go-and-config-for-root.sh)
+* [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/install-go-and-config-for-root.sh)
   Install go and config for user root.
-* [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/config-go-for-jeff.sh)
+* [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/config-go-for-jeff.sh)
   Config go for user jeff.
-* [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/install-scripts/pull-private-repos-for-jeff.sh)
+* [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/pull-private-repos-for-jeff.sh)
   Pull my-global-repo-scripts-private.
 
 To build use
-[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh),
+[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/build-image.sh),
 
 ```bash
 sh build.sh
@@ -71,9 +71,9 @@ To deploy with,
 * us-west1
 
 Use
-[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/build-image.sh)
+[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/build-image.sh)
 and
-[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1804/create-instance-group.sh),
+[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/create-instance-group.sh),
 
 ```bash
 sh create-instance-template.sh
