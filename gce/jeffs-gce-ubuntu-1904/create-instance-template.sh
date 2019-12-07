@@ -33,7 +33,7 @@ gcloud compute \
     --machine-type "f1-micro" \
     --network "default" \
     --maintenance-policy "TERMINATE" \
-    --tags "jeff-test" \
+    --tags "jeffs-firewall-settings" \
     --image "$IMAGENAME" \
     --boot-disk-size "10" \
     --boot-disk-type "pd-standard" \
