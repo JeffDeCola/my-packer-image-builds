@@ -56,7 +56,7 @@ Configure and provision,
 * [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/config-go-for-jeff.sh)
   Config go for user jeff.
 * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/install-scripts/pull-private-repos-for-jeff.sh)
-  Pull my-global-repo-scripts-private.
+  Pull my-global-repo-scripts-private and then pull all repos (not keybase one).
 
 To build use
 [build.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/build-image.sh),
