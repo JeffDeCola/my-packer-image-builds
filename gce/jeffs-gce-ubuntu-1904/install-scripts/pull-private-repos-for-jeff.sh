@@ -21,7 +21,7 @@ runuser -l jeff -c 'cd /home/jeff/other; git clone git@github.com:JeffDeCola/my-
 echo " "
 
 echo "Git clone all repos and set development branch (Will not get keybase secrets)"
-runuser -l jeff -c 'bash clone-all-repos-and-set-develop-branch.bash'
+runuser -l jeff -c 'cd /home/jeff/other/my-global-repo-scripts-private; bash clone-all-repos-and-set-develop-branch.bash'
 
 echo "********************************* pull-private-repos-for-jeff.sh (END) *"
 echo "************************************************************************"
