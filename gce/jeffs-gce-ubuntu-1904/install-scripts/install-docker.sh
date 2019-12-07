@@ -46,7 +46,8 @@ systemctl status docker
 echo " "
 
 echo "Create docker group"
-groupadd docker
+# For some reason I think this group already exists now
+# groupadd docker
 
 echo "Add user jeff to docker group"
 usermod -aG docker jeff
