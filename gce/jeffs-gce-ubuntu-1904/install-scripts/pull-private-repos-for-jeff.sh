@@ -20,8 +20,8 @@ echo "You must cd into the directory in same command"
 runuser -l jeff -c 'cd /home/jeff/other; git clone git@github.com:JeffDeCola/my-global-repo-scripts-private.git'
 echo " "
 
-echo "Git clone all repos and set development branch (Will not get keybase secrets)"
-runuser -l jeff -c 'cd /home/jeff/other/my-global-repo-scripts-private; bash clone-all-repos-and-set-develop-branch.bash'
+# echo "Git clone all repos and set development branch (Will not get keybase secrets)"
+# runuser -l jeff -c 'cd /home/jeff/other/my-global-repo-scripts-private; bash clone-all-repos-and-set-develop-branch.bash'
 
 echo "********************************* pull-private-repos-for-jeff.sh (END) *"
 echo "************************************************************************"
