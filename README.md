@@ -71,11 +71,13 @@ To deploy with,
 * us-west1
 
 Use
+[create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/create-firewall-rule.sh),
 [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/build-image.sh)
 and
 [create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/gce/jeffs-gce-ubuntu-1904/create-instance-group.sh),
 
 ```bash
+sh create-firewall-rule.sh
 sh create-instance-template.sh
 sh create-instance-group.sh
 ```
