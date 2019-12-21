@@ -21,6 +21,7 @@ runuser -l jeff -c 'cd /home/jeff/other; git clone git@github.com:JeffDeCola/my-
 echo " "
 
 # echo "Git clone all repos and set development branch (Will not get keybase secrets)"
+# I would need to lcean up this file - remove tput because it causes errors in gcloud
 # runuser -l jeff -c 'cd /home/jeff/other/my-global-repo-scripts-private; bash clone-all-repos-and-set-develop-branch.bash'
 
 echo "********************************* pull-private-repos-for-jeff.sh (END) *"
