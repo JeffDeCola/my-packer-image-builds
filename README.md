@@ -13,7 +13,6 @@ There will be no explanation on how this is done, refer to my
   * [jeffs-gce-ubuntu-1904-xxxx](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-gce-ubuntu-1904-xxxx)
 * [VAGRANT](https://github.com/JeffDeCola/my-packer-image-builds#vagrant)
   * [jeffs-ubuntu-1804-virtualbox-vm-box](https://github.com/JeffDeCola/my-packer-image-builds#jeffs-ubuntu-1804-virtualbox-vm-box)
-* [UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)](https://github.com/JeffDeCola/my-packer-image-builds#update-github-webpage-using-concourse-optional)
 
 [GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/).
 
