@@ -1,13 +1,13 @@
-// CONCOURSE
+# CONCOURSE
 .credentials.yml
 
-// GO
+# GO
 coverage.out
 
-// macOS
+# macOS
 .DS_Store
 
-// Ignore Packer
+# Ignore Packer
 **/packer_cache
 **/*.box
 **/*.iso
