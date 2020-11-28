@@ -25,15 +25,14 @@ _All sections in alphabetical order._
 
 * [jeffs-gce-ubuntu-1904-xxxx](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine/jeffs-gce-ubuntu-1904)
 
-  _My packer builds at Google Computer Engine._
+  _Using packer to build an ubuntu 19.04 image at google compute engine._
 
 ### VAGRANT
 
-* [jeffs-ubuntu-1804-virtualbox-vm-box](https://github.com/JeffDeCola/my-vagrant-boxes#jeffs-ubuntu-1804-virtualbox-vm-box)
+* [jeffs-ubuntu-1804-virtualbox-vm-box](https://github.com/JeffDeCola/my-vagrant-boxes/tree/master/create-vagrant-box-for-virtualbox-on-windows-using-packer/jeffs-ubuntu-1804-virtualbox-vm-box)
+_(Links to my-vagrant-boxes repo)_
 
-  _My packer builds for vagrant to create a vagrant box of ubuntu 18.04.
-  This build is located in my repo
-  [my-vagrant-boxes](https://github.com/JeffDeCola/my-vagrant-boxes)._
+  _Using packer to build a vagrant box of ubuntu 18.04._
 
 ## UPDATE GITHUB WEBPAGE USING CONCOURSE (OPTIONAL)
 
