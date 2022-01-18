@@ -7,13 +7,13 @@
         "account_file": "",
         "project_id": "",
         "zone": "us-west1-a",
-        "source_image": "ubuntu-2004-disco-v20191113a",
-        "source_image_family": "ubuntu-2004",
+        "source_image": "ubuntu-2004-focal-v20220110",
+        "source_image_family": "ubuntu-2004-lts",
         "image_name": "gce-ubuntu-2004",
         "image_description": "GCE custom machine image for Jeffs Repo my-packer-image-builds",
-        "disk_size": "10",
+        "disk_size": "20",
         "disk_type": "pd-standard",
-        "machine_type": "n1-standard-1"
+        "machine_type": "e2-micro"
     },
 
     "builders": [

@@ -11,32 +11,19 @@ echo "mkdir /tmp/go"
 mkdir -p /tmp/go
 echo " "
 
-echo "Download go1.12.7 (wget quiet mode), untar and move to /usr/local"
-FileName='go1.12.7.linux-amd64.tar.gz'
-wget -q https://storage.googleapis.com/golang/$FileName
+echo "Download go1.17.6 (wget quiet mode), untar and move to /usr/local"
+FileName='go1.17.6.linux-amd64.tar.gz'
+wget -q https://go.dev/dl/$FileName
 tar -xf $FileName
 sudo mv go /usr/local
 rm $FileName
 echo " "
 
-echo "Create go environment variables and place in /root/.bashrc"
-export GOPATH="/root"
-export GOROOT="/usr/local/go"
-export GOBIN=$GOPATH/bin
-export PATH=$GOROOT/bin::$GOBIN:$PATH
-echo ' 
-# Added by Jeff
-export GOPATH="/root"
-export GOROOT="/usr/local/go"
-export GOBIN=$GOPATH/bin
-export PATH=$GOROOT/bin::$GOBIN:$PATH
-CDPATH=$CDPATH:$GOPATH/src/github.com
+echo "Place in /root/.bashrc"
+echo '
+# CDPATH
+CDPATH=.:$HOME
  ' >> /root/.bashrc
-echo " "
-
-echo "make go directories"
-mkdir -p $GOPATH/bin
-mkdir -p $GOPATH/src/github.com/JeffDeCola
 echo " "
 
 echo "check version and your go env"
