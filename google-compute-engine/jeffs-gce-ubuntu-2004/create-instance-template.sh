@@ -30,12 +30,12 @@ echo "gcloud compute command"
 gcloud compute \
     --project "$GCP_JEFFS_PROJECT_ID" \
      instance-templates create "$PREFIX-$SERVICE-instance-template" \
-    --machine-type "f1-micro" \
+    --machine-type "e2-micro" \
     --network "default" \
-    --maintenance-policy "TERMINATE" \
+    --maintenance-policy "MIGRATE" \
     --tags "jeffs-firewall-settings" \
     --image "$IMAGENAME" \
-    --boot-disk-size "10" \
+    --boot-disk-size "20" \
     --boot-disk-type "pd-standard" \
     --boot-disk-device-name "$PREFIX-$SERVICE-disk" \
     --description "Instance Template for Jeffs Repo hello-go-deploy-gce" \
