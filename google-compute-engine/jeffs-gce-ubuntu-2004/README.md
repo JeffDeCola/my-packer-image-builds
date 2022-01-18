@@ -39,6 +39,8 @@ from a base image.
   Config go for user jeff
   * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/pull-private-repos-for-jeff.sh)
   Pull my-global-repo-scripts-private and then pull all repos (not keybase one)
+  * [add-vscode-settings-json-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-vscode-settings-json-file.sh)
+  Place VS Code settings.json file in ~/.vscode-server/data/Machine for remote connection
 
 ## BUILD
 

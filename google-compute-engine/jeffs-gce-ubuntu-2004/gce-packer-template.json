@@ -51,6 +51,11 @@
         },
         {
             "type": "file",
+            "source": "./install-files/settings.json",
+            "destination": "/tmp/settings.json"
+        },
+        {
+            "type": "file",
             "source": "{{user `user_home`}}/.ssh/gce-github-vm.pub",
             "destination": "/tmp/gce-github-vm.pub"
         },
@@ -85,7 +90,8 @@
                 "./install-scripts/install-docker.sh",
                 "./install-scripts/install-go-and-config-for-root.sh",
                 "./install-scripts/config-go-for-jeff.sh",
-                "./install-scripts/pull-private-repos-for-jeff.sh"
+                "./install-scripts/pull-private-repos-for-jeff.sh",
+                "./install-scripts/add-vscode-settings-json-file.sh"
             ]
         }
     ]
