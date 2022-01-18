@@ -21,15 +21,17 @@ echo " "
 
 echo "Place in /root/.bashrc"
 echo '
+# ADD GO TO PATH
+export PATH=/usr/local/go/bin:$PATH
 # CDPATH
 CDPATH=.:$HOME
  ' >> /root/.bashrc
 echo " "
 
-echo "check version and your go env"
-go version
-go env
-echo " "
+# echo "check version and your go env"
+# go version
+# go env
+# echo " "
 
 echo "****************************** install-go-and-config-for-root.sh (END) *"
 echo "************************************************************************"
