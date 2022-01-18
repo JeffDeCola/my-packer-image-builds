@@ -11,9 +11,9 @@ from a base image.
 
 * [gce-packer-template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/gce-packer-template.json)
 * Using gce resources for build
-  * ubuntu-2004-disco-v20190724 (gce base image)
-  * us-west1-a
-  * n1-standard-1
+  * ubuntu-2004-focal-v20220110 (gce base image)
+  * us-west1
+  * e2-micro, 20 GB Standard Persistent Disk
 * Configure and provision
   * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/update-upgrade-system.sh)
   Update & upgrade, turn off periodic updates and auto-upgrades
@@ -51,8 +51,15 @@ sh build.sh
 
 To deploy with,
 
-* f1-micro
-* us-west1
+* e2-micro (2 vCPU, 1 GB memory)
+* us-west1 (Oregon)
+* 30 GB Standard Persistent Disk - I made mine 20 GB
+* 5GB snapshot storage (us-west1 Oregon)
+* 1GB network Egress
+* Free External IP
+
+From the
+[Free Tier](https://cloud.google.com/free/docs/gcp-free-tier/?hl=en_US#compute).
 
 ## CONNECT
 
