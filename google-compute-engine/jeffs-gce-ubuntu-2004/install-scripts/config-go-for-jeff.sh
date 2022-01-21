@@ -9,9 +9,10 @@ echo " "
 
 echo "Place in /home/jeff/.bashrc"
 echo '
-# ADD GO TO PATH
-export PATH=/usr/local/go/bin:$PATH
-# CDPATH
+# ADDED BY JEFF - GO TO PATH
+export "PATH=/usr/local/go/bin:$PATH"
+export "PATH=/home/jeff/go/bin:$PATH"
+# ADDED BY JEFF - CDPATH
 CDPATH=.:$HOME
  ' >> /home/jeff/.bashrc
 echo " "
