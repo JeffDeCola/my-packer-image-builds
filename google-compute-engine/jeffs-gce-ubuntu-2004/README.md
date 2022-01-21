@@ -16,31 +16,33 @@ from a base image.
   * e2-micro, 20 GB Standard Persistent Disk
 * Configure and provision
   * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/update-upgrade-system.sh)
-  Update & upgrade, turn off periodic updates and auto-upgrades
+    Update & upgrade, turn off periodic updates and auto-upgrades
   * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-user-jeff.sh)
-  Add user jeff
+    Add user jeff
   * [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/edit-bashrc-for-jeff.sh)
-  Add git-aware prompt.
+    Add git-aware prompt.
   * [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/move-welcome-file-to-jeff.sh)
-  Test to add file to /home/jeff
+    Test to add file to /home/jeff
   * [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
-  Add a universal key so VMs can ssh into each other
+    Add a universal key so VMs can ssh into each other
   * [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-github-ssh-keys-to-root.sh)
-  Add keys for github to root
+    Add keys for github to root
   * [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-github-ssh-keys-to-jeff.sh)
-  Add keys for github to jeff
+    Add keys for github to jeff
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-packages.sh)
-  Install packages like htop, tmux, unzip, etc...
+    Install packages like htop, tmux, unzip, etc...
   * [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-docker.sh)
-  Install docker
+    Install docker
   * [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-go-and-config-for-root.sh)
-  Install go and config for user root
+    Install go and config for user root
   * [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/config-go-for-jeff.sh)
-  Config go for user jeff
+    Config go for user jeff
   * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/pull-private-repos-for-jeff.sh)
-  Pull my-global-repo-scripts-private and then pull all repos (not keybase one)
+    Pull my-global-repo-scripts-private and then pull all repos (not keybase one)
   * [add-vscode-settings-json-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-vscode-settings-json-file.sh)
-  Place VS Code settings.json file in ~/.vscode-server/data/Machine for remote connection
+    Place VS Code settings.json file in ~/.vscode-server/data/Machine for remote connection
+  * [install-protocol-buffers-for-go.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-protocol-buffers-for-go.sh)
+    Install protoc and the go binary protoc-gen-go
 
 ## BUILD
 

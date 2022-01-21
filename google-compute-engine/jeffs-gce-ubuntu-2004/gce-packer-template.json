@@ -91,7 +91,8 @@
                 "./install-scripts/install-go-and-config-for-root.sh",
                 "./install-scripts/config-go-for-jeff.sh",
                 "./install-scripts/pull-private-repos-for-jeff.sh",
-                "./install-scripts/add-vscode-settings-json-file.sh"
+                "./install-scripts/add-vscode-settings-json-file.sh",
+                "./install-scripts/install-protocol-buffers-for-go.sh"
             ]
         }
     ]
