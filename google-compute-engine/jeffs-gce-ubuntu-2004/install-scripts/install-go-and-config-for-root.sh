@@ -19,7 +19,11 @@ sudo mv go /usr/local
 rm $FileName
 echo " "
 
-echo "Place in /root/.bashrc"
+echo "Create go environment variables and place in /home/root/.bashrc"
+export "PATH=/usr/local/go/bin:$PATH"
+export "PATH=/home/jeff/go/bin:$PATH"
+
+echo "Also place in /root/.bashrc"
 echo '
 # ADDED BY JEFF - GO TO PATH
 export "PATH=/usr/local/go/bin:$PATH"
@@ -29,10 +33,10 @@ CDPATH=.:$HOME
  ' >> /root/.bashrc
 echo " "
 
-# echo "check version and your go env"
-# go version
-# go env
-# echo " "
+echo "check version and your go env"
+go version
+go env
+echo " "
 
 echo "****************************** install-go-and-config-for-root.sh (END) *"
 echo "************************************************************************"
