@@ -35,7 +35,7 @@ gcloud compute \
     --maintenance-policy "MIGRATE" \
     --tags "jeffs-firewall-settings" \
     --image "$IMAGENAME" \
-    --boot-disk-size "20" \
+    --boot-disk-size "30" \
     --boot-disk-type "pd-standard" \
     --boot-disk-device-name "$PREFIX-$SERVICE-disk" \
     --description "Instance Template for Jeffs Repo hello-go-deploy-gce" \
