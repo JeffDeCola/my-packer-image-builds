@@ -1,27 +1,44 @@
-# my-packer-image-builds
+# MY PACKER IMAGE BUILDS
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/23dab087af17b9177ed8/maintainability)](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/maintainability)
-[![Issue Count](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/issues)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
+[![codeclimate Issue Count](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/my-packer-image-builds/issues)
+[![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
-_A place for me to create images via packer._
+_A place to keep my packer image builds._
 
-Table of Contents,
+tl;dr,
 
-* [GOOGLE COMPUTE ENGINE (GCE)](https://github.com/JeffDeCola/my-packer-image-builds#google-compute-engine-gce)
-* [VAGRANT](https://github.com/JeffDeCola/my-packer-image-builds#vagrant)
+```bash
+## BUILD IMAGE
+tbd
 
-Documentation and reference,
+## OTHER COMMANDS
+tbd
+```
 
-* [packer-cheat-sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations-tools/orchestration/builds-deployment-containers/packer-cheat-sheet)
+Table of Contents
 
-[GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/)
-_built with
-[concourse ci](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/ci-README.md)_
+* [LINUX](https://github.com/JeffDeCola/my-packer-image-builds#linux)
+  * [DOCKER](https://github.com/JeffDeCola/my-packer-image-builds#docker)
+  * [GOOGLE COMPUTE ENGINE (GCE)](https://github.com/JeffDeCola/my-packer-image-builds#google-compute-engine-gce)
+  * [VAGRANT](https://github.com/JeffDeCola/my-packer-image-builds#vagrant)
+* [macOS](https://github.com/JeffDeCola/my-packer-image-builds#macos)
+* [WINDOWS](https://github.com/JeffDeCola/my-packer-image-builds#windows)
 
-## MY PACKER IMAGES
+Documentation and Reference
 
-_All sections in alphabetical order._
+* My
+  [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
+* This repos
+  [github webpage](https://jeffdecola.github.io/my-packer-image-builds/)
+  _built with
+  [concourse](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/ci-README.md)_
+
+## LINUX
+
+### DOCKER
+
+* _Coming soon_
 
 ### GOOGLE COMPUTE ENGINE (GCE)
 
@@ -39,3 +56,11 @@ _All sections in alphabetical order._
 _(Links to my-vagrant-boxes repo)_
 
   _Using packer to build a vagrant box of ubuntu 18.04._
+
+## macOS
+
+* _Coming soon_*
+
+## WINDOWS
+
+* _Coming soon_*
