@@ -5,6 +5,19 @@
 
  _Using packer to build an ubuntu 22.04 docker image on linux._
 
+* PARTS
+  * OS: ubuntu/alpine/centos/windows/etc.
+  * CUSTOM IMAGE: docker/virtualbox/vmware/vagrant/gce/etc.
+  * ORCHESTRATION TOOL: docker/vagrant/packer/gce/etc.
+  * HOST/GUEST OS: linux/windows/etc.
+* A/An {OS}          {CUSTOM IMAGE} image for {ORCHESTRATION TOOL} on {HOST/GUEST OS}.
+  an   ubuntu 22.04  docker         image for docker               on linux.
+  an   alpine        docker         image for docker               on linux.
+  an   ubuntu 19.04  gce            image for gce                  on linux.
+  an   ubuntu 22.04  vagrant        image for virtualbox           on linux.
+  an   ubuntu 22.04  vagrant        image for virtualbox           on windows.
+  an   Windows 11    vagrant        image for virtualbox           on windows.
+
 [GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/)
 
 ## PACKER TEMPLATE FILE
