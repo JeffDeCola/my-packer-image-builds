@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# jeffs-ubuntu-2202-docker-image build-image.sh
+# jeffs-ubuntu-2204-docker-image build-image.sh
 
 echo " "
 

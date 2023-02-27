@@ -1,4 +1,4 @@
-# my-packer-image-builds jeffs-ubuntu-2202-docker-image
+# my-packer-image-builds jeffs-ubuntu-2204-docker-image
 
 variable "image_os" {
   type    = string
@@ -12,7 +12,7 @@ source "docker" "example" {
 }
 
 build {
-  name = "jeffs-ubuntu-2202-docker-image"
+  name = "jeffs-ubuntu-2204-docker-image"
   sources = [
     "source.docker.example"
   ]
@@ -48,7 +48,7 @@ build {
   }
 
   post-processor "docker-tag" {
-    repository = "jeffdecola/my-packer-image-builds/jeffs-ubuntu-2202-docker-image"
+    repository = "jeffdecola/my-packer-image-builds/jeffs-ubuntu-2204-docker-image"
   }
 
 }

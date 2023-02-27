@@ -1,15 +1,15 @@
-# jeffs-ubuntu-2202-docker-image
+# jeffs-ubuntu-2204-docker-image
 
 [![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
-  _Using packer to build an alpine docker image for docker on linux._
+  _Using packer to build an ubuntu 22.04 docker image for docker on linux._
 
 Table of Contents
 
-* [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2202-docker-image#packer-template-file)
-* [BUILD](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2202-docker-image#build)
-* [DEPLOY](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2202-docker-image#deploy)
+* [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image#packer-template-file)
+* [BUILD](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image#build)
+* [DEPLOY](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image#deploy)
 
 Documentation and Reference
 
@@ -20,23 +20,22 @@ Documentation and Reference
 
 ## PACKER TEMPLATE FILE
 
-The
-[template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2202-docker-image/template.pkr.hcl)
-will build,
-
-* Docker Image on linux
-  * OS: ubuntu:jammy
-    * jammy: 22.04
-  * Size: ~128MB
-  * Configure and provision
-    * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/install-scripts/update-upgrade-system.sh)
+* _Using packer to build an ubuntu 22.04 docker image for docker on linux_
+* The packer file
+  [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/template.pkr.hcl)
+* Size: ~260MB
+* Configure and provision
+  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/install-scripts/update-upgrade-system.sh)
     Update & upgrade
-    * [move-welcome-file-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/install-scripts/move-welcome-file-to-root.sh)
+  * [move-welcome-file-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/install-scripts/move-welcome-file-to-root.sh)
     Move welcome.txt to /root
-    * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/install-scripts/install-packages.sh)
-    Install packages htop
+  * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/install-scripts/install-packages.sh)
+    Install packages bash and htop  
+* This docker image contains the following, with these versions or higher
+  * OS: ubuntu:jammy
+  * ubuntu: 22.04
 
-## BUILD
+## BUILD IMAGE
 
 ```bash
 packer validate template.pkr.hcl
@@ -44,18 +43,18 @@ packer build template.pkr.hcl
 ```
 
 Or use
-[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2202-docker-imagebuild-image.sh),
+[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-imagebuild-image.sh),
 
 ```bash
 sh build.sh
 ```
 
-## DEPLOY
+## TEST IMAGE
 
 Deploy and connect to the image,
 
 ```bash
-docker run --name jeffs-ubuntu-2202-docker-image -dit jeffdecola/my-packer-image-builds/jeffs-ubuntu-2202-docker-image
-docker exec -i -t jeffs-ubuntu-2202-docker-image /bin/bash
+docker run --name jeffs-ubuntu-2204-docker-image -dit jeffdecola/my-packer-image-builds/jeffs-ubuntu-2204-docker-image
+docker exec -i -t jeffs-ubuntu-2204-docker-image /bin/bash
 cat /etc/os-release
 ```

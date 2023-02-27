@@ -20,22 +20,21 @@ Documentation and Reference
 
 ## PACKER TEMPLATE FILE
 
-The
-[template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/template.pkr.hcl)
-will build,
-
-* Docker Image on linux
-  * OS: golang:alpine
-    * go: 1.20.1 or higher
-    * alpine: 3.17.2 or higher
-  * Size: ~260MB
-  * Configure and provision
-    * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/update-upgrade-system.sh)
+* _Using packer to build an alpine docker image for docker on linux_
+* The packer file
+  [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/template.pkr.hcl)
+* Size: ~260MB
+* Configure and provision
+  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/update-upgrade-system.sh)
     Update & upgrade
-    * [move-welcome-file-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/move-welcome-file-to-root.sh)
+  * [move-welcome-file-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/move-welcome-file-to-root.sh)
     Move welcome.txt to /root
-    * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/install-packages.sh)
-    Install packages bash and htop
+  * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/install-packages.sh)
+    Install packages bash and htop  
+* This docker image contains the following, with these versions or higher
+  * OS: golang:alpine
+  * go: 1.20.1
+  * alpine: 3.17.2
 
 ## BUILD IMAGE
 
