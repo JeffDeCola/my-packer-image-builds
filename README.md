@@ -55,7 +55,7 @@ _You can use packer, but docker is easier._
 
   _Using packer to build an alpine docker image for docker on linux._
   
-* [jeffs-ubuntu-2202-docker-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2202-docker-image)
+* [jeffs-ubuntu-2204-docker-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image)
 
   _Using packer to build an ubuntu 22.04 docker image for docker on linux._
 
