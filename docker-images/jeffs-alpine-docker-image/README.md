@@ -7,7 +7,9 @@
 
 Table of Contents
 
-* tbd
+* [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image#packer-template-file)
+* [BUILD](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image#build)
+* [DEPLOY](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image#deploy)
 
 Documentation and Reference
 
@@ -22,18 +24,20 @@ The
 [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/template.pkr.hcl)
 will build,
 
-* Docker image
+* Docker Image on linux
   * OS: golang:alpine
-  * Size: ~250MB
-* Configure and provision
-  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-imageinstall-scripts/update-upgrade-system.sh)
+    * go: 1.20.1 or higher
+    * alpine: 3.17.2 or higher
+  * Size: ~260MB
+  * Configure and provision
+    * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/update-upgrade-system.sh)
     Update & upgrade
-  * [move-welcome-file-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-imageinstall-scripts/move-welcome-file-to-root.sh)
+    * [move-welcome-file-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/move-welcome-file-to-root.sh)
     Move welcome.txt to /root
-  * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-imageinstall-scripts/install-packages.sh)
+    * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/install-packages.sh)
     Install packages bash and htop
 
-## BUILD
+## BUILD IMAGE
 
 ```bash
 packer validate template.pkr.hcl
@@ -47,12 +51,13 @@ Or use
 sh build.sh
 ```
 
-## DEPLOY
+## TEST IMAGE
 
 Deploy and connect to the image,
 
 ```bash
 docker run --name jeffs-alpine-docker-image -dit jeffdecola/my-packer-image-builds/jeffs-alpine-docker-image
 docker exec -i -t jeffs-alpine-docker-image /bin/bash
+go version
 cat /etc/os-release
 ```

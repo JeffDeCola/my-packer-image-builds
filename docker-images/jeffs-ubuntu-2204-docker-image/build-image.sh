@@ -1,39 +1,43 @@
-#!/bin/bash -e
-# my-packer-image-builds create-firewall-rule.sh
+#!/bin/sh -e
+# jeffs-ubuntu-2202-docker-image build-image.sh
 
 echo " "
 
 if [ "$1" = "-debug" ]
 then
     echo "************************************************************************"
-    echo "* create-firewall-rule.sh -debug (START) ******************************"
+    echo "* build-image.sh -debug (START) ****************************************"
     echo "************************************************************************"
     # set -x enables a mode of the shell where all executed commands are printed to the terminal.
     set -x
     echo " "
 else
     echo "************************************************************************"
-    echo "* create-firewall-rule.sh (START) *************************************"
+    echo "* build-image.sh (START) ***********************************************"
     echo "************************************************************************"
     echo " "
 fi
 
-echo "The goal is to create a firewall rule."
+echo "The goal is to create a custom image"
 echo " "
 
-echo "gcloud compute command"
+echo "Check for -v switch"
+if [ "$1" = "-v" ]
+then
+    echo "Validate this file"
+    command="validate"
+else
+    echo "Not validating - Lets build the image"
+    command="build -force"
+fi
+echo " "
 
-gcloud compute firewall-rules create jeffs-firewall-settings-rule \
-    --action allow \
-    --rules tcp:1234,tcp:3334 \
-    --priority 1000 \
-    --source-ranges 0.0.0.0/0 \
-    --target-tags "jeffs-firewall-settings" \
-    --description "Jeffs firewall rules"
-
-echo ""
+echo "packer build command"
+packer $command \
+    template.pkr.hcl
+echo " "
 
 echo "************************************************************************"
-echo "* create-firewall-rule.sh (END) ***************************************"
+echo "* build-image.sh (END) *************************************************"
 echo "************************************************************************"
 echo " "
