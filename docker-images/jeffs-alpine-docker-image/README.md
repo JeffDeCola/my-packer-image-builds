@@ -5,9 +5,9 @@
 
   _Using packer to build an alpine docker image for docker on linux._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/)
-
 Table of Contents
+
+* tbd
 
 Documentation and Reference
 
@@ -18,29 +18,41 @@ Documentation and Reference
 
 ## PACKER TEMPLATE FILE
 
-The packer template file will build, configure and provision this image
-from a base image.
+The
+[template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/template.pkr.hcl)
+will build,
 
-* [template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-1904/gce-packer-template.json)
-* Using docker resources for build
-  * alpine(??? base image)
+* Docker image
+  * OS: golang:alpine
+  * Size: ~250MB
 * Configure and provision
-  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-1904/install-scripts/update-upgrade-system.sh)
-  Update & upgrade, turn off periodic updates and auto-upgrades
-  * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-1904/install-scripts/add-user-jeff.sh)
-  Add user jeff
-  * [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-1904/install-scripts/move-welcome-file-to-jeff.sh)
-  Test to add file to /home/jeff
-  * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-1904/install-scripts/install-packages.sh)
-  Install packages like htop, tmux, unzip, etc...
+  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-imageinstall-scripts/update-upgrade-system.sh)
+    Update & upgrade
+  * [move-welcome-file-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-imageinstall-scripts/move-welcome-file-to-root.sh)
+    Move welcome.txt to /root
+  * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-imageinstall-scripts/install-packages.sh)
+    Install packages bash and htop
 
 ## BUILD
 
-To build use
-[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-1904/build-image.sh),
+```bash
+packer validate template.pkr.hcl
+packer build template.pkr.hcl
+```
+
+Or use
+[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-imagebuild-image.sh),
 
 ```bash
 sh build.sh
 ```
 
-## CONNECT
+## DEPLOY
+
+Deploy and connect to the image,
+
+```bash
+docker run --name jeffs-alpine-docker-image -dit jeffdecola/my-packer-image-builds/jeffs-alpine-docker-image
+docker exec -i -t jeffs-alpine-docker-image /bin/bash
+cat /etc/os-release
+```
