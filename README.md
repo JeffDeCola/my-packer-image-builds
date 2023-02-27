@@ -61,34 +61,42 @@ _You can use packer, but docker is easier._
 
 ## GOOGLE COMPUTE ENGINE (GCE) IMAGES
 
-* [jeffs-ubuntu-1904-gce-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/linux/google-compute-engine/jeffs-ubuntu-1904-gce-image)
+* [jeffs-ubuntu-1904-gce-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image)
 
   _Using packer to remotely build an ubuntu 19.04 gce image for gce on linux._
 
-* [jeffs-ubuntu-2004-gce-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/linux/google-compute-engine/jeffs-ubuntu-2004-gce-image4)
+* [jeffs-ubuntu-2004-gce-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2004-gce-image)
 
   _Using packer to remotely build an ubuntu 20.04 gce image for gce on linux._
 
-* [jeffs-ubuntu-2204-gce-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/linux/google-compute-engine/jeffs-ubuntu-2204-gce-image)
+* [jeffs-ubuntu-2204-gce-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image)
 
   _Using packer to remotely build an ubuntu 22.04 gce image for gce on linux._
 
 ## VAGRANT IMAGES
 
-* [jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-linux](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/linux/vagrant/jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-linux)
+* [jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-linux](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-linux)
 
   _Using packer to build an ubuntu 22.04 vagrant image for virtualbox on linux._
 
-* [jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/windows/vagrant/jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-windows)
+* [jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-windows)
 
   _Using packer to build an ubuntu 22.04 vagrant image for virtualbox on windows._
 
+* [jeffs-windows-11-vagrant-image-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-windows-11-vagrant-image-for-virtualbox-on-windows)
+
+  _Using packer to build a windows 11 vagrant image for virtualbox on windows._
+
 ## VIRTUALBOX IMAGES
 
-* [jeffs-windows-11-virtualbox-image-for-virtualbox-on-linux](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/linux/virtualbox/jeffs-windows-11-virtualbox-image-for-virtualbox-on-linux)
+* [jeffs-ubuntu-2204-virtualbox-image-for-virtualbox-on-linux](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-ubuntu-2204-virtualbox-image-for-virtualbox-on-linux)
 
-  _Using packer to build a windows 11 virtualbox image for virtualbox on linux._
+  _Using packer to build an ubuntu 22.04 virtualbox image for virtualbox on linux._
 
-* [jeffs-windows-11-virtualbox-image-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/windows/virtualbox/jeffs-windows-11-virtualbox-image-for-virtualbox-on-windows)
+* [jeffs-ubuntu-2204-virtualbox-image-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-ubuntu-2204-virtualbox-image-for-virtualbox-on-windows)
+
+  _Using packer to build an ubuntu 22.04 virtualbox image for virtualbox on windows._
+
+* [jeffs-windows-11-virtualbox-image-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-windows-11-virtualbox-image-for-virtualbox-on-windows)
 
   _Using packer to build a windows 11 virtualbox image for virtualbox on windows._
