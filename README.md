@@ -35,8 +35,10 @@ Documentation and Reference
 
 ## OVERVIEW
 
-Using packer to build a/an {IMAGE OS} {CUSTOM IMAGE FILE} image for {PLATFORM TOOL}
-on {HOST OS}.
+These builds use the following statement,
+
+**Using packer to build a/an {IMAGE OS} {CUSTOM IMAGE FILE} image for {PLATFORM TOOL}
+on {HOST OS}.**
 
 Where,
 
@@ -49,11 +51,11 @@ Where,
 
 _You can use packer, but docker is easier._
 
-* [jeffs-alpine-docker-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/linux/docker/jeffs-ubuntu-2202-docker-image)
+* [jeffs-alpine-docker-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image)
 
   _Using packer to build an alpine docker image for docker on linux._
   
-* [jeffs-ubuntu-2202-docker-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/linux/docker/jeffs-ubuntu-2202-docker-image)
+* [jeffs-ubuntu-2202-docker-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2202-docker-image)
 
   _Using packer to build an ubuntu 22.04 docker image for docker on linux._
 
