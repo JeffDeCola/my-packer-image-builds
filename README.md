@@ -10,10 +10,10 @@ tl;dr,
 
 ```bash
 ## BUILD IMAGE
-tbd
+packer build template.pkr.hcl
 
 ## OTHER COMMANDS
-tbd
+packer validate template.pkr.hcl
 ```
 
 Table of Contents
