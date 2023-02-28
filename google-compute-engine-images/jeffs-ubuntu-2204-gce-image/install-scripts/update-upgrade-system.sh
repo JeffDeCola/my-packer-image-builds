@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # my-packer-image-builds update-upgrade-system.sh
 
 echo " "

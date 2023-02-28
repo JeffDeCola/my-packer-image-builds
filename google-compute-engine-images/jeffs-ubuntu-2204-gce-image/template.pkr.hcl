@@ -60,7 +60,7 @@ variable "user_home" {
 
 variable "zone" {
   type    = string
-  default = "us-west1-a"
+  default = "us-east1-b"
 }
 # The "legacy_isotime" function has been provided for backwards compatability, but we recommend switching to the timestamp and formatdate functions.
 locals {
@@ -82,7 +82,7 @@ source "googlecompute" "example" {
   ssh_timeout         = "5m"
   ssh_username        = "${var.ssh_username}"
   use_internal_ip     = false
-  zone                = "${var.zone}"
+  zone                = "${var.zone}"       # Where the image will be built.
 }
 
 build {
@@ -126,25 +126,25 @@ build {
     source      = "${var.user_home}/.ssh/gce-universal-key-for-all-vms"
   }
 
-  #provisioner "shell" {
-    # execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -E {{ .Path }}"
-    #pause_before    = "4s"
-    # scripts         = [
-      # "./install-scripts/update-upgrade-system.sh",
-      # "./install-scripts/add-user-jeff.sh",
-      # "./install-scripts/edit-bashrc-for-jeff.sh",
-      # "./install-scripts/move-welcome-file-to-jeff.sh",
-      # "./install-scripts/add-gce-universal-ssh-keys-to-jeff.sh",
-      # "./install-scripts/add-github-ssh-keys-to-root.sh",
-      # "./install-scripts/add-github-ssh-keys-to-jeff.sh",
-      # "./install-scripts/install-packages.sh",
+  provisioner "shell" {
+    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -E {{ .Path }}"
+    pause_before    = "4s"
+    scripts         = [
+      "./install-scripts/update-upgrade-system.sh",
+      "./install-scripts/add-user-jeff.sh",
+      "./install-scripts/edit-bashrc-for-jeff.sh",
+      "./install-scripts/move-welcome-file-to-jeff.sh",
+      "./install-scripts/add-gce-universal-ssh-keys-to-jeff.sh",
+      "./install-scripts/add-github-ssh-keys-to-root.sh",
+      "./install-scripts/add-github-ssh-keys-to-jeff.sh",
+      "./install-scripts/install-packages.sh"
       # "./install-scripts/install-docker.sh",
       # "./install-scripts/install-go-and-config-for-root.sh",
       # "./install-scripts/config-go-for-jeff.sh",
       # "./install-scripts/pull-private-repos-for-jeff.sh",
       # "./install-scripts/add-vscode-settings-json-file.sh",
       # "./install-scripts/install-protocol-buffers-for-go.sh"
-    #]
-  #}
+    ]
+  }
 
 }

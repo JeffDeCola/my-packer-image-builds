@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 # my-packer-image-builds add-github-ssh-keys-to-root.sh
 
 echo " " 
@@ -19,7 +19,7 @@ echo "chmod 600 for both keys"
 chmod 600 /root/.ssh/id_rsa*
 
 echo "Start ssh agent for root"
-eval $(ssh-agent -s)
+eval "$(ssh-agent -s)"
 
 echo "Put github.com fingerprint in known_hosts file"
 ssh-keyscan github.com >> /root/.ssh/known_hosts

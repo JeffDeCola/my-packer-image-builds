@@ -1,4 +1,4 @@
-# jeffs-gce-ubuntu-2004
+# jeffs-ubuntu-2204-gce-image
 
 _Using packer to remotely build an ubuntu 22.04 gce image for gce on linux._
 
@@ -17,46 +17,46 @@ Documentation and Reference
 
 ## PACKER TEMPLATE FILE
 
-* _Using packer to remotely build an ubuntu 19.04 gce image for gce on linux._
+* _Using packer to remotely build an ubuntu 22.04 gce image for gce on linux._
 * Packer File:
   [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/template.pkr.hcl)
-* Size: ~????MB
-* Zone: us-east1
-* Machine type: e2-micro
+* Region: us-east1
+* Machine type: e2-micro (2 vCPU, 1 GB memory)
 * Disk: 30 GB Standard Persistent Disk
 * Configure and provision
-  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/update-upgrade-system.sh)
+  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/update-upgrade-system.sh)
     Update & upgrade, turn off periodic updates and auto-upgrades
-  * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-user-jeff.sh)
+  * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-user-jeff.sh)
     Add user jeff
-  * [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/edit-bashrc-for-jeff.sh)
+  * [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/edit-bashrc-for-jeff.sh)
     Add git-aware prompt.
-  * [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/move-welcome-file-to-jeff.sh)
+  * [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/move-welcome-file-to-jeff.sh)
     Test to add file to /home/jeff
-  * [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
+  * [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
     Add a universal key so VMs can ssh into each other
-  * [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-github-ssh-keys-to-root.sh)
+  * [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-github-ssh-keys-to-root.sh)
     Add keys for github to root
-  * [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-github-ssh-keys-to-jeff.sh)
+  * [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-github-ssh-keys-to-jeff.sh)
     Add keys for github to jeff
-  * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-packages.sh)
+  * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/install-packages.sh)
     Install packages like htop, tmux, unzip, etc...
-  * [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-docker.sh)
+  * [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/install-docker.sh)
     Install docker
-  * [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-go-and-config-for-root.sh)
+  * [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/install-go-and-config-for-root.sh)
     Install go and config for user root
-  * [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/config-go-for-jeff.sh)
+  * [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/config-go-for-jeff.sh)
     Config go for user jeff
-  * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/pull-private-repos-for-jeff.sh)
+  * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/pull-private-repos-for-jeff.sh)
     Pull my-global-repo-scripts-private and then pull all repos (not keybase one)
-  * [add-vscode-settings-json-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-vscode-settings-json-file.sh)
+  * [add-vscode-settings-json-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-vscode-settings-json-file.sh)
     Place vs code settings.json in ~/.vscode-server/data/Machine for remote conn
-  * [install-protocol-buffers-for-go.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-protocol-buffers-for-go.sh)
+  * [install-protocol-buffers-for-go.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/install-protocol-buffers-for-go.sh)
     Install protoc and the go binary protoc-gen-go
 * This gce image contains the following, with these versions or higher
-  * gce base image: ubuntu-2004-focal-v20220110 (gce base image)
+  * gce base image: ubuntu-2204-jammy-v20230214
   * custom image OS: ubuntu 22.04
-  * go: ????
+  * go: 1.20.1????
+  * docker: 20.10.7????
 
 ## BUILD IMAGE
 
@@ -91,18 +91,18 @@ We will use the
 [free tier](https://cloud.google.com/free/docs/gcp-free-tier/?hl=en_US#compute)
 to deploy to,
 
-* e2-micro (2 vCPU, 1 GB memory)
-* us-east1 (South Carolina)
-* 30 GB Standard Persistent Disk
-* 5GB snapshot storage (us-east1 South Carolina)
-* 1GB network Egress
+* Machine: e2-micro (2 vCPU, 1 GB memory)
+* Region: us-east1 (South Carolina)
+* Disk: 30 GB Standard Persistent Disk
+* Snapshot Storage: 5GB
+* Network Egress: 1GB
 * Free External IP
 
 We will run
-[create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/create-firewall-rule.sh),
-[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/build-image.sh)
+[create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/create-firewall-rule.sh),
+[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/build-image.sh)
 and
-[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/create-instance-group.sh).
+[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/create-instance-group.sh).
 
 ```bash
 sh create-firewall-rule.sh

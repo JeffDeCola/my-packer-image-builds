@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 # my-packer-image-builds add-gce-universal-ssh-keys-to-jeff.sh
 
 echo " " 
@@ -19,7 +19,7 @@ echo "chmod 600 for both keys"
 chmod 600 /home/jeff/.ssh/gce_universal_id_rsa*
 
 echo "Start ssh agent for root"
-eval $(ssh-agent -s)
+eval "$(ssh-agent -s)"
 
 echo "Add private key to SSH authentication agent"
 ssh-add /home/jeff/.ssh/gce_universal_id_rsa
