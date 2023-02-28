@@ -13,7 +13,6 @@ echo "   --gecos do not prompt for finger and password"
 
 # I'm not sure why we don't need this - says user jeff already exists
 # sudo adduser --disabled-password --gecos "" jeff
-
 echo " "
 
 echo "*********************************************** add-user-jeff.sh (END) *"

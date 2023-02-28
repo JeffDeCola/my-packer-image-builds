@@ -51,6 +51,7 @@ echo "Create docker group"
 
 echo "Add user jeff to docker group"
 usermod -aG docker jeff
+echo " "
 
 echo "********************************************** install-docker.sh (END) *"
 echo "************************************************************************"

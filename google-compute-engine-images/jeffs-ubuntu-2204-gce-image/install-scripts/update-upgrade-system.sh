@@ -23,6 +23,7 @@ echo "Open the file /etc/apt/apt.conf.d/10periodic and change:"
 echo '   - FROM - APT::Periodic::Update-Package-Lists "1";'
 echo '   - TO   - APT::Periodic::Update-Package-Lists "0";'
 echo 'APT::Periodic::Unattended-Upgrade "0";' >> /etc/apt/apt.conf.d/10periodic
+echo " "
 
 echo "Turn off auto-upgrades"
 echo "Open the file /etc/apt/apt.conf.d/20auto-upgrades and add:"

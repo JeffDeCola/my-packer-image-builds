@@ -8,19 +8,20 @@ echo "You are root in /home/packer"
 echo " "
 
 echo "Create go environment variables and place in /home/jeff/.bashrc"
+export "PATH=$PATH:/usr/local/go/bin"
 export "GOBIN=/home/jeff/go/bin"
-export "PATH=/usr/local/go/bin:$PATH"
-export "PATH=$GOBIN:$PATH"
+export "PATH=$PATH:$GOBIN"
+echo " "
 
-echo "Also Place in /home/jeff/.bashrc"
-echo '
-# ADDED BY JEFF - GO TO PATH
-export "GOBIN=/home/jeff/go/bin"
-export "PATH=/usr/local/go/bin:$PATH"
-export "PATH=$GOBIN:$PATH"
-# ADDED BY JEFF - CDPATH
-CDPATH=.:$HOME
- ' >> /home/jeff/.bashrc
+echo "Add this to /home/jeff/.bashrc"
+# Must escape $ with \$
+cat >> /home/jeff/.bashrc <<CONF
+
+# JEFF ADDED - FOR GOLANG
+export PATH=\$PATH:/usr/local/go/bin
+export GOBIN=/home/jeff/go/bin
+export PATH=\$PATH:\$GOBIN
+CONF
 echo " "
 
 echo "****************************************** config-go-for-jeff.sh (END) *"

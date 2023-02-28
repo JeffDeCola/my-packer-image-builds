@@ -28,18 +28,24 @@ Documentation and Reference
     Update & upgrade, turn off periodic updates and auto-upgrades
   * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-user-jeff.sh)
     Add user jeff
+  * [edit-bashrc-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/edit-bashrc-for-root.sh)
+    Edit .bashrc for user root
+  * [add-colors-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-colors-for-jeff.sh)
+    Add colors for user jeff
   * [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/edit-bashrc-for-jeff.sh)
-    Add git-aware prompt.
+    Edit .bashrc for user jeff
   * [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/move-welcome-file-to-jeff.sh)
-    Test to add file to /home/jeff
+    Move welcome.txt file to /home/jeff
   * [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
     Add a universal key so VMs can ssh into each other
   * [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-github-ssh-keys-to-root.sh)
-    Add keys for github to root
+    Add github keys for user root
   * [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-github-ssh-keys-to-jeff.sh)
-    Add keys for github to jeff
+    Add github keys for user jeff
+  * [clone-git-aware-prompt-for-jeff](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/clone-git-aware-prompt-for-jeff.sh)
+    Clone git-aware-prompt for user jeff
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/install-packages.sh)
-    Install packages like htop, tmux, unzip, etc...
+    Install packages like htop, tmux, unzip, etc.
   * [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/install-docker.sh)
     Install docker
   * [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/install-go-and-config-for-root.sh)
@@ -47,9 +53,9 @@ Documentation and Reference
   * [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/config-go-for-jeff.sh)
     Config go for user jeff
   * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/pull-private-repos-for-jeff.sh)
-    Pull my-global-repo-scripts-private and then pull all repos (not keybase one)
+    Pull my-global-repo-scripts-private and then pull all repos
   * [add-vscode-settings-json-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/add-vscode-settings-json-file.sh)
-    Place vs code settings.json in ~/.vscode-server/data/Machine for remote conn
+    Move settings.json in ~/.vscode-server/data/Machine for vs code remote connection
   * [install-protocol-buffers-for-go.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/install-scripts/install-protocol-buffers-for-go.sh)
     Install protoc and the go binary protoc-gen-go
 * This gce image contains the following, with these versions or higher
@@ -60,12 +66,14 @@ Documentation and Reference
 
 ## BUILD IMAGE
 
-You will need to set the following environment variables,
+You will need to set the following environment variables (I added mine in ~/.bashrc),
 
 ```bash
 export GCP_JEFFS_SERVICE_ACCOUNT_PATH=[path to your google platform .json file]
 export GCP_JEFFS_PROJECT_ID=[your project id]
 ```
+
+Validate and build,
 
 ```bash
 packer validate \
@@ -87,9 +95,8 @@ sh build.sh
 
 ## TEST IMAGE
 
-We will use the
-[free tier](https://cloud.google.com/free/docs/gcp-free-tier/?hl=en_US#compute)
-to deploy to,
+This image uses the
+[free tier](https://cloud.google.com/free/docs/gcp-free-tier/?hl=en_US#compute),
 
 * Machine: e2-micro (2 vCPU, 1 GB memory)
 * Region: us-east1 (South Carolina)
@@ -98,8 +105,7 @@ to deploy to,
 * Network Egress: 1GB
 * Free External IP
 
-We will run
-[create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/create-firewall-rule.sh),
+To deploy VM on gce I use [create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/create-firewall-rule.sh),
 [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/build-image.sh)
 and
 [create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/create-instance-group.sh).
@@ -110,13 +116,13 @@ sh create-instance-template.sh
 sh create-instance-group.sh
 ```
 
-ssh into your machine,
+To ssh into your gce vm,
 
 ```bash
 ssh -i ~/.ssh/google_compute_engine jeff@<IP>
 ```
 
-You can also ssh from VM to VM using gce's internal DNS,
+You may also ssh from VM to VM using gce's internal DNS,
 
 ```bash
 ssh -i ~/.ssh/gce_universal_id_rsa <USERNAME>@<HOSTNAME/INSTANCE_NAME>.us-east1-a.c.<PROJECT>.internal

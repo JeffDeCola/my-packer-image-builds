@@ -17,6 +17,7 @@ echo " "
 
 echo "chown owner to jeff"
 chown jeff /home/jeff/welcome.txt 
+echo " "
 
 echo "*********************************** move-welcome-file-to-jeff.sh (END) *"
 echo "************************************************************************"

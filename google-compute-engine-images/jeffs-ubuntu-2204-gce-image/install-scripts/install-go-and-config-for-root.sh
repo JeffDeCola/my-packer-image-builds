@@ -11,8 +11,8 @@ echo "mkdir /tmp/go"
 mkdir -p /tmp/go
 echo " "
 
-echo "Download go1.17.6 (wget quiet mode), untar and move to /usr/local"
-FileName='go1.17.6.linux-amd64.tar.gz'
+echo "Download go1.20.1 (wget quiet mode), untar and move to /usr/local"
+FileName='go1.20.1.linux-amd64.tar.gz'
 wget -q https://go.dev/dl/$FileName
 tar -xf $FileName
 sudo mv go /usr/local
@@ -23,16 +23,17 @@ echo "Create go environment variables and place in /home/root/.bashrc"
 export "GOBIN=/home/jeff/go/bin"
 export "PATH=/usr/local/go/bin:$PATH"
 export "PATH=$GOBIN:$PATH"
+echo " "
 
-echo "Also place in /root/.bashrc"
-echo '
-# ADDED BY JEFF - GO TO PATH
+echo "Add to /home/root/.bashrc"
+# Must escape $ with \$
+cat >> /home/root/.bashrc <<CONF
+
+# JEFF ADDED - FOR GOLANG
 export "GOBIN=/home/jeff/go/bin"
 export "PATH=/usr/local/go/bin:$PATH"
 export "PATH=$GOBIN:$PATH"
-# ADDED BY JEFF - CDPATH
-CDPATH=.:$HOME
- ' >> /root/.bashrc
+CONF
 echo " "
 
 echo "check version and your go env"
