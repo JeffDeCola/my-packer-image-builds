@@ -9,6 +9,7 @@ echo " "
 
 echo "mkdir /home/jeff/development"
 [ -d /home/jeff/development ] || runuser -l jeff -c 'mkdir /home/jeff/development'
+echo " "
 
 echo "git clone my-global-repo-scripts-private"
 echo "You must cd into the directory in same command"

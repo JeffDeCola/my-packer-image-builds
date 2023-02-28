@@ -1,0 +1,207 @@
+# Configuration for LS_COLORS
+# A utility to help you set the LS_COLORS environment variable
+# Used by ls with the --color option
+# Must update .bashrc to work
+
+# TERM ENTRIES --------------------------------------------------------------------------
+# Match against the TERM environment variable to determine if it is colorizable.
+
+TERM Eterm
+TERM ansi
+TERM *color*
+TERM con[0-9]*x[0-9]*
+TERM cons25
+TERM console
+TERM cygwin
+TERM dtterm
+TERM gnome
+TERM hurd
+TERM jfbterm
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mlterm
+TERM putty
+TERM rxvt*
+TERM screen*
+TERM st
+TERM terminator
+TERM tmux*
+TERM vt100
+TERM xterm*
+
+# COLORS --------------------------------------------------------------------------------
+# 31 = red                      // MARKDOWN, TAR
+# 32 = green                    // EXECUTABLE
+# 33 = orange (yellow)
+# 34 = blue                     // DIRECTORIES
+# 35 = purple                   // GO
+# 36 = cyan
+# 37 = grey                     // FILE
+# 90 = dark grey
+# 91 = light red
+# 92 = light green
+# 93 = light yellow
+# 94 = light blue
+# 95 = light purple
+# 96 = turquoise
+# 97 = white
+
+# RESET ----------------------------------------------------------------------------------
+RESET 0                             # reset to "normal" color
+
+# FOR ls ---------------------------------------------------------------------------------
+#                                   EFFECT      COLOR       BACKGROUND   DESCRIPTION
+# ----------------------------------------------------------------------------------------
+NORMAL 00                           # -         # -         # -         # Global Default
+FILE 37                             # -         # GREY      # -         # File
+DIR 01;34                           # BOLD      # BLUE      # -         # Directory
+LINK 01;33                          # BOLD      # ORANGE    # -         # Symbolic link. (If you set this to 'target' instead of a # numerical value, the color is as for the file pointed to.)
+MULTIHARDLINK 00                    # -         # -         # -         # Regular file with more than one link
+FIFO 93;40                          # -         # YELLOW    # BLACK     # Pipe
+SOCK 01;35                          # BOLD      # PURPLE    # -         # Socket
+DOOR 01;35                          # BOLD      # PURPLE    # -         # Door
+BLK 01;93;40                        # BOLD      # YELLOW    # BLACK     # Block device driver
+CHR 01;93;40                        # BOLD      # YELLOW    # BLACK     # Character device driver
+ORPHAN 01;31;40                     # BOLD      # RED       # BLACK     # Symlink to nonexistent file, or non-stat'able file ...
+MISSING 00                          # -         # -         # -         # ... and the files they point to
+SETUID 37;41                        # -         # GREY      # RED       # File that is setuid (u+s)
+SETGID 30;43                        # -         # BLACK     # ORANGE    # File that is setgid (g+s)
+CAPABILITY 30;103                   # -         # BLACK     # YELLOW    # File with capability
+STICKY_OTHER_WRITABLE 30;42         # -         # BLACK     # GREEN     # Dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 34;43                # -         # BLUE      # ORANGE    # Dir that is other-writable (o+w) and not sticky
+STICKY 37;44                        # -         # GREY      # BLUE      # Dir with the sticky bit set (+t) and not other-writable
+EXEC 01;32                          # BOLD      # GREEN     # -         # This is for files with execute permission:
+
+# FILE EXTENTIONS --------------------------------------------------------------------------
+# Put the extension, a space, and the color init string
+
+# EXECUTABLES / SCRIPTS (BOLD GREEN)
+.sh 01;32
+.bash 01;32
+
+# GOLANG (BOLD PURPLE)
+.go 01;35
+
+# MD MARKDOWN (RED)
+.md 31
+
+# COMPRESSED FORMATS (BOLD RED)
+.tar 01;31
+.tgz 01;31
+.arc 01;31
+.arj 01;31
+.taz 01;31
+.lha 01;31
+.lz4 01;31
+.lzh 01;31
+.lzma 01;31
+.tlz 01;31
+.txz 01;31
+.tzo 01;31
+.t7z 01;31
+.zip 01;31
+.z 01;31
+.dz 01;31
+.gz 01;31
+.lrz 01;31
+.lz 01;31
+.lzo 01;31
+.xz 01;31
+.zst 01;31
+.tzst 01;31
+.bz2 01;31
+.bz 01;31
+.tbz 01;31
+.tbz2 01;31
+.tz 01;31
+.deb 01;31
+.rpm 01;31
+.jar 01;31
+.war 01;31
+.ear 01;31
+.sar 01;31
+.rar 01;31
+.alz 01;31
+.ace 01;31
+.zoo 01;31
+.cpio 01;31
+.7z 01;31
+.rz 01;31
+.cab 01;31
+.wim 01;31
+.swm 01;31
+.dwm 01;31
+.esd 01;31
+
+# IMAGE FORMATS (BOLD PURPLE)
+.jpg 01;35
+.jpeg 01;35
+.mjpg 01;35
+.mjpeg 01;35
+.gif 01;35
+.bmp 01;35
+.pbm 01;35
+.pgm 01;35
+.ppm 01;35
+.tga 01;35
+.xbm 01;35
+.xpm 01;35
+.tif 01;35
+.tiff 01;35
+.png 01;35
+.svg 01;35
+.svgz 01;35
+.mng 01;35
+.pcx 01;35
+.mov 01;35
+.mpg 01;35
+.mpeg 01;35
+.m2v 01;35
+.mkv 01;35
+.webm 01;35
+.ogm 01;35
+.mp4 01;35
+.m4v 01;35
+.mp4v 01;35
+.vob 01;35
+.qt 01;35
+.nuv 01;35
+.wmv 01;35
+.asf 01;35
+.rm 01;35
+.rmvb 01;35
+.flc 01;35
+.avi 01;35
+.fli 01;35
+.flv 01;35
+.gl 01;35
+.dl 01;35
+.xcf 01;35
+.xwd 01;35
+.yuv 01;35
+.cgm 01;35
+.emf 01;35
+# https://wiki.xiph.org/MIME_Types_and_File_Extensions
+.ogv 01;35
+.ogx 01;35
+
+# AUDIO FORMATS (BOLD CYAN)
+.aac 00;36
+.au 00;36
+.flac 00;36
+.m4a 00;36
+.mid 00;36
+.midi 00;36
+.mka 00;36
+.mp3 00;36
+.mpc 00;36
+.ogg 00;36
+.ra 00;36
+.wav 00;36
+# https://wiki.xiph.org/MIME_Types_and_File_Extensions
+.oga 00;36
+.opus 00;36
+.spx 00;36
+.xspf 00;36
