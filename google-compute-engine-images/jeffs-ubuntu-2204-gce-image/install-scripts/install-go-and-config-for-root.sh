@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 # my-packer-image-builds install-go-and-config-for-root.sh
 
 echo " " 

@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 # my-packer-image-builds edit-bashrc-for-jeff.sh
 
 echo " " 

@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 # my-packer-image-builds pull-private-repos-for-jeff.sh
 
 echo " "

@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 # my-packer-image-builds config-go-for-jeff.sh
 
 echo " " 

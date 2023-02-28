@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 # my-packer-image-builds add-github-ssh-keys-to-jeff.sh
 
 echo " " 
@@ -26,7 +26,7 @@ chown jeff /home/jeff/.ssh/id_rsa
 chown jeff /home/jeff/.ssh/id_rsa.pub
 
 echo "Start ssh agent for root"
-eval $(ssh-agent -s)
+eval "$(ssh-agent -s)"
 
 echo "Put github.com fingerprint in known_hosts file"
 runuser -l jeff -c 'ssh-keyscan github.com >> /home/jeff/.ssh/known_hosts'

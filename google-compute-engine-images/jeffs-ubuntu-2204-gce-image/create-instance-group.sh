@@ -32,7 +32,7 @@ gcloud compute \
     --size "1" \
     --template "$TEMPLATENAME" \
     --base-instance-name "$PREFIX-$SERVICE-instance" \
-    --zone "us-east1-a" \
+    --zone "us-east1-b" \
     --description "Instance Group for Jeffs Repo hello-go-deploy-gce"
 echo ""
 
