@@ -33,10 +33,6 @@ _You can use packer, but docker is easier._
 
   _Using packer to remotely build an ubuntu 19.04 gce image for gce on linux._
 
-* [jeffs-ubuntu-2004-gce-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2004-gce-image)
-
-  _Using packer to remotely build an ubuntu 20.04 gce image for gce on linux._
-
 * [jeffs-ubuntu-2204-gce-image](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image)
 
   _Using packer to remotely build an ubuntu 22.04 gce image for gce on linux._
