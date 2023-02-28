@@ -8,8 +8,8 @@
 Table of Contents
 
 * [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image#packer-template-file)
-* [BUILD](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image#build)
-* [DEPLOY](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image#deploy)
+* [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image#build-image)
+* [TEST IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image#test-image)
 
 Documentation and Reference
 
@@ -32,9 +32,9 @@ Documentation and Reference
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/install-packages.sh)
     Install packages bash and htop  
 * This docker image contains the following, with these versions or higher
-  * OS: golang:alpine
+  * Base OS: golang:alpine
+  * Image OS: alpine: 3.17.2
   * go: 1.20.1
-  * alpine: 3.17.2
 
 ## BUILD IMAGE
 
