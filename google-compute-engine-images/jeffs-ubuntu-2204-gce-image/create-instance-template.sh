@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# my-packer-image-builds create-instance-template.sh
+# my-packer-image-builds jeffs-ubuntu-2204-gce-image create-instance-template.sh
 
 echo " "
 
@@ -21,9 +21,9 @@ fi
 echo "The goal is to create an instance template on gce."
 echo " "
 
-IMAGENAME="jeffs-gce-ubuntu-2004-image"
+IMAGENAME="jeffs-gce-ubuntu-2204-image"
 PREFIX="jeffs"
-SERVICE="gce-ubuntu-2004"
+SERVICE="gce-ubuntu-2204"
 #POSTFIX=$(date -u +%Y%m%d-%H%M)
 
 echo "gcloud compute command"
@@ -38,8 +38,8 @@ gcloud compute \
     --boot-disk-size "30" \
     --boot-disk-type "pd-standard" \
     --boot-disk-device-name "$PREFIX-$SERVICE-disk" \
-    --description "Instance Template for Jeffs Repo hello-go-deploy-gce" \
-    --region "us-west1" \
+    --description "Instance template for Jeffs Repo hello-go-deploy-gce" \
+    --region "us-east1" \
     # --service-account=""
     # --preemptible \
 echo " "

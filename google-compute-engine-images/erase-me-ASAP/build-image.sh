@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# hello-go-deploy-gce build-image.sh
+# jeffs-ubuntu-1904-gce-image build-image.sh
 
 echo " "
 
@@ -34,7 +34,7 @@ echo " "
 
 echo "packer build command"
 packer $command \
-    -var "account_file=$GCP_JEFFS_APP_SERVICE_ACCOUNT_PATH" \
+    -var "account_file=$GCP_JEFFS_SERVICE_ACCOUNT_PATH" \
     -var "project_id=$GCP_JEFFS_PROJECT_ID" \
     gce-packer-template.json
 echo " "

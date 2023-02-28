@@ -1,19 +1,29 @@
-# jeffs-gce-ubuntu-2004-xxxx
+# jeffs-gce-ubuntu-2004
 
-_Using packer to build an ubuntu 20.04 image at google compute engine._
+_Using packer to remotely build an ubuntu 22.04 gce image for gce on linux._
 
-[GitHub Webpage](https://jeffdecola.github.io/my-packer-image-builds/)
+Table on Contents
+
+* [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image#packer-template-file)
+* [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image#build-image)
+* [TEST IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image#test-image)
+
+Documentation and Reference
+
+* My
+  [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
+* My
+  [gce cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/service-architectures/infrastructure-as-a-service/google-compute-engine-cheat-sheet)
 
 ## PACKER TEMPLATE FILE
 
-The packer template file will build, configure and provision this image
-from a base image.
-
-* [gce-packer-template.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/gce-packer-template.json)
-* Using gce resources for build
-  * ubuntu-2004-focal-v20220110 (gce base image)
-  * us-west1
-  * e2-micro, 30 GB Standard Persistent Disk
+* _Using packer to remotely build an ubuntu 19.04 gce image for gce on linux._
+* Packer File:
+  [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/template.pkr.hcl)
+* Size: ~????MB
+* Zone: us-east1
+* Machine type: e2-micro
+* Disk: 30 GB Standard Persistent Disk
 * Configure and provision
   * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/update-upgrade-system.sh)
     Update & upgrade, turn off periodic updates and auto-upgrades
@@ -40,38 +50,59 @@ from a base image.
   * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/pull-private-repos-for-jeff.sh)
     Pull my-global-repo-scripts-private and then pull all repos (not keybase one)
   * [add-vscode-settings-json-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/add-vscode-settings-json-file.sh)
-    Place VS Code settings.json file in ~/.vscode-server/data/Machine for remote connection
+    Place vs code settings.json in ~/.vscode-server/data/Machine for remote conn
   * [install-protocol-buffers-for-go.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/install-scripts/install-protocol-buffers-for-go.sh)
     Install protoc and the go binary protoc-gen-go
+* This gce image contains the following, with these versions or higher
+  * gce base image: ubuntu-2004-focal-v20220110 (gce base image)
+  * custom image OS: ubuntu 22.04
+  * go: ????
 
-## BUILD
+## BUILD IMAGE
 
-To build use
-[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/build-image.sh),
+You will need to set the following environment variables,
+
+```bash
+export GCP_JEFFS_SERVICE_ACCOUNT_PATH=[path to your google platform .json file]
+export GCP_JEFFS_PROJECT_ID=[your project id]
+```
+
+```bash
+packer validate \
+    -var "account_file=$GCP_JEFFS_SERVICE_ACCOUNT_PATH" \
+    -var "project_id=$GCP_JEFFS_PROJECT_ID" \
+    template.pkr.hcl
+packer build \
+    -var "account_file=$GCP_JEFFS_SERVICE_ACCOUNT_PATH" \
+    -var "project_id=$GCP_JEFFS_PROJECT_ID" \
+    template.pkr.hcl
+```
+
+Or use
+[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-ubuntu-2204-gce-image/build-image.sh),
 
 ```bash
 sh build.sh
 ```
 
-To deploy with,
+## TEST IMAGE
+
+We will use the
+[free tier](https://cloud.google.com/free/docs/gcp-free-tier/?hl=en_US#compute)
+to deploy to,
 
 * e2-micro (2 vCPU, 1 GB memory)
-* us-west1 (Oregon)
+* us-east1 (South Carolina)
 * 30 GB Standard Persistent Disk
-* 5GB snapshot storage (us-west1 Oregon)
+* 5GB snapshot storage (us-east1 South Carolina)
 * 1GB network Egress
 * Free External IP
 
-From the
-[Free Tier](https://cloud.google.com/free/docs/gcp-free-tier/?hl=en_US#compute).
-
-## CONNECT
-
-Use
+We will run
 [create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/create-firewall-rule.sh),
 [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/build-image.sh)
 and
-[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/create-instance-group.sh),
+[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine/jeffs-gce-ubuntu-2004/create-instance-group.sh).
 
 ```bash
 sh create-firewall-rule.sh
@@ -88,5 +119,5 @@ ssh -i ~/.ssh/google_compute_engine jeff@<IP>
 You can also ssh from VM to VM using gce's internal DNS,
 
 ```bash
-ssh -i ~/.ssh/gce_universal_id_rsa <USERNAME>@<HOSTNAME/INSTANCE_NAME>.us-west1-a.c.<PROJECT>.internal
+ssh -i ~/.ssh/gce_universal_id_rsa <USERNAME>@<HOSTNAME/INSTANCE_NAME>.us-east1-a.c.<PROJECT>.internal
 ```

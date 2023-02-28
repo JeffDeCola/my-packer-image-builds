@@ -23,32 +23,30 @@ Documentation and Reference
 * Machine type: n1-standard-1
 * Configure and provision
   * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/update-upgrade-system.sh)
-  Update & upgrade, turn off periodic updates and auto-upgrades
+    Update & upgrade, turn off periodic updates and auto-upgrades
   * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/add-user-jeff.sh)
-  Add user jeff
+    Add user jeff
   * [edit-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/edit-bashrc-for-jeff.sh)
-  Add git-aware prompt.
+    Add git-aware prompt.
   * [move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/move-welcome-file-to-jeff.sh)
-  Test to add file to /home/jeff
+    Test to add file to /home/jeff
   * [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
-  Add a universal key so VMs can ssh into each other
+    Add a universal key so VMs can ssh into each other
   * [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/add-github-ssh-keys-to-root.sh)
-  Add keys for github to root
+    Add keys for github to root
   * [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/add-github-ssh-keys-to-jeff.sh)
-  Add keys for github to jeff
+    Add keys for github to jeff
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/install-packages.sh)
-  Install packages like htop, tmux, unzip, etc...
+    Install packages like htop, tmux, unzip, etc...
   * [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/install-docker.sh)
-  Install docker
+    Install docker
   * [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/install-go-and-config-for-root.sh)
-  Install go and config for user root
+    Install go and config for user root
   * [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/config-go-for-jeff.sh)
-  Config go for user jeff
+    Config go for user jeff
   * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-ubuntu-1904-gce-image/install-scripts/pull-private-repos-for-jeff.sh)
-  Pull my-global-repo-scripts-private and then pull all repos (not keybase one)
-
-    Install packages bash and htop  
-* This docker image contains the following, with these versions or higher
+    Pull my-global-repo-scripts-private and then pull all repos (not keybase one)
+* This gce image contains the following, with these versions or higher
   * Base OS: ubuntu-1904-disco-v20190724
   * Image OS: ubuntu 19.04
   * go: 1.20.1 ????
