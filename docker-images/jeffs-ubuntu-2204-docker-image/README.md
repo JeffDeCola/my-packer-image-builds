@@ -8,8 +8,8 @@
 Table of Contents
 
 * [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image#packer-template-file)
-* [BUILD](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image#build)
-* [DEPLOY](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image#deploy)
+* [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image#build-image)
+* [TEST IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image#test-image)
 
 Documentation and Reference
 
@@ -32,8 +32,8 @@ Documentation and Reference
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/install-scripts/install-packages.sh)
     Install packages bash and htop  
 * This docker image contains the following, with these versions or higher
-  * OS: ubuntu:jammy
-  * ubuntu: 22.04
+  * Base OS: ubuntu:jammy
+  * Image OS: ubuntu 22.04
 
 ## BUILD IMAGE
 
