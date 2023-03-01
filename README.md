@@ -28,6 +28,8 @@ Documentation and Reference
 
 * My
   [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
+* An illustration of
+  [vagrant, docker and packer](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet#vagrant-docker-and-packer)
 * This repos
   [github webpage](https://jeffdecola.github.io/my-packer-image-builds/)
   _built with

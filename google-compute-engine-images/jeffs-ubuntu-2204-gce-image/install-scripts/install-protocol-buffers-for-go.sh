@@ -19,8 +19,8 @@ echo " "
 
 echo "Install protoc-gen-go and protoc-gen-go-grpc binaries using golang"
 echo "Should place in /home/jeff/go/bin"
-#runuser -l jeff -c 'cd /home/jeff; /usr/local/go/bin/go install google.golang.org/protobuf/cmd/protoc-gen-go@latest'
-#runuser -l jeff -c 'cd /home/jeff; /usr/local/go/bin/go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest'
+runuser -l jeff -c 'cd /home/jeff; /usr/local/go/bin/go install google.golang.org/protobuf/cmd/protoc-gen-go@latest'
+runuser -l jeff -c 'cd /home/jeff; /usr/local/go/bin/go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest'
 echo " "
 
 echo "****************************************** install-protocol-buffers-for-go.sh (END) *"

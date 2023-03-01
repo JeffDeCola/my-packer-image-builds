@@ -1,6 +1,6 @@
-# jeffs-ubuntu-1804-virtualbox-vm-box
+# jeffs-ubuntu-2204-vagrant-image-for-virtualbox-on-linux
 
-_Using packer to build a vagrant box of ubuntu 18.04._
+  _Using packer to build an ubuntu 22.04 vagrant image (box) for virtualbox on linux._
 
 ## PACKER TEMPLATE FILE
 
