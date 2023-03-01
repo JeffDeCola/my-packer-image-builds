@@ -46,7 +46,7 @@ echo " "
 
 echo "Create docker group"
 # For some reason I think this group already exists now
-sudo groupadd docker
+# sudo groupadd docker
 
 echo "Add user jeff to docker group"
 sudo usermod -aG docker jeff

@@ -32,8 +32,8 @@ Documentation and Reference
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-alpine-docker-image/install-scripts/install-packages.sh)
     Install packages bash and htop  
 * This docker image contains the following, with these versions or higher
-  * Base OS: golang:alpine
-  * Image OS: alpine: 3.17.2
+  * docker base image: golang:alpine
+  * custom image OS: alpine: 3.17.2
   * go: 1.20.1
 
 ## BUILD IMAGE

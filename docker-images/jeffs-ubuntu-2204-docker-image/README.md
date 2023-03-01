@@ -32,8 +32,8 @@ Documentation and Reference
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-ubuntu-2204-docker-image/install-scripts/install-packages.sh)
     Install packages bash and htop  
 * This docker image contains the following, with these versions or higher
-  * Base OS: ubuntu:jammy
-  * Image OS: ubuntu 22.04
+  * docker base image: ubuntu:jammy
+  * custom image OS: ubuntu 22.04
 
 ## BUILD IMAGE
 

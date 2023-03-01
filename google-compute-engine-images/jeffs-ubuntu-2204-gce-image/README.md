@@ -64,8 +64,8 @@ Documentation and Reference
 * This gce image contains the following, with these versions or higher
   * gce base image: ubuntu-2204-jammy-v20230214
   * custom image OS: ubuntu 22.04
-  * go: 1.20.1
   * docker: 23.0.1
+  * go: 1.20.1
   * protoc: 3.12.4
 
 ## BUILD IMAGE
@@ -131,8 +131,8 @@ To ssh into your gce vm,
 
 ```bash
 ssh -i ~/.ssh/google_compute_engine jeff@<IP>
-go version
 docker version
+go version
 protoc --version
 ```
 
