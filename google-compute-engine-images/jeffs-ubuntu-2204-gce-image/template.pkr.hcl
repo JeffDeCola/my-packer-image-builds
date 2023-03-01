@@ -135,22 +135,23 @@ build {
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -E {{ .Path }}"
     pause_before    = "4s"
     scripts         = [
-      "./install-scripts/update-upgrade-system.sh", # TO SPEED TESTING UP
-      "./install-scripts/add-user-jeff.sh",
-      "./install-scripts/edit-bashrc-for-jeff.sh",
-      "./install-scripts/add-colors-for-jeff.sh",
-      "./install-scripts/move-welcome-file-to-jeff.sh",
+      #"./install-scripts/update-upgrade-system.sh",
+      #"./install-scripts/install-packages.sh",
+      #"./install-scripts/add-user-jeff.sh",
+      #"./install-scripts/move-welcome-file-to-jeff.sh",
+      #"./install-scripts/edit-bashrc-for-root.sh",
+      #"./install-scripts/edit-bashrc-for-jeff.sh",
+      #"./install-scripts/add-colors-for-jeff.sh",
       "./install-scripts/add-gce-universal-ssh-keys-to-jeff.sh",
       "./install-scripts/add-github-ssh-keys-to-root.sh",
       "./install-scripts/add-github-ssh-keys-to-jeff.sh",
-      "./install-scripts/clone-git-aware-prompt-for-jeff.sh",
-      "./install-scripts/install-packages.sh"
-      "./install-scripts/install-docker.sh",
+      #"./install-scripts/install-docker.sh",
       "./install-scripts/install-go-and-config-for-root.sh",
       "./install-scripts/config-go-for-jeff.sh",
-      "./install-scripts/pull-private-repos-for-jeff.sh",
-      "./install-scripts/add-vscode-settings-json-file.sh",
-      "./install-scripts/install-protocol-buffers-for-go.sh"
+      #"./install-scripts/install-protocol-buffers-for-go.sh",
+      #"./install-scripts/clone-git-aware-prompt-for-jeff.sh",
+      #"./install-scripts/add-vscode-settings-json-file.sh",
+      #"./install-scripts/pull-private-repos-for-jeff.sh"
     ]
   }
 

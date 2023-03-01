@@ -7,9 +7,9 @@ echo "************************************** edit-bashrc-for-root.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
-echo "Add CDPATH to /home/root/.bashrc"
+echo "Add CDPATH to /root/.bashrc"
 # Must escape $ with \$
-cat >> /home/root/.bashrc <<CONF
+cat >> /root/.bashrc <<CONF
 
 # JEFF ADDED - CDPATH
 CDPATH=.:\$HOME

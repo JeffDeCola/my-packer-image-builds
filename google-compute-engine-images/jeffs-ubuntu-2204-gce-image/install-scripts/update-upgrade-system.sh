@@ -9,8 +9,8 @@ echo " "
 
 echo "update & upgrade system (quiet mode)"
 while true; do
-  apt-get -qq -y update
-  apt-get -qq -y upgrade
+  sudo apt-get -qq -y update
+  sudo apt-get -qq -y upgrade
 
   if [ $? -eq 0 ]; then
     break
@@ -18,19 +18,19 @@ while true; do
 done
 echo " "
 
-echo "Turn off periodic updates"
-echo "Open the file /etc/apt/apt.conf.d/10periodic and change:"
-echo '   - FROM - APT::Periodic::Update-Package-Lists "1";'
-echo '   - TO   - APT::Periodic::Update-Package-Lists "0";'
-echo 'APT::Periodic::Unattended-Upgrade "0";' >> /etc/apt/apt.conf.d/10periodic
-echo " "
+#echo "Turn off periodic updates"
+#echo "Open the file /etc/apt/apt.conf.d/10periodic and change:"
+#echo '   - FROM - APT::Periodic::Update-Package-Lists "1";'
+#echo '   - TO   - APT::Periodic::Update-Package-Lists "0";'
+#echo 'APT::Periodic::Unattended-Upgrade "0";' >> /etc/apt/apt.conf.d/10periodic
+#echo " "
 
-echo "Turn off auto-upgrades"
-echo "Open the file /etc/apt/apt.conf.d/20auto-upgrades and add:"
-echo '   - APT::Periodic::Update-Package-Lists "1";'
-echo '   - APT::Periodic::Unattended-Upgrade "0";'
-echo -e 'APT::Periodic::Update-Package-Lists "1";\nAPT::Periodic::Unattended-Upgrade "0";' >> /etc/apt/apt.conf.d/20auto-upgrades
-echo " "
+#echo "Turn off auto-upgrades"
+#echo "Open the file /etc/apt/apt.conf.d/20auto-upgrades and add:"
+#echo '   - APT::Periodic::Update-Package-Lists "1";'
+#echo '   - APT::Periodic::Unattended-Upgrade "0";'
+#echo -e 'APT::Periodic::Update-Package-Lists "1";\nAPT::Periodic::Unattended-Upgrade "0";' >> /etc/apt/apt.conf.d/20auto-upgrades
+#echo " "
 
 #echo "Increase file limits"
 #echo -e "*       soft    nofile  100000\n*       hard    nofile  100000\nroot    soft    nofile  100000\nroot    hard    nofile  100000" >> /etc/security/limits.conf

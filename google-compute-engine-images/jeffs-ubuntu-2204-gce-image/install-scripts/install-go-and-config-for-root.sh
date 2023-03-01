@@ -19,24 +19,24 @@ sudo mv go /usr/local
 rm $FileName
 echo " "
 
-echo "Create go environment variables and place in /home/root/.bashrc"
-export "GOBIN=/home/jeff/go/bin"
+echo "Create go environment variables and place in /root/.bashrc"
+export "GOBIN=/root/go/bin"
 export "PATH=/usr/local/go/bin:$PATH"
 export "PATH=$GOBIN:$PATH"
 echo " "
 
-echo "Add to /home/root/.bashrc"
+echo "Add to /root/.bashrc"
 # Must escape $ with \$
-cat >> /home/root/.bashrc <<CONF
+cat >> /root/.bashrc <<CONF
 
 # JEFF ADDED - FOR GOLANG
-export "GOBIN=/home/jeff/go/bin"
+export "GOBIN=/root/go/bin"
 export "PATH=/usr/local/go/bin:$PATH"
 export "PATH=$GOBIN:$PATH"
 CONF
 echo " "
 
-echo "check version and your go env"
+echo "Check go version and your go env"
 go version
 go env
 echo " "
