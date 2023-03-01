@@ -11,34 +11,33 @@ echo "*** PART I - SET UP THE REPOSITORY"
 echo " "
 
 echo "Install a few prerequisite packages"
-apt-get -y install \
-    apt-transport-https \
+sudo apt-get -y install \
     ca-certificates \
     curl \
-    gnupg-agent \
-    software-properties-common
+    gnupg \
+    lsb-release
 echo " "
 
-echo "Add the GPG key for the official Docker repository to your system"
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+echo "Add Docker’s official GPG key:"
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo " "
 
-echo "Add the Docker repository to APT sources"
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+echo "Set up the repository:"
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 echo " "
 
-echo "*** PART II - INSTALL DOCKER CE"
+echo "*** PART II - INSTALL DOCKER ENGINE"
 echo " "
 
 echo "Update the package database with the Docker packages from the newly added repo"
-apt update
+sudo apt-get -y update
 echo " "
 
-echo "Install docker"
-apt-get -y install docker-ce docker-ce-cli containerd.io
+echo "Install Docker Engine, containerd, and Docker Compose"
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 echo " "
 
 echo "Check that it will run at boot"
@@ -47,10 +46,10 @@ echo " "
 
 echo "Create docker group"
 # For some reason I think this group already exists now
-# groupadd docker
+sudo groupadd docker
 
 echo "Add user jeff to docker group"
-usermod -aG docker jeff
+sudo usermod -aG docker jeff
 echo " "
 
 echo "********************************************** install-docker.sh (END) *"

@@ -18,6 +18,10 @@ echo " "
 
 echo "mkdir /home/jeff/crypto"
 [ -d /home/jeff/crypto ] || runuser -l jeff -c 'mkdir /home/jeff/crypto'
+echo " "
+
+echo "git clone your-metasol-nft-private.git"
+echo "You must cd into the directory in same command"
 runuser -l jeff -c 'cd /home/jeff/crypto; git clone git@github.com:JeffDeCola/your-metasol-nft-private.git'
 echo " "
 

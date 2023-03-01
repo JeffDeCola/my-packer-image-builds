@@ -23,7 +23,7 @@ echo "Add colors to /home/jeff/.bashrc"
 # Must escape $ with \$
 cat >> /home/jeff/.bashrc <<CONF
 
-# GCC COLORS (VARIOUS)
+# JEFF ADDED - GCC COLORS (VARIOUS)
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # JEFF ADDED - GREP_COLORS (BOLD YELLOW)
@@ -35,7 +35,6 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-</VirtualHost>
 CONF
 echo " "
 
