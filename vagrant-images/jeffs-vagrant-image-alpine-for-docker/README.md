@@ -9,9 +9,9 @@ for docker on linux._
 
 Table on Contents
 
-* [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-alpine-for-docke#packer-template-file)
-* [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-alpine-for-docke#build-image)
-* [TEST IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-alpine-for-docke#test-image)
+* [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-alpine-for-docker#packer-template-file)
+* [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-alpine-for-docker#build-image)
+* [TEST IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-alpine-for-docker#test-image)
 
 Documentation and Reference
 

@@ -25,11 +25,11 @@ echo 'APT::Periodic::Enable "0";' >> /etc/apt/apt.conf.d/10periodic
 echo " "
 
 echo "apt update"
-apt update
+apt -y update
 echo " "
 
 echo "apt upgrade -y"
-apt upgrade -y
+apt -y upgrade
 echo " "
 
 echo "******************************************************** init.sh (END) *"

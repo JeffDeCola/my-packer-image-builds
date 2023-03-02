@@ -13,8 +13,8 @@ echo "apt autoremove"
 apt autoremove
 echo " "
 
-echo "apt update"
-apt update
+echo "apt -y update"
+apt -y update
 echo " "
 
 #echo "Zero out the rest of the free space using dd, then delete the written file"
