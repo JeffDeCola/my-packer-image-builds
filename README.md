@@ -28,8 +28,8 @@ Documentation and Reference
 
 * My
   [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
-* An illustration of
-  [vagrant, docker and packer](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet#vagrant-docker-and-packer)
+* **An illustration of
+  [vagrant, docker and packer](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet#vagrant-docker-and-packer)**
 * This repos
   [github webpage](https://jeffdecola.github.io/my-packer-image-builds/)
   _built with
@@ -79,6 +79,12 @@ _You can also build gce images using gcloud cli or the gce gui._
 
 ## VAGRANT IMAGES (BOX)
 
+* [jeffs-vagrant-image-alpine-for-docker](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-alpine-for-docker)
+
+  _Using packer to build a vagrant image (box)
+  containing the alpine OS
+  for docker on linux._
+
 * [jeffs-vagrant-image-ubuntu-2204-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox)
 
   _Using packer to build a vagrant image (box)
@@ -93,20 +99,14 @@ _You can also build gce images using gcloud cli or the gce gui._
 
 ## VIRTUALBOX IMAGES
 
-* [jeffs-virtualbox-image-ubuntu-2204-for-virtualbox-on-linux](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox-on-linux)
+* [jeffs-virtualbox-image-ubuntu-2204-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox)
 
   _Using packer to build a virtualbox image
   containing the ubuntu 22.04 OS
-  for virtualbox on linux._
+  for virtualbox on linux or windows._
 
-* [jeffs-virtualbox-image-ubuntu-2204-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox-on-windows)
-
-  _Using packer to build a virtualbox image
-  containing the ubuntu 22.04 OS
-  for virtualbox on windows._
-
-* [jeffs-virtualbox-image-windows-11-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-windows-11-for-virtualbox-on-windows)
+* [jeffs-virtualbox-image-windows-11-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-windows-11-for-virtualbox)
 
   _Using packer to build a virtualbox image
   containing the windows 11 OS
-  for virtualbox on windows._
+  for virtualbox on linux or windows._

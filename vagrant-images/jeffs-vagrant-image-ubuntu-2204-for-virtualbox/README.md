@@ -12,7 +12,6 @@ Table on Contents
 * [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox#packer-template-file)
 * [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox#build-image)
 * [TEST IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox#test-image)
-* [ILLUSTRATION](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox#illustration)
 
 Documentation and Reference
 
@@ -50,13 +49,6 @@ Documentation and Reference
 
 ## BUILD IMAGE
 
-Get ubuntu .iso file and place in `iso/` folder.
-
-```bash
-cd iso/
-wget http://releases.ubuntu.com/22.04/ubuntu-22.04.2-live-server-amd64.iso
-```
-
 Validate and build on virtualbox linux,
 
 ```bash
@@ -78,7 +70,8 @@ Now we have the box in `/box/jeffs-vagrant-image-ubuntu-2204-for-virtualbox`.
 Add/list/remove box to/from vagrant,
 
 ```bash
-vagrant box add --name "ubuntu/jeffs-vagrant-image-ubuntu-2204-for-virtualbox" --force jeffs-vagrant-image-ubuntu-2204-for-virtualbox.box
+vagrant box add --name "ubuntu/jeffs-vagrant-image-ubuntu-2204-for-virtualbox" \
+  --force jeffs-vagrant-image-ubuntu-2204-for-virtualbox.box
 vagrant box list
 vagrant box remove ubuntu/jeffs-vagrant-image-ubuntu-2204-for-virtualbox
 ```
@@ -89,8 +82,9 @@ Use as normal,
 vagrant up
 ```
 
-## ILLUSTRATION
+Connect,
 
-This may help,
-
-![IMAGE - jeffs-ubuntu-1804-virtualbox-vm-box - IMAGE](../../docs/pics/jeffs-ubuntu-1804-virtualbox-vm-box.jpg)
+```bash
+vagrant ssh
+ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@127.0.0.1
+```

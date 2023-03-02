@@ -2,19 +2,22 @@
 
 # Note: image=box
 
+# vagrant source image for virtualbox
 variable "souce_image" {
   type    = string
-  default = "hashicorp/precise64"    # vagrant image for virtualbox
+  default = "hashicorp/precise64" 
 }
 
+# custom image for virtualbox
+variable "provider" {
+  type    = string
+  default = "virtualbox" 
+}
+
+# custom image for virtualbox name
 variable "custom_image_name" {
   type    = string
   default = "jeffs-vagrant-image-ubuntu-2204-for-virtualbox"
-}
-
-variable "provider" {
-  type    = string
-  default = "virtualbox" # for virtualbox
 }
 
 source "vagrant" "example" {
@@ -37,7 +40,7 @@ build {
   /*provisioner "file" {
     destination = "/tmp/vagrant-insecure-public-key.txt"
     source      = "./install-files/vagrant-insecure-public-key.txt"
-  }
+  } */
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'"
