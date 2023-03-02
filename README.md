@@ -77,25 +77,19 @@ _You can also build gce images using gcloud cli or the gce gui._
   containing the ubuntu 22.04 OS
   for gce on linux._
 
-## VAGRANT IMAGES
+## VAGRANT IMAGES (BOX)
 
-* [jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-linux](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-linux)
-
-  _Using packer to build a vagrant image (box)
-  containing the ubuntu 22.04 OS
-  for virtualbox on linux._
-
-* [jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-windows)
+* [jeffs-vagrant-image-ubuntu-2204-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox)
 
   _Using packer to build a vagrant image (box)
   containing the ubuntu 22.04 OS
-  for virtualbox on windows._
+  for virtualbox on linux or windows._
 
-* [jeffs-vagrant-image-windows-11-for-virtualbox-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-windows-11-for-virtualbox-on-windows)
+* [jeffs-vagrant-image-windows-11-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-windows-11-for-virtualbox)
 
   _Using packer to build a vagrant image (box)
   containing the windows 11 OS
-  for virtualbox on windows._
+  for virtualbox on linux or windows._
 
 ## VIRTUALBOX IMAGES
 
