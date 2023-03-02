@@ -41,9 +41,9 @@ Documentation and Reference
   * [cleanup.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/cleanup.sh)
     Cleanup
 * Source Image: vagrant
-  * **"???????"** for vagrant on linux
+  * **"ubuntu/jammy64"** for vagrant on linux or windows
 * Custom Image: vagrant
-  * ubuntu 22.04 for vagrant on linux
+  * ubuntu 22.04 for vagrant on linux on linux or windows
 * Contains:
   * ??? golang 1.20.1 ????
 

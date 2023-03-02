@@ -2,29 +2,31 @@
 
 # Note: image=box
 
-# vagrant source image for virtualbox
+# Vagrant source image for virtualbox
 variable "souce_image" {
   type    = string
-  default = "hashicorp/precise64" 
+  default = "ubuntu/jammy64" 
 }
 
-# custom image for virtualbox
+# Custom image for virtualbox
 variable "provider" {
   type    = string
   default = "virtualbox" 
 }
 
-# custom image for virtualbox name
+# Custom image for virtualbox name
 variable "custom_image_name" {
   type    = string
   default = "jeffs-vagrant-image-ubuntu-2204-for-virtualbox"
 }
 
 source "vagrant" "example" {
-  communicator = "ssh"
   source_path = "${var.souce_image}"
   provider = "${var.provider}"
   add_force = true
+  communicator = "ssh"
+  output_dir = "box"
+  box_name = "${var.custom_image_name}"
 }
 
 build {
@@ -37,10 +39,10 @@ build {
     source      = "./install-files/welcome.txt"
   }
 
-  /*provisioner "file" {
+  provisioner "file" {
     destination = "/tmp/vagrant-insecure-public-key.txt"
     source      = "./install-files/vagrant-insecure-public-key.txt"
-  } */
+  }
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'"
@@ -54,9 +56,9 @@ build {
     ]
   } 
 
-  post-processor "vagrant" {
-    compression_level = "5"
-    output            = "box/${var.vm_name}.box"
-  } */
+  #post-processor "vagrant" {
+  #  compression_level = "5"
+  #  output            = "box/${var.vm_name}.box"
+  #}
   
 }
