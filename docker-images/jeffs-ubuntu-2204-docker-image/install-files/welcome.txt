@@ -1,1 +1,0 @@
-Hi Everyone.  This is a test of packer provisioning for jeffs-ubuntu-2204-docker-image 
