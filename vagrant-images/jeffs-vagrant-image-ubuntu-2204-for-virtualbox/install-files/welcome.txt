@@ -1,2 +1,2 @@
 Hi Everyone.  This is a test of packer creating a vagrant box
-for jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-linux.
+for jeffs-vagrant-image-ubuntu-2204-for-virtualbox.

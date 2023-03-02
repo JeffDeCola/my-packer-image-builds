@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# my-packer-image-builds jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-linux cleanup.sh
+# my-packer-image-builds jeffs-vagrant-image-ubuntu-2204-for-virtualbox cleanup.sh
 
 echo " "
 echo "************************************************************************"

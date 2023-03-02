@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# my-packer-image-builds jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-linux build-image.sh
+# my-packer-image-builds jeffs-vagrant-image-ubuntu-2204-for-virtualbox build-image.sh
 
 echo " "
 

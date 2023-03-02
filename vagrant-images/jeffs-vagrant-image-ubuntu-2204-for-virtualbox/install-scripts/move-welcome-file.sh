@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# my-packer-image-builds jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-linux move-welcome-file.sh
+# my-packer-image-builds jeffs-vagrant-image-ubuntu-2204-for-virtualbox move-welcome-file.sh
 
 echo " "
 echo "************************************************************************"
