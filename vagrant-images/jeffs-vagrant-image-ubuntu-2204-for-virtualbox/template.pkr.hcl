@@ -2,31 +2,32 @@
 
 # Note: image=box
 
-# Vagrant source image for virtualbox
+# Vagrant source image (box) for virtualbox
 variable "souce_image" {
   type    = string
-  default = "ubuntu/jammy64" 
+  default = "bento/ubuntu-22.04" 
 }
 
-# Custom image for virtualbox
+# Vagrant custom image (box) for virtualbox
 variable "provider" {
   type    = string
   default = "virtualbox" 
 }
 
-# Custom image for virtualbox name
+# Virtualbox name
 variable "custom_image_name" {
   type    = string
   default = "jeffs-vagrant-image-ubuntu-2204-for-virtualbox"
 }
 
 source "vagrant" "example" {
-  source_path = "${var.souce_image}"
   provider = "${var.provider}"
-  add_force = true
   communicator = "ssh"
+  source_path = "${var.souce_image}"
+  add_force = false
   output_dir = "box"
   box_name = "${var.custom_image_name}"
+  output_vagrantfile = "Vagrantfile22"
 }
 
 build {

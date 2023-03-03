@@ -43,7 +43,7 @@ Documentation and Reference
 * Source Image: vagrant
   * **"ubuntu/jammy64"** for vagrant on linux or windows
 * Custom Image: vagrant
-  * ubuntu 22.04 for vagrant on linux on linux or windows
+  * ubuntu 22.04 for vagrant on linux or windows
 * Contains:
   * ??? golang 1.20.1 ????
 
@@ -65,7 +65,7 @@ sh build-image.sh
 
 ## TEST IMAGE
 
-Now we have the box in `/box/jeffs-vagrant-image-ubuntu-2204-for-virtualbox`.
+Now we have the box in `/box/jeffs-vagrant-image-ubuntu-2204-for-virtualbox.box`.
 
 Add/list/remove box to/from vagrant,
 
@@ -85,6 +85,6 @@ vagrant up
 Connect,
 
 ```bash
-vagrant ssh
+vagrant ssh jeffs-vagrant-image-ubuntu-2204-for-virtualbox
 ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@127.0.0.1
 ```

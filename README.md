@@ -21,15 +21,16 @@ Table of Contents
 * [OVERVIEW](https://github.com/JeffDeCola/my-packer-image-builds#overview)
 * [DOCKER IMAGES](https://github.com/JeffDeCola/my-packer-image-builds#docker-images)
 * [GOOGLE COMPUTE ENGINE (GCE) IMAGES](https://github.com/JeffDeCola/my-packer-image-builds#google-compute-engine-gce-images)
-* [VAGRANT IMAGES](https://github.com/JeffDeCola/my-packer-image-builds#vagrant-images)
+* [VAGRANT IMAGES (BOX)](https://github.com/JeffDeCola/my-packer-image-builds#vagrant-images-box)
 * [VIRTUALBOX IMAGES](https://github.com/JeffDeCola/my-packer-image-builds#virtualbox-images)
 
 Documentation and Reference
 
 * My
   [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
-* **An illustration of
-  [vagrant, docker and packer](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet#vagrant-docker-and-packer)**
+* An illustration of how
+  [vagrant, docker and packer](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet#vagrant-docker-and-packer)
+  build and deploy images  
 * This repos
   [github webpage](https://jeffdecola.github.io/my-packer-image-builds/)
   _built with
@@ -37,17 +38,18 @@ Documentation and Reference
 
 ## OVERVIEW
 
+Packer is useful for the automated **BUILD** of a custom image.
 These builds use the following statement,
 
 **Using packer to build a/an {CUSTOM IMAGE FILE} image
 containing the {CUSTOM IMAGE OS} OS
-for {PLATFORM TOOL} on {HOST OS}.**
+for {PROVIDER TOOL} on {HOST OS}.**
 
 Where,
 
-* **CUSTOM IMAGE FILE**: docker/gce/vagrant/virtualbox
-* **CUSTOM IMAGE OS**: ubuntu/alpine/windows
-* **PLATFORM TOOL**: docker/gce/virtualbox
+* **CUSTOM IMAGE FILE**: docker/gce/vagrant/virtualbox/etc.
+* **CUSTOM IMAGE OS**: ubuntu/alpine/windows/etc.
+* **PROVIDER TOOL**: docker/gce/virtualbox/etc.
 * **HOST OS**: linux/windows
 
 ## DOCKER IMAGES
