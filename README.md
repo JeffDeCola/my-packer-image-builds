@@ -41,6 +41,8 @@ Documentation and Reference
 Packer is useful for the automated **BUILD** of a custom image.
 These builds use the following statement,
 
+![IMAGE - packer-overview - IMAGE](docs/pics/packer-overview.jpg)
+
 **Using packer to build a/an {CUSTOM IMAGE FILE} image
 containing the {CUSTOM IMAGE OS} OS
 for {PROVIDER TOOL} on {HOST OS}.**
