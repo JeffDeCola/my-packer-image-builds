@@ -50,10 +50,10 @@ packer build template.pkr.hcl
 ```
 
 Or use
-[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-ubuntu-2204/build-image.sh),
+[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-ubuntu-2204/build-image.sh),
 
 ```bash
-sh build.sh
+sh build-image.sh
 ```
 
 ## TEST IMAGE
