@@ -52,10 +52,10 @@ packer build template.pkr.hcl
 ```
 
 Or use
-[build.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-alpine/build-image.sh),
+[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-alpine/build-image.sh),
 
 ```bash
-sh build.sh
+sh build-image.sh
 ```
 
 ## TEST IMAGE
