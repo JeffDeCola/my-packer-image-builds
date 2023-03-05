@@ -4,9 +4,10 @@
 # OVERVIEW
 
 Packer is useful for the automated **BUILD** of a custom image.
-These builds use the following statement,
 
 ![IMAGE - packer-overview - IMAGE](pics/packer-overview.jpg)
+
+These builds use the following statement,
 
 **Using packer to build a/an {CUSTOM IMAGE FILE} image
 containing the {CUSTOM IMAGE OS} OS
@@ -21,7 +22,7 @@ Where,
 
 ## DOCKER IMAGES
 
-_You can also build docker images using a dockerfile as shown in
+_You can also build docker images using a Dockerfile as shown in
 [my-docker-image-builds](https://github.com/JeffDeCola/my-docker-image-builds)._
 
 * [jeffs-docker-image-alpine](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-alpine)
@@ -48,12 +49,6 @@ _You can also build gce images using gcloud cli or the gce gui._
 
 ## VAGRANT IMAGES (BOX)
 
-* [jeffs-vagrant-image-alpine-for-docker](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-alpine-for-docker)
-
-  _Using packer to build a vagrant image (box)
-  containing the alpine OS
-  for docker on linux._
-
 * [jeffs-vagrant-image-ubuntu-2204-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox)
 
   _Using packer to build a vagrant image (box)
@@ -67,6 +62,8 @@ _You can also build gce images using gcloud cli or the gce gui._
   for virtualbox on linux or windows._
 
 ## VIRTUALBOX IMAGES
+
+_It's nice using packer because you don't have to use the virtualbox gui._
 
 * [jeffs-virtualbox-image-ubuntu-2204-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox)
 
