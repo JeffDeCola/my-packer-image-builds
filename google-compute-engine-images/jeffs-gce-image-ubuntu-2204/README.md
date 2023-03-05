@@ -22,9 +22,6 @@ Documentation and Reference
 
 ## PACKER TEMPLATE FILE
 
-* _Using packer to remotely build a gce image
-  containing the ubuntu 22.04 OS
-  for gce on linux_
 * Packer file:
   [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/template.pkr.hcl)
 * Size: 30 GB Standard Persistent Disk
