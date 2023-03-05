@@ -22,9 +22,6 @@ Documentation and Reference
 
 ## PACKER TEMPLATE FILE
 
-* _Using packer to build a docker image
-  containing the alpine OS
-  for docker on linux_
 * Packer file:
   [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-alpine/template.pkr.hcl)
 * Size: ~260MB

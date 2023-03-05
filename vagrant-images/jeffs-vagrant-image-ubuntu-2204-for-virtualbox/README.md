@@ -23,9 +23,6 @@ Documentation and Reference
 
 ## PACKER TEMPLATE FILE
 
-* _Using packer to build a vagrant image (box)
-  containing the ubuntu 22.04 OS
-  for virtualbox on linux_
 * Packer file:
   [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/template.pkr.hcl)
 * Size: ?????
