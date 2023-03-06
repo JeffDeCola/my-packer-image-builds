@@ -17,18 +17,51 @@ Documentation and Reference
 
 * My
   [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
-* My
-  [vagrant cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/development/development-environments/vagrant-cheat-sheet)
-* Online [vagrant box search](https://app.vagrantup.com/boxes/search)
 
 ## PACKER TEMPLATE FILE
 
-tbd.
+* Packer file:
+  [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/template.pkr.hcl)
+* Size: ??????
+* Configure and provision
+  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/update-upgrade-system.sh)
+    Update & upgrade (option to turn off periodic updates and auto-upgrades)
+  * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/install-packages.sh)
+     Install packages like htop, tmux, unzip, etc.  
+  * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/add-user-jeff.sh)
+    Add user jeff
+  * [move-welcome-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/move-welcome-file.sh)
+    Move welcome file.txt /home/packer
+* Source Image: virtualbox
+  * **"??????????????????"** for virtualbox on linux or windows
+* Custom Image: virtualbox
+  * ubuntu 22.04 for virtualbox on linux or windows
+* Contains:
+  * Add user jeff
 
 ## BUILD IMAGE
 
-tbd.
+Validate and build on virtualbox linux or windows,
+
+```bash
+packer validate template.pkr.hcl
+packer build template.pkr.hcl
+```
+
+Or use
+[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/build-image.sh),
+
+```bash
+sh build-image.sh
+```
 
 ## TEST IMAGE
 
-tbd.
+See if it boots up with virtualbox.
+
+Login with,
+
+```text
+username: vagrant
+password: vagrant
+```

@@ -1,13 +1,10 @@
 #!/bin/bash -e
-# jeffs-ubuntu-1804-virtualbox-vm-box move-vagrant-insecure-public-key.sh
+# my-packer-image-builds jeffs-virtualbox-image-ubuntu-2204-for-virtualbox move-vagrant-insecure-public-key.sh
 
 echo " "
 echo "************************************************************************"
 echo "************************** move-vagrant-insecure-public-key.sh (START) *"
 echo "You are root in /home/vagrant"
-echo " "
-whoami
-pwd
 echo " "
 
 echo "Make /vagrant/.ssh"

@@ -1,13 +1,10 @@
 #!/bin/bash -e
-# jeffs-ubuntu-1804-virtualbox-vm-box move-welcome-file.sh
+# my-packer-image-builds jeffs-virtualbox-image-ubuntu-2204-for-virtualbox move-welcome-file.sh
 
 echo " "
 echo "************************************************************************"
 echo "***************************************** move-welcome-file.sh (START) *"
 echo "You are root in /home/vagrant"
-echo " "
-whoami
-pwd
 echo " "
 
 echo "mv /tmp/welcome.txt /home/vagrant"

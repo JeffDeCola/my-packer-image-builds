@@ -91,3 +91,10 @@ vagrant ssh jeffs-vagrant-image-ubuntu-2204-for-virtualbox
 vagrant ssh-config
 ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@{IP}
 ```
+
+Login with,
+
+```text
+username: vagrant
+password: vagrant
+```

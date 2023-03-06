@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# jeffs-ubuntu-1804-virtualbox-vm-box build-box.sh
+# jeffs-virtualbox-image-ubuntu-2204-for-virtualbox build-box.sh
 
 echo " "
 
