@@ -30,16 +30,25 @@ Documentation and Reference
      Install packages like htop, tmux, unzip, etc.  
   * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/add-user-jeff.sh)
     Add user jeff
-  * [move-welcome-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/move-welcome-file.sh)
+  * [move-welcome-file-to-packer.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/move-welcome-file-to-packer.sh)
     Move welcome file.txt /home/packer
-* Source Image: virtualbox
-  * **"??????????????????"** for virtualbox on linux or windows
+* Source Image: iso
+  * **"ubuntu-22.04.2-live-server-amd64.iso"** for linux
 * Custom Image: virtualbox
   * ubuntu 22.04 for virtualbox on linux or windows
 * Contains:
   * Add user jeff
 
 ## BUILD IMAGE
+
+Get the iso ubuntu 22.04 for virtualbox on linux or windows.
+
+```bash
+cd iso
+wget "https://releases.ubuntu.com/jammy/ubuntu-22.04.2-live-server-amd64.iso"
+```
+
+set PATH=%PATH%;"C:\Program Files\Oracle\VirtualBox"
 
 Validate and build on virtualbox linux or windows,
 

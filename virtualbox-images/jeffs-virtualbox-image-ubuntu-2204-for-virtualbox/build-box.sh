@@ -35,7 +35,7 @@ echo " "
 
 echo "packer build command"
 packer $command \
-    vagrant-packer-template.json
+    template.pkr.hcl
 echo " "
 
 echo "**********************************************************************"
