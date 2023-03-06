@@ -39,7 +39,7 @@ source "virtualbox-iso" "example" {
   ssh_username            = "packer"
   ssh_password            = "packer"
   ssh_port                = 22
-  ssh_wait_timeout        = "10000s"
+  ssh_timeout        = "10000s"
   vboxmanage              = [
     ["modifyvm", "{{ .Name }}", "--memory", "4096"],
     ["modifyvm", "{{ .Name }}", "--cpus", "4"]
