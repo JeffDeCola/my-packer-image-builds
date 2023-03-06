@@ -24,13 +24,23 @@ variable "vm_name" {
 }
 
 source "virtualbox-iso" "example" {
-  #boot_command            = ["<esc><wait>", "<esc><wait>", "<enter><wait>", "/install/vmlinuz<wait>", " auto<wait>", " console-setup/ask_detect=false<wait>", " console-setup/layoutcode=us<wait>", " console-setup/modelcode=pc105<wait>", " debconf/frontend=noninteractive<wait>", " debian-installer=en_US<wait>", " fb=false<wait>", " initrd=/install/initrd.gz<wait>", " kbd-chooser/method=us<wait>", " keyboard-configuration/layout=USA<wait>", " keyboard-configuration/variant=USA<wait>", " locale=en_US<wait>", " netcfg/get_domain=vm<wait>", " netcfg/get_hostname=vagrant<wait>", " grub-installer/bootdev=/dev/sda<wait>", " noapic<wait>", " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<wait>", " -- <wait>", "<enter><wait>"]
-  #boot_wait               = "10s"
+  boot_command = [
+    "<esc><esc><enter><wait>",
+    "/install/vmlinuz noapic ",
+    "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu_64_preseed.cfg ",
+    "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+    "hostname={{ .Name }} ",
+    "fb=false debconf/frontend=noninteractive ",
+    "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+    "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+    "initrd=/install/initrd.gz -- <enter>"
+  ]
+  boot_wait               = "10s"
   #disk_size               = "${var.disk_size}"
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "${var.guest_os_type}"
   headless                = true
-  #http_directory          = "http"
+  http_directory          = "http"
   iso_urls                = [
     "${var.iso_urls1}"
     ]
@@ -39,7 +49,7 @@ source "virtualbox-iso" "example" {
   ssh_username            = "packer"
   ssh_password            = "packer"
   ssh_port                = 22
-  ssh_timeout        = "10000s"
+  ssh_timeout             = "10000s"
   vboxmanage              = [
     ["modifyvm", "{{ .Name }}", "--memory", "4096"],
     ["modifyvm", "{{ .Name }}", "--cpus", "4"]
