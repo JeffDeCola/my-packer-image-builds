@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   config.vm.define "source", autostart: false do |source|
-	source.vm.box = "bento/ubuntu-22.04"
+	source.vm.box = "generic/ubuntu2204"
 	config.ssh.insert_key = false
   end
   config.vm.define "output" do |output|

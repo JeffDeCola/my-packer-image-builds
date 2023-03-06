@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# my-packer-image-builds jeffs-vagrant-image-ubuntu-2204-for-virtualbox-on-linux move-vagrant-insecure-public-key.sh
+# my-packer-image-builds jeffs-vagrant-image-ubuntu-2204-for-virtualbox move-vagrant-insecure-public-key.sh
 
 echo " "
 echo "************************************************************************"

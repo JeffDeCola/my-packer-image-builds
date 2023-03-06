@@ -90,12 +90,6 @@ _You can also build gce images using gcloud cli or the gce gui._
   containing the ubuntu 22.04 OS
   for virtualbox on linux or windows._
 
-* [jeffs-vagrant-image-windows-11-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-windows-11-for-virtualbox)
-
-  _Using packer to build a vagrant image (box)
-  containing the windows 11 OS
-  for virtualbox on linux or windows._
-
 ## VIRTUALBOX IMAGES
 
 _It's nice using packer because you don't have to use the virtualbox gui._

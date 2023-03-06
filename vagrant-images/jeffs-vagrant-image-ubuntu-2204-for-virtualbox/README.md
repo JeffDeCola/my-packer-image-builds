@@ -25,24 +25,24 @@ Documentation and Reference
 
 * Packer file:
   [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/template.pkr.hcl)
-* Size: ?????
+* Size: 2GB
 * Configure and provision
-  * [init.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/init.sh)
-    Initial setup
-  * [move-welcome-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/move-welcome-file.sh)
-    Move welcome file /home/vagrant
-  * [move-vagrant-insecure-public-key.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/move-vagrant-insecure-public-key.sh)
-    Move vagrant insecure public key to authorized_keys
+  * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/update-upgrade-system.sh)
+    Update & upgrade (option to turn off periodic updates and auto-upgrades)
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/install-packages.sh)
-    Install packages
-  * [cleanup.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/cleanup.sh)
-    Cleanup
+     Install packages like htop, tmux, unzip, etc.  
+  * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/add-user-jeff.sh)
+    Add user jeff
+  * [move-welcome-file.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/move-welcome-file.sh)
+    Move welcome file.txt /home/vagrant
+  * [move-vagrant-insecure-public-key.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox/install-scripts/move-vagrant-insecure-public-key.sh)
+    Move vagrant insecure public key to /vagrant/.ssh/authorized_keys
 * Source Image: vagrant
-  * **"ubuntu/jammy64"** for vagrant on linux or windows
+  * **"generic/ubuntu2204"** for vagrant on linux or windows
 * Custom Image: vagrant
   * ubuntu 22.04 for vagrant on linux or windows
 * Contains:
-  * ??? golang 1.20.1 ????
+  * Add user jeff
 
 ## BUILD IMAGE
 
@@ -50,7 +50,7 @@ Validate and build on virtualbox linux,
 
 ```bash
 packer validate template.pkr.hcl
-packer build template.pkr.hcl
+packer build -force template.pkr.hcl
 ```
 
 Or use
@@ -62,26 +62,32 @@ sh build-image.sh
 
 ## TEST IMAGE
 
-Now we have the box in `/box/jeffs-vagrant-image-ubuntu-2204-for-virtualbox.box`.
+We now have,
 
-Add/list/remove box to/from vagrant,
+* The vagrant image (box) in `/box/jeffs-vagrant-image-ubuntu-2204-for-virtualbox.box`.
+* The Vagrantfile in `/box/Vagrantfile`.
+
+I suggest you update your Vagrantfile to add more resources,
+but this is just a test.
+
+First, add your vagrant image (box) to vagrant,
 
 ```bash
-vagrant box add --name "ubuntu/jeffs-vagrant-image-ubuntu-2204-for-virtualbox" \
-  --force jeffs-vagrant-image-ubuntu-2204-for-virtualbox.box
+vagrant box add "jeffs-vagrant-image-ubuntu-2204-for-virtualbox"
 vagrant box list
-vagrant box remove ubuntu/jeffs-vagrant-image-ubuntu-2204-for-virtualbox
 ```
 
-Use as normal,
+Now vagrant up your box (build and deploy),
 
 ```bash
+cd box
 vagrant up
 ```
 
-Connect,
+If you update your Vagrantfile you can connect with ssh,
 
 ```bash
 vagrant ssh jeffs-vagrant-image-ubuntu-2204-for-virtualbox
-ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@127.0.0.1
+vagrant ssh-config
+ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@{IP}
 ```
