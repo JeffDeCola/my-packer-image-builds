@@ -15,7 +15,7 @@ variable "iso_checksum_md5" {
 
 variable "iso_urls1" {
   type    = string
-  default = "iso/ubuntu-18.04.2-server-amd64.iso"
+  default = "iso/ubuntu-22.04.2-server-amd64.iso"
 }
 
 #variable "vm_name" {
