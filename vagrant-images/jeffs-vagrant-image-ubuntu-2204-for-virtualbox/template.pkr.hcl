@@ -5,7 +5,7 @@
 # Vagrant source image (box) for virtualbox
 variable "souce_image" {
   type    = string
-  default = "bento/ubuntu-22.04" 
+  default = "generic/ubuntu2204" 
 }
 
 # Vagrant custom image (box) for virtualbox
@@ -27,7 +27,6 @@ source "vagrant" "example" {
   add_force = false
   output_dir = "box"
   box_name = "${var.custom_image_name}"
-  output_vagrantfile = "Vagrantfile22"
 }
 
 build {
@@ -49,17 +48,17 @@ build {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'"
     pause_before    = "4s"
     scripts         = [
-      "./install-scripts/init.sh",
-      "./install-scripts/move-welcome-file.sh",
-      "./install-scripts/move-vagrant-insecure-public-key.sh",
+      "./install-scripts/update-upgrade-system.sh",
       "./install-scripts/install-packages.sh",
-      "./install-scripts/cleanup.sh"
+      "./install-scripts/add-user-jeff.sh",
+      "./install-scripts/move-welcome-file-to-vagrant.sh",
+      "./install-scripts/move-vagrant-insecure-public-key.sh",
     ]
   } 
 
-  #post-processor "vagrant" {
+  # post-processor "vagrant" {
   #  compression_level = "5"
   #  output            = "box/${var.vm_name}.box"
-  #}
+  # }
   
 }
