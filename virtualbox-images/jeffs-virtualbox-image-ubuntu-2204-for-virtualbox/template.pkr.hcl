@@ -39,7 +39,7 @@ source "virtualbox-iso" "example" {
   #disk_size               = "${var.disk_size}"
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "${var.guest_os_type}"
-  headless                = true
+  headless                = false
   http_directory          = "http"
   iso_urls                = [
     "${var.iso_urls1}"
