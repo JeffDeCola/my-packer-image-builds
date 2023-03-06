@@ -1,1 +1,2 @@
-Hi Everyone.  This is a test of packer creating a vagrant box
+Hi Everyone.  This is a test of packer creating a virtualbox image
+for jeffs-virtualbox-image-ubuntu-2204-for-virtualbox.
