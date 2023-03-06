@@ -22,6 +22,8 @@ Documentation and Reference
 
 * Packer file:
   [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/template.pkr.hcl)
+* Preseed file
+  [ubuntu_64_preseed.cfg](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/ubuntu_64_preseed.cfg)
 * Size: ??????
 * Configure and provision
   * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/update-upgrade-system.sh)
