@@ -62,5 +62,6 @@ _It's nice using packer because you don't have to use the virtualbox gui._
 * [jeffs-virtualbox-image-ubuntu-2204-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox)
 
   _Using packer to build a virtualbox image
+  from an ubuntu 20.04 iso
   containing the ubuntu 22.04 OS
   for virtualbox on linux or windows._
