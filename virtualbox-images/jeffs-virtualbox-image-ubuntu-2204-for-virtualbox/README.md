@@ -4,6 +4,7 @@
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
 _Using packer to build a virtualbox image
+from an ubuntu 20.04 iso
 containing the ubuntu 22.04 OS
 for virtualbox on linux or windows._
 
@@ -22,8 +23,9 @@ Documentation and Reference
 
 * Packer file:
   [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/template.pkr.hcl)
-* Preseed file
-  [ubuntu_64_preseed.cfg](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/ubuntu_64_preseed.cfg)
+* CloudInit file
+  [user-data](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/http/user-data)
+  used to answer questions during setup (preseed is dead)
 * Size: ??????
 * Configure and provision
   * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/update-upgrade-system.sh)
@@ -50,7 +52,8 @@ cd iso
 wget "https://releases.ubuntu.com/jammy/ubuntu-22.04.2-live-server-amd64.iso"
 ```
 
-set PATH=%PATH%;"C:\Program Files\Oracle\VirtualBox"
+Note, the preseed file is dead, we are using Cloudinit to answer the questions
+during setup.
 
 Validate and build on virtualbox linux or windows,
 

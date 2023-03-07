@@ -1,13 +1,3 @@
-#variable "disk_size" {
-#  type    = string
-#  default = "61440"
-#}
-
-variable "guest_os_type" {
-  type    = string
-  default = "Ubuntu_64"
-}
-
 variable "iso_checksum_md5" {
   type    = string
   default = "33993f79ba694f1dba9fcf89f11257ea"
@@ -25,34 +15,18 @@ variable "vm_name" {
 
 source "virtualbox-iso" "example" {
   boot_command = [
-    "<esc><wait>",
-    "<esc><wait>",
-    "<enter><wait>",
-    "/install/vmlinuz<wait>",
-    " auto<wait>",
-    " console-setup/ask_detect=false<wait>",
-    " console-setup/layoutcode=us<wait>",
-    " console-setup/modelcode=pc105<wait>",
-    " debconf/frontend=noninteractive<wait>",
-    " debian-installer=en_US<wait>",
-    " fb=false<wait>",
-    " initrd=/install/initrd.gz<wait>",
-    " kbd-chooser/method=us<wait>",
-    " keyboard-configuration/layout=USA<wait>",
-    " keyboard-configuration/variant=USA<wait>",
-    " locale=en_US<wait>",
-    " netcfg/get_domain=vm<wait>",
-    " netcfg/get_hostname=vagrant<wait>",
-    " grub-installer/bootdev=/dev/sda<wait>",
-    " noapic<wait>",
-    " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu_64_preseed.cfg<wait>",
-    " -- <wait>",
-    "<enter><wait>"
+    "e<down><down><down><end>",
+    " autoinstall ds=nocloud;",
+    "<F10>"
   ]
-  boot_wait               = "10s"
-  #disk_size               = "${var.disk_size}"
-  guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
-  guest_os_type           = "${var.guest_os_type}"
+  boot_wait               = "15s"
+  boot_order              = "disk,cdrom"
+  cd_files = [
+        "./http/meta-data",
+        "./http/user-data"
+    ]
+  cd_label = "cidata"
+  guest_os_type           = "Ubuntu_64"
   headless                = false
   http_directory          = "http"
   iso_urls                = [
@@ -70,6 +44,7 @@ source "virtualbox-iso" "example" {
   ]
   #virtualbox_version_file = ".vbox_version"
   vm_name                 = "${var.vm_name}"
+  output_directory        = "output-virtualbox"
 }
 
 build {
