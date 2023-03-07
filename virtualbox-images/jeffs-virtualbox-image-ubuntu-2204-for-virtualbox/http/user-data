@@ -8,26 +8,22 @@ autoinstall:
     keyboard:
         layout: en
         variant: us
-    packages: [
-      open-vm-tools,
-      openssh-server,
-      net-tools
-    ]
+    packages:
+      - openssh-server
+      - build-essential
     network:
-        network:
-            version: 2
-            ethernets:
-                ens192:
-                    dhcp4: true
+      network:
+        version: 2
+        ethernets:
+          enp0s3:
+            dhcp4: true
     identity:
         hostname: jeffs-virtualbox-image-ubuntu-2204-for-virtualbox-server
         username: ubuntu
-        password: "ubuntu"
+        password: ubuntu
     ssh:
         install-server: yes
         allow-pw: yes
-        authorized-keys:
-            - ssh-rsa ADD_YOUR_KEY
     storage:
         layout:
             name: lvm
@@ -35,4 +31,3 @@ autoinstall:
         disable_root: false
     late-commands:
         - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
-        - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu

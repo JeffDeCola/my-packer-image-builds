@@ -1,5 +1,11 @@
 # jeffs-virtualbox-image-ubuntu-2204-for-virtualbox
 
+```txt
+*** THIS IS STILL UNDER CONTRUCTION ****
+There is an error during the Q/A part of the ubuntu install
+I think it's the boot_command and the user-data that has all the Q/A info
+```
+
 [![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
@@ -26,7 +32,7 @@ Documentation and Reference
 * CloudInit file
   [user-data](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/http/user-data)
   used to answer questions during setup (preseed is dead)
-* Size: ??????
+* Size: _tbd_
 * Configure and provision
   * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/update-upgrade-system.sh)
     Update & upgrade (option to turn off periodic updates and auto-upgrades)
@@ -76,6 +82,6 @@ See if it boots up with virtualbox.
 Login with,
 
 ```text
-username: vagrant
-password: vagrant
+username: ubuntu
+password: ubuntu
 ```
