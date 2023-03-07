@@ -15,43 +15,34 @@ variable "vm_name" {
 
 source "virtualbox-iso" "example" {
   cd_files = [
-    "./http/meta-data",
-    "./http/user-data"
+    "./http/user-data",
+    "./http/meta-data"
   ]
   cd_label = "cidata"
-  boot_command         = [
-    "<esc><esc><esc><esc>e<wait>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "<del><del><del><del><del><del><del><del>",
-    "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/\"<enter><wait>",
-    "initrd /casper/initrd<enter><wait>",
-    "boot<enter>",
-    "<enter><f10><wait>"
+  boot_command          = [
+    "<enter><wait2><enter><wait><f6><esc><wait>",
+    "linux /casper/vmlinuz autoinstall ds=nocloud;",
+    "<wait><enter>",
+    "initrd /casper/initrd",
+    "<wait><enter>",
+    "boot"
   ]
-  boot_wait               = "10s"
-  guest_os_type           = "ubuntu64Guest"
+  # May have to adjust time. You want to hit that GNU boot screen perfectly.
+  boot_wait               = "15s"
+  guest_os_type           = "Ubuntu_64"
+  guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   headless                = false
   http_directory          = "./http"
   iso_urls                = [
     "${var.iso_urls1}"
     ]
   iso_checksum            = "md5:${var.iso_checksum_md5}"
-  shutdown_command        = "sudo shutdown -P now"
+  shutdown_command        = "echo 'packer' | sudo -S shutdown -P now"
   # I think you need ubuntu ubuntu for the ssh_username and ssh_password
-  ssh_username            = "ubuntu"
-  ssh_password            = "ubuntu"
+  ssh_agent_auth          = true
+  ssh_handshake_attempts  = "200"
+  ssh_username            = "packer"
+  ssh_password            = "packer"
   ssh_port                = 22
   ssh_timeout             = "10000s"
   vboxmanage              = [
@@ -60,6 +51,7 @@ source "virtualbox-iso" "example" {
   ]
   vm_name                 = "${var.vm_name}"
   output_directory        = "output-virtualbox"
+  virtualbox_version_file = ".vbox_version"
 }
 
 build {
