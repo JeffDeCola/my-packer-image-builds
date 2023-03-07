@@ -52,7 +52,7 @@ cd iso
 wget "https://releases.ubuntu.com/jammy/ubuntu-22.04.2-live-server-amd64.iso"
 ```
 
-Note, the preseed file is dead, we are using Cloudinit to answer the questions
+Note, the preseed file is dead, we are using CloudInit to answer the questions
 during setup.
 
 Validate and build on virtualbox linux or windows,

@@ -21,8 +21,8 @@ autoinstall:
                     dhcp4: true
     identity:
         hostname: jeffs-virtualbox-image-ubuntu-2204-for-virtualbox-server
-        username: jeff
-        password: "packer"
+        username: ubuntu
+        password: "ubuntu"
     ssh:
         install-server: yes
         allow-pw: yes
@@ -34,5 +34,5 @@ autoinstall:
     user-data:
         disable_root: false
     late-commands:
-        - echo 'jeff ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/jeff
-        - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/jeff
+        - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+        - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu
