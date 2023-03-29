@@ -37,7 +37,7 @@ Documentation and Reference
   * [update-upgrade-system.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/update-upgrade-system.sh)
     Update & upgrade (option to turn off periodic updates and auto-upgrades)
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/install-packages.sh)
-     Install packages like htop, tmux, unzip, etc.  
+     Install packages like htop, tmux, unzip, etc.
   * [add-user-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/add-user-jeff.sh)
     Add user jeff
   * [move-welcome-file-to-packer.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/install-scripts/move-welcome-file-to-packer.sh)
