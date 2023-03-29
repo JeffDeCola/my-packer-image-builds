@@ -31,7 +31,7 @@ Documentation and Reference
   * [move-welcome-file-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-alpine/install-scripts/move-welcome-file-to-root.sh)
     Move welcome.txt to /root
   * [install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-alpine/install-scripts/install-packages.sh)
-    Install packages bash and htop  
+    Install packages bash and htop
 * Source Image: docker
   * **"golang:alpine"** for docker on linux
 * Custom Image: docker

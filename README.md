@@ -30,7 +30,7 @@ Documentation and Reference
   [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
 * An illustration of how
   [vagrant, docker and packer](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet#vagrant-docker-and-packer)
-  build and deploy images  
+  build and deploy images
 * This repos
   [github webpage](https://jeffdecola.github.io/my-packer-image-builds/)
   _built with
@@ -65,7 +65,7 @@ _You can also build docker images using a Dockerfile as shown in
   _Using packer to build a docker image
   containing the alpine OS
   for docker on linux._
-  
+
 * [jeffs-docker-image-ubuntu-2204](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-ubuntu-2204)
 
   _Using packer to build a docker image
