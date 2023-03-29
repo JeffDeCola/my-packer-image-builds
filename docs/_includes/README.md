@@ -30,7 +30,7 @@ _You can also build docker images using a Dockerfile as shown in
   _Using packer to build a docker image
   containing the alpine OS
   for docker on linux._
-  
+
 * [jeffs-docker-image-ubuntu-2204](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/docker-images/jeffs-docker-image-ubuntu-2204)
 
   _Using packer to build a docker image
