@@ -8,7 +8,7 @@ echo "You are root in /home/packer"
 echo " "
 
 echo "cd into /root/src/github.com/JeffDeCola/hello-go-deploy-gce/hello-go-deploy-gce-code"
-cd /root/src/github.com/JeffDeCola/hello-go-deploy-gce/hello-go-deploy-gce-code || exit
+cd /home/jeff/services/hello-go-deploy-gce/hello-go-deploy-gce-code || exit
 echo " "
 
 echo "Build an executable (go build), place in /root/bin"

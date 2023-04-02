@@ -27,7 +27,7 @@ variable "image_name" {
 
 variable "machine_type" {
   type    = string
-  default = "e2-micro"
+  default = "e2-standard-2"
 }
 
 variable "prefix" {
@@ -62,7 +62,7 @@ variable "user_home" {
 
 variable "zone" {
   type    = string
-  default = "us-east1-b"
+  default = "us-east4-c"
 }
 # The "legacy_isotime" function has been provided for backwards compatability, but we recommend switching to the timestamp and formatdate functions.
 locals {
@@ -159,9 +159,9 @@ build {
       "./install-scripts/install-protocol-buffers-for-go.sh",
       "./install-scripts/clone-git-aware-prompt-for-jeff.sh",
       "./install-scripts/add-vscode-settings-json-file.sh",
-      "./install-scripts/pull-private-repos-for-jeff.sh"
-      "./install-scripts/service-install.sh"
-      "./install-scripts/service-enable-at-boot.sh"      
+      "./install-scripts/pull-private-repos-for-jeff.sh",
+      "./install-scripts/service-install.sh",
+      "./install-scripts/service-enable-at-boot.sh",
       "./install-scripts/remove-github-ssh-keys.sh"
     ]
   }

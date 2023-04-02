@@ -9,8 +9,8 @@ echo " "
 
 echo "update & upgrade system (quiet mode)"
 while true; do
-  #sudo apt-get -qq -y update
-  #sudo apt-get -qq -y upgrade
+  sudo apt-get -qq -y update
+  sudo apt-get -qq -y upgrade
 
   if [ $? -eq 0 ]; then
     break
