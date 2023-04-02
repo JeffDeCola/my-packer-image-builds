@@ -84,7 +84,7 @@ Documentation and Reference
   * protoc: 3.12.4
   * [hello-go-deploy-gce dockerhub image](https://hub.docker.com/r/jeffdecola/hello-go-deploy-gce)
     runs at boot
-  * A binary /root/bin/hello-go executable runs at boot
+  * A binary /usr/bin/hello-go executable runs at boot
 
 ## BUILD IMAGE
 
