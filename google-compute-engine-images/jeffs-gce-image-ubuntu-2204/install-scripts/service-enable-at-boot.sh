@@ -7,6 +7,10 @@ echo "******************************** service-enable-at-boot.sh (START) *"
 echo "You are root in /home/packer"
 echo " "
 
+echo "ls -lat /tmp"
+ls -lat /tmp
+echo " "
+
 echo "mv /tmp/hello-go.service file to /lib/systemd/system/"
 mv /tmp/hello-go.service file to /lib/systemd/system/
 echo " "
