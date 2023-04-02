@@ -104,6 +104,11 @@ build {
   }
 
   provisioner "file" {
+    destination = "/tmp/hello-go.service"
+    source      = "./install-files/hello-go.service"
+  }
+
+  provisioner "file" {
     destination = "/tmp/.dircolors"
     source      = "./install-files/.dircolors"
   }
@@ -148,12 +153,16 @@ build {
       "./install-scripts/add-github-ssh-keys-to-root.sh",
       "./install-scripts/add-github-ssh-keys-to-jeff.sh",
       "./install-scripts/install-docker.sh",
+      "./install-scripts/run-dockerhub-image-at-boot.sh",
       "./install-scripts/install-go-and-config-for-root.sh",
       "./install-scripts/config-go-for-jeff.sh",
       "./install-scripts/install-protocol-buffers-for-go.sh",
       "./install-scripts/clone-git-aware-prompt-for-jeff.sh",
       "./install-scripts/add-vscode-settings-json-file.sh",
       "./install-scripts/pull-private-repos-for-jeff.sh"
+      "./install-scripts/service-install.sh"
+      "./install-scripts/service-enable-at-boot.sh"      
+      "./install-scripts/remove-github-ssh-keys.sh"
     ]
   }
 
