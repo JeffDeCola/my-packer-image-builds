@@ -4,8 +4,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-WorkingDirectory=/root/bin
-ExecStart=/root/bin/hello-go
+WorkingDirectory=/usr/bin
+ExecStart=/usr/bin/hello-go
 Restart=always
 User=root
 StandardOutput=syslog
