@@ -95,7 +95,7 @@ export GCP_JEFFS_SERVICE_ACCOUNT_PATH=[path to your google platform .json file]
 export GCP_JEFFS_PROJECT_ID=[your project id]
 ```
 
-Will be building image using,
+I build the image using a more powerful machine,
 
 * Machine: e2-standard-2 (2 vCPU, 8 GB memory)
 * Region: us-east4 (Northern Virginia)

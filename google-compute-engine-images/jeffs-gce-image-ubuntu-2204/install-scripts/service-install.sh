@@ -15,12 +15,12 @@ echo "ls -lat"
 ls -lat
 echo " "
 
-echo "Build an executable (go build), place in /bin"
-go build -o /usr/bin/hello-go main.go
+echo "Build an executable (go build), place in /home/jeff"
+go build -o /home/jeff/hello-go main.go
 echo " "
 
-echo "ls -lat /usr/bin | grep hello"
-ls -lat /usr/bin | grep hello
+echo "ls -lat /home/jeff"
+ls -lat /home/jeff
 echo " "
 
 echo "********************************************* service-install.sh (END) *"

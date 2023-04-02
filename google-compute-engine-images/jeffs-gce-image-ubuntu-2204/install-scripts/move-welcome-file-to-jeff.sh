@@ -11,6 +11,10 @@ echo "cd /home/jeff"
 cd /home/jeff
 echo " "
 
+echo "ls -lat /tmp"
+ls -lat /tmp
+echo " "
+
 echo "mv /tmp/welcome.txt /home/jeff"
 mv /tmp/welcome.txt /home/jeff
 echo " "
