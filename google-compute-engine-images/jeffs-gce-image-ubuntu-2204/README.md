@@ -91,6 +91,13 @@ export GCP_JEFFS_SERVICE_ACCOUNT_PATH=[path to your google platform .json file]
 export GCP_JEFFS_PROJECT_ID=[your project id]
 ```
 
+Will be building image using,
+
+* Machine: e2-standard-2 (2 vCPU, 8 GB memory)
+* Region: us-east4 (Northern Virginia)
+* Zone: us-east4-c
+* Disk: 30 GB Standard Persistent Disk
+
 To validate your packer file,
 
 ```bash
@@ -125,7 +132,7 @@ gcloud compute images list --no-standard-images
 This image uses the gce
 [free tier](https://cloud.google.com/free/docs/gcp-free-tier/?hl=en_US#compute),
 
-* Machine: e2-micro (2 vCPU, 1 GB memory)
+* Machine: e2-micro (.25-2 vCPU, 1 GB memory)
 * Region: us-east1 (South Carolina)
 * Disk: 30 GB Standard Persistent Disk
 * Snapshot Storage: 5GB
@@ -144,14 +151,37 @@ You only need to run firewall rules once,
 sh create-firewall-rule.sh
 ```
 
-Create your template and group,
+To
+[create-instance-template](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-template.sh),
 
 ```bash
-sh create-instance-template.sh
-sh create-instance-group.sh
+sh create-instance-template.sh "jeffs-gce-ubuntu-2204-image" "gce-ubuntu-2204"
 ```
 
-To ssh into your gce vm,
+Check the instance template was created,
+
+```bash
+gcloud compute instance-templates list
+```
+
+To
+[create-instance-group](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-group.sh),
+
+```bash
+sh create-instance-group.sh "jeffs-gce-ubuntu-2204-instance-template" "gce-ubuntu-2204"
+```
+
+Check that the instance group and VM instance were created,
+
+```bash
+gcloud compute instance-groups list
+gcloud compute instances list
+```
+
+I placed my public keys in gce metadata ssh keys, which automatically
+places them in the authorized_keys files on my VM
+
+Hence, to ssh into your gce vm,
 
 ```bash
 ssh -i ~/.ssh/google_compute_engine jeff@<IP>

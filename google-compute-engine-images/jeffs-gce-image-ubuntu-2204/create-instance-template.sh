@@ -21,9 +21,9 @@ fi
 echo "The goal is to create an instance template on gce."
 echo " "
 
-IMAGENAME="jeffs-gce-ubuntu-2204-image"
+IMAGENAME=$1
 PREFIX="jeffs"
-SERVICE="gce-ubuntu-2204"
+SERVICE=$2
 #POSTFIX=$(date -u +%Y%m%d-%H%M)
 
 echo "gcloud compute command"
@@ -38,7 +38,7 @@ gcloud compute \
     --boot-disk-size "30" \
     --boot-disk-type "pd-standard" \
     --boot-disk-device-name "$PREFIX-$SERVICE-disk" \
-    --description "Instance template for Jeffs Repo hello-go-deploy-gce" \
+    --description "Instance template for Jeffs Repo my-packer-image-builds" \
     --region "us-east1" \
     # --service-account=""
     # --preemptible \
