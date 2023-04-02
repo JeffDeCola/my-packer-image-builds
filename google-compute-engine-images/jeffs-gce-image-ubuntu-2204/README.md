@@ -82,6 +82,7 @@ Documentation and Reference
   * docker: 23.0.1
   * go: 1.20.1
   * protoc: 3.12.4
+* Services:  
   * [hello-go-deploy-gce dockerhub image](https://hub.docker.com/r/jeffdecola/hello-go-deploy-gce)
     runs at boot
   * A binary /usr/bin/hello-go executable runs at boot
@@ -196,6 +197,18 @@ ssh -i ~/.ssh/google_compute_engine jeff@<IP>
 docker version
 go version
 protoc --version
+```
+
+Check the docker service is running,
+
+```bash
+docker logs -f --tail 10 -f hello-go-deploy-gce
+```
+
+Check that your hello-go.service is running,
+
+```bash
+journalctl -f
 ```
 
 You may also ssh from VM to VM using gce's internal DNS,

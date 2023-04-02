@@ -15,8 +15,16 @@ echo "ls -lat"
 ls -lat
 echo " "
 
-echo "Build an executable (go build), place in /home/jeff"
-go build -o /home/jeff/hello-go main.go
+echo "go version for user root"
+runuser -l jeff -c "/usr/local/go/bin/go version"
+echo " "
+
+echo "go version for user jeff"
+runuser -l jeff -c "/usr/local/go/bin/go version"
+echo " "
+
+echo "Build an executable (go build as user jeff), place in /home/jeff"
+/usr/local/go/bin/go build -o /home/jeff/hello-go main.go
 echo " "
 
 echo "ls -lat /home/jeff"
