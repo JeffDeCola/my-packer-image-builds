@@ -50,6 +50,8 @@ Documentation and Reference
     Add github keys for user jeff
   * [install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/install-docker.sh)
     Install docker
+  * [run-dockerhub-image-at-boot.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/run-dockerhub-image-at-boot.sh)
+    Run dockerhub image at boot
   * [install-go-and-config-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/install-go-and-config-for-root.sh)
     Install go and config for user root
   * [config-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/config-go-for-jeff.sh)
@@ -62,6 +64,12 @@ Documentation and Reference
     Move settings.json in ~/.vscode-server/data/Machine for vs code remote connection
   * [pull-private-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/pull-private-repos-for-jeff.sh)
     Pull some of my repos for jeff
+  * [service-install.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/service-install.sh)
+    Create executable /root/bin/hello-go
+  * [service-enable-at-boot.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/service-enable-at-boot.sh)
+    Run executable (service) at boot
+  * [remove-github-ssh-keys.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/remove-github-ssh-keys.sh)
+    For security, remove the github keys
 * Source Image: gce
   * **"ubuntu-2204-jammy-v20230214"** for gce on linux
 * Custom Image: gce
@@ -70,6 +78,9 @@ Documentation and Reference
   * docker: 23.0.1
   * go: 1.20.1
   * protoc: 3.12.4
+  * [hello-go-deploy-gce dockerhub image](https://hub.docker.com/r/jeffdecola/hello-go-deploy-gce)
+    runs at boot
+  * A binary /root/bin/hello-go executable runs at boot
 
 ## BUILD IMAGE
 
@@ -100,6 +111,13 @@ packer build \
     -var "account_file=$GCP_JEFFS_SERVICE_ACCOUNT_PATH" \
     -var "project_id=$GCP_JEFFS_PROJECT_ID" \
     template.pkr.hcl
+```
+
+Check that the image was created at gce,
+
+```bash
+gcloud config set project $GCP_JEFFS_PROJECT_ID
+gcloud compute images list --no-standard-images
 ```
 
 ## TEST IMAGE
