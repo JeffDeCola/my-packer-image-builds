@@ -44,7 +44,7 @@ Documentation and Reference
     Add colors for user jeff
   * [add-gce-universal-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/add-gce-universal-ssh-keys-to-jeff.sh)
     Add a universal key so VMs can ssh into each other
-  * [add-github-ssh-keys-to-root-and-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/add-github-ssh-keys-to-root.sh)
+  * [add-github-ssh-keys-to-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/add-github-ssh-keys-to-root.sh)
     Add github keys for user root
   * [add-github-ssh-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/install-scripts/add-github-ssh-keys-to-jeff.sh)
     Add github keys for user jeff
@@ -80,24 +80,26 @@ export GCP_JEFFS_SERVICE_ACCOUNT_PATH=[path to your google platform .json file]
 export GCP_JEFFS_PROJECT_ID=[your project id]
 ```
 
-Validate and build at gce,
+To validate your packer file,
 
 ```bash
 packer validate \
-    -var "account_file=$GCP_JEFFS_SERVICE_ACCOUNT_PATH" \
-    -var "project_id=$GCP_JEFFS_PROJECT_ID" \
-    template.pkr.hcl
-packer build \
+    -var "image_name=gce-ubuntu-2204" \
     -var "account_file=$GCP_JEFFS_SERVICE_ACCOUNT_PATH" \
     -var "project_id=$GCP_JEFFS_PROJECT_ID" \
     template.pkr.hcl
 ```
 
-Or use
-[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/build-image.sh),
+To
+[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/build-image.sh)
+on gce,
 
 ```bash
-sh build-image.sh
+packer build \
+    -var "image_name=gce-ubuntu-2204" \
+    -var "account_file=$GCP_JEFFS_SERVICE_ACCOUNT_PATH" \
+    -var "project_id=$GCP_JEFFS_PROJECT_ID" \
+    template.pkr.hcl
 ```
 
 ## TEST IMAGE
@@ -112,12 +114,13 @@ This image uses the gce
 * Network Egress: 1GB
 * Free External IP
 
-To deploy VM on gce I use [create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-firewall-rule.sh),
-[create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-template.sh)
-and
-[create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-group.sh).
+To deploy this image on a gce VM,
 
-You only need to run this once,
+* [create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-firewall-rule.sh)
+* [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-template.sh)
+* [create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-group.sh)
+
+You only need to run firewall rules once,
 
 ```bash
 sh create-firewall-rule.sh

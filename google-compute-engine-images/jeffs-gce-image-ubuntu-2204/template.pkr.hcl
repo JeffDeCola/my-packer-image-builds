@@ -22,7 +22,7 @@ variable "image_description" {
 
 variable "image_name" {
   type    = string
-  default = "gce-ubuntu-2204"
+  default = ""
 }
 
 variable "machine_type" {
