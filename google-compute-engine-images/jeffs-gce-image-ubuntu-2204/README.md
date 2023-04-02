@@ -12,6 +12,10 @@ Table on Contents
 * [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204#packer-template-file)
 * [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204#build-image)
 * [TEST IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204#test-image)
+  * [FIREWALL RULE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204#firewall-rule)
+  * [CREATE INSTANCE TEMPLATE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204#create-instance-template)
+  * [CREATE INSTANCE GROUP](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204#create-instance-group)
+  * [SSH INTO VM](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204#ssh-into-vm)
 
 Documentation and Reference
 
@@ -139,17 +143,17 @@ This image uses the gce
 * Network Egress: 1GB
 * Free External IP
 
-To deploy this image on a gce VM,
+### FIREWALL RULE
 
-* [create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-firewall-rule.sh)
-* [create-instance-template.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-template.sh)
-* [create-instance-group.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-group.sh)
-
-You only need to run firewall rules once,
+You only need to
+[create-firewall-rule.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-firewall-rule.sh)
+once,
 
 ```bash
 sh create-firewall-rule.sh
 ```
+
+### CREATE INSTANCE TEMPLATE
 
 To
 [create-instance-template](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-template.sh),
@@ -164,6 +168,8 @@ Check the instance template was created,
 gcloud compute instance-templates list
 ```
 
+### CREATE INSTANCE GROUP
+
 To
 [create-instance-group](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/google-compute-engine-images/jeffs-gce-image-ubuntu-2204/create-instance-group.sh),
 
@@ -177,6 +183,8 @@ Check that the instance group and VM instance were created,
 gcloud compute instance-groups list
 gcloud compute instances list
 ```
+
+### SSH INTO VM
 
 I placed my public keys in gce metadata ssh keys, which automatically
 places them in the authorized_keys files on my VM
