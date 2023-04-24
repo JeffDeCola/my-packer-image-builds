@@ -6,7 +6,7 @@
 
 _A place to keep my packer image builds._
 
-tl;dr,
+tl;dr
 
 ```bash
 ## BUILD IMAGE
