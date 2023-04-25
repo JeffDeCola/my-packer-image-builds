@@ -6,7 +6,7 @@ There is an error during the Q/A part of the ubuntu install
 I think it's the boot_command and the user-data that has all the Q/A info
 ```
 
-[![MIT License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
 _Using packer to build a virtualbox image
