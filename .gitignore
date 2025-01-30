@@ -1,7 +1,7 @@
 # repo-my-packer-image-builds-.gitignore
 
 # CONCOURSE SECRETS
-.credentials.yml
+.concourse-secrets.yml
 
 # macOS
 .DS_Store
