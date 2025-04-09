@@ -1,7 +1,7 @@
 # jeffs-vagrant-image-ubuntu-2204-for-virtualbox
 
-[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
 
 _Using packer to build a vagrant image (box)
 containing the ubuntu 22.04 OS
@@ -15,11 +15,9 @@ Table on Contents
 
 Documentation and Reference
 
-* My
-  [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
-* My
-  [vagrant cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/development/development-environments/vagrant-cheat-sheet)
-* Online [vagrant box search](https://app.vagrantup.com/boxes/search)
+* [packer](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
+* [vagrant](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/development/development-environments/vagrant-cheat-sheet)
+* [vagrant box search](https://app.vagrantup.com/boxes/search)
 
 ## PACKER TEMPLATE FILE
 

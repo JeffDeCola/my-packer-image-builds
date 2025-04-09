@@ -1,13 +1,13 @@
 # jeffs-virtualbox-image-ubuntu-2204-for-virtualbox
 
+[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
+[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
+
 ```txt
-*** THIS IS STILL UNDER CONTRUCTION ****
+*** THIS IS STILL UNDER CONSTRUCTION ****
 There is an error during the Q/A part of the ubuntu install
 I think it's the boot_command and the user-data that has all the Q/A info
 ```
-
-[![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
-[![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 
 _Using packer to build a virtualbox image
 from an ubuntu 20.04 iso
@@ -22,8 +22,7 @@ Table of Contents
 
 Documentation and Reference
 
-* My
-  [packer cheat sheet](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
+* [packer](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/operations/orchestration/builds-deployment-containers/packer-cheat-sheet)
 
 ## PACKER TEMPLATE FILE
 
@@ -69,7 +68,8 @@ packer build template.pkr.hcl
 ```
 
 Or use
-[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/build-image.sh),
+[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox/build-image.sh)
+(_not done, a work in progress_),
 
 ```bash
 sh build-image.sh
