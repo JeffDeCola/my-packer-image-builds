@@ -12,6 +12,10 @@ id_rsa*
 # macOS
 .DS_Store
 
+# SFTP EXTENSION
+.vscode/
+sftp.json
+
 # WINDOWS
 *:Zone.Identifier
 
