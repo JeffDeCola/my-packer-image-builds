@@ -1,0 +1,57 @@
+#!/bin/sh -e
+# install-docker.sh
+
+echo " "
+echo "************************************************************************"
+echo "********************************************* add-user-jeff.sh (START) *"
+echo "Running as $(whoami) in $(pwd)"
+echo " "
+
+echo "*** PART I - SET UP THE REPOSITORY"
+echo " "
+
+echo "Install a few prerequisite packages"
+    apt-get -y install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+echo " "
+
+echo "Add Docker’s official GPG key:"
+mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo " "
+
+echo "Set up the repository:"
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo " "
+
+echo "*** PART II - INSTALL DOCKER ENGINE"
+echo " "
+
+echo "Update the package database with the Docker packages from the newly added repo"
+apt-get -y update
+echo " "
+
+echo "Install Docker Engine, containerd, and Docker Compose"
+apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+echo " "
+
+echo "Check that it will run at boot"
+systemctl status docker
+echo " "
+
+echo "Create docker group"
+# For some reason I think this group already exists now
+# groupadd docker
+
+echo "Add user jeff to docker group"
+usermod -aG docker jeff
+echo " "
+
+echo "********************************************** install-docker.sh (END) *"
+echo "************************************************************************"
+echo " "
