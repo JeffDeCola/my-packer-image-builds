@@ -11,7 +11,7 @@ tl;dr
 ## BUILD IMAGE
 packer build template.pkr.hcl
 
-## OTHER COMMANDS
+## VALIDATE TEMPLATE FILE
 packer validate template.pkr.hcl
 ```
 
@@ -20,6 +20,7 @@ Table of Contents
 * [OVERVIEW](https://github.com/JeffDeCola/my-packer-image-builds#overview)
 * [DOCKER IMAGES](https://github.com/JeffDeCola/my-packer-image-builds#docker-images)
 * [GOOGLE COMPUTE ENGINE (GCE) IMAGES](https://github.com/JeffDeCola/my-packer-image-builds#google-compute-engine-gce-images)
+* [PROXMOX IMAGES](https://github.com/JeffDeCola/my-packer-image-builds#proxmox-images)
 * [VAGRANT IMAGES (BOX)](https://github.com/JeffDeCola/my-packer-image-builds#vagrant-images-box)
 * [VIRTUALBOX IMAGES](https://github.com/JeffDeCola/my-packer-image-builds#virtualbox-images)
 
@@ -48,9 +49,9 @@ for {PROVIDER TOOL} on {HOST OS}.**
 
 Where,
 
-* **CUSTOM IMAGE FILE**: docker/gce/vagrant/virtualbox/etc.
+* **CUSTOM IMAGE FILE**: docker/gce/proxmox/vagrant/virtualbox/etc.
 * **CUSTOM IMAGE OS**: ubuntu/alpine/windows/etc.
-* **PROVIDER TOOL**: docker/gce/virtualbox/etc.
+* **PROVIDER TOOL**: docker/gce/proxmox/virtualbox/etc.
 * **HOST OS**: linux/windows
 
 ## DOCKER IMAGES
@@ -79,6 +80,22 @@ _You can also build gce images using gcloud cli or the gce gui._
   _Using packer to remotely build a gce image
   containing the ubuntu 22.04 OS
   for gce on linux._
+
+## PROXMOX IMAGES
+
+_You can also build proxmox images._
+
+* [jeffs-proxmox-image-ubuntu](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-proxmox-image-ubuntu)
+
+  _Using packer to remotely build a proxmox image
+  containing the ubuntu OS
+  for proxmox on linux._
+
+* [jeffs-proxmox-image-lxc-debian](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-proxmox-image-lxc-debian)
+
+  _Using packer to remotely build a proxmox image
+  containing the debian OS
+  for proxmox on linux._
 
 ## VAGRANT IMAGES (BOX)
 

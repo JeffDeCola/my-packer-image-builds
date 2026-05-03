@@ -1,0 +1,6 @@
+# =============================================================================
+# meta-data - jeffs-proxmox-image-ubuntu
+# =============================================================================
+# This file is required by the Ubuntu autoinstaller but can be empty.
+# user-data contains all the actual config.
+# =============================================================================
