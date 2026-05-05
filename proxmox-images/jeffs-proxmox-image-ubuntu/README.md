@@ -62,23 +62,24 @@ Documentation and Reference
       file to /home/jeff
   * [configure-prompt-for-jeff](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-prompt-for-jeff.sh)
   * [configure-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-go-for-jeff.sh)
-  * [configure-move-vscode-server-settings-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-move-vscode-settings-json-file-to-jeff.sh)
+  * [configure-move-vscode-server-settings-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-move-vscode-esrver-settings-file-to-jeff.sh)
     * Move
       [settings.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/settings.json)
       to /home/jeff/.vscode-server/data/Machine
   * [configure-pull-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-pull-repos-for-jeff.sh)
 * SERVICES
   * [services-install-hello-go.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/services-install-hello-go.sh)
-    (Create executable /root/bin/hello-go)
+    * Create executable /root/bin/hello-go from
+      [hello-go-deploy-gce](https://github.com/JeffDeCola/hello-go-deploy-gce#hello-go-deploy-gce)
   * [services-enable-at-boot.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/services-enable-at-boot.sh)
     * Move
       [hello-go.service](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files//hello-go.service)
-      to ????????????????
+      to /lib/systemd/system/
 * CLEANUP
   * [cleanup-packer-github-temp-keys.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/cleanup-packer-github-temp-keys.sh)
 * APPS
-  * docker: ???
-  * go: ????
+  * docker: 29.4.2
+  * go: 1.26.2
 * SERVICES
   * [hello-go-deploy-gce](https://hub.docker.com/r/jeffdecola/hello-go-deploy-gce)
     dockerhub image runs at boot
@@ -123,4 +124,4 @@ qmlist
 
 ## TEST IMAGE
 
-The image is located.
+The image is located....

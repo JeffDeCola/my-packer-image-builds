@@ -1,4 +1,4 @@
-# my-packer-image-builds jeffs-proxmox-image-ubuntu
+# my-packer-image-builds jeffs-proxmox-image-lxc-debian
 
 # ============================================================================
 # PLUGINS
@@ -39,11 +39,11 @@ variable "proxmox_node" {
 }
 
 # ----------------------------------------
-# VM Identity
+# Container Identity
 
 variable "vm_id" {
   type    = number
-  default = 500
+  default = 600
 }
 variable "vm_name_prefix" {
   type    = string
@@ -77,25 +77,17 @@ variable "storage_pool" {
   type    = string
   default = "SSD-Fast"
 }
-variable "network_model" {
-  type    = string
-  default = "virtio"
-}
-variable "network_bridge" {
-  type    = string
-  default = "vmbr0"
-}
 
 # ----------------------------------------
-# Source Image (ISO)
+# Network Interface
 
-variable "iso_url" {
+variable "network_ip" {
   type    = string
-  default = "https://releases.ubuntu.com/26.04/ubuntu-26.04-live-server-amd64.iso"
+  default = "192.168.20.251/24"
 }
-variable "iso_checksum" {
+variable "network_gw" {
   type    = string
-  default = "sha256:dec49008a71f6098d0bcfc822021f4d042d5f2db279e4d75bdd981304f1ca5d9"
+  default = "192.168.20.1"
 }
 
 # ----------------------------------------
@@ -103,12 +95,22 @@ variable "iso_checksum" {
 
 variable "ssh_username" {
   type    = string
-  default = "packer"
+  default = "root"
 }
 
-variable "ssh_host" {  # Use Static IP during build - It's temporary
-  type = string
-  default = "192.168.20.250"
+variable "ssh_host" {
+  type    = string
+  default = "192.168.20.251"
+}
+
+variable "ssh_private_key_file" {
+  type    = string
+  default = ".ssh/proxmox_universal"
+}
+
+variable "ssh_public_key_file" {
+  type    = string
+  default = ".ssh/proxmox_universal.pub"
 }
 
 # ----------------------------------------
@@ -117,11 +119,6 @@ variable "ssh_host" {  # Use Static IP during build - It's temporary
 variable "user_home" {
   type    = string
   default = "${env("HOME")}"
-}
-
-variable "http_bind_address" {
-  type = string
-  default = "192.168.20.122"
 }
 
 # ----------------------------------------
@@ -136,11 +133,11 @@ locals {
 # SOURCE
 # ============================================================================
 
-source "proxmox-iso" "jeffs-ubuntu" {
+source "proxmox-lxc" "jeffs-lxc-debian" {
 
   # ---------------------------------------------------------------
   # STEP 1 — Packer calls Proxmox API over HTTPS to create the VM
-  #          Like clicking "Create VM" in the UI and filling in all
+  #          Like clicking "Create Container" in the UI and filling in all
   #          the hardware screens (cores, memory, disk, network)
   # ---------------------------------------------------------------
 
@@ -154,101 +151,52 @@ source "proxmox-iso" "jeffs-ubuntu" {
   node                      = "${var.proxmox_node}"
 
   # ----------------------------------------
-  # VM Identity
+  # Container Identity
 
   vm_id                     = "${var.vm_id}"
   vm_name                   = "${local.vm_name}"
   template_description      = "${var.image_description}"
-  os                        = "l26"
-  qemu_agent                = true # Enables Proxmox guest agent after install
+  unprivileged              = true
 
   # ----------------------------------------
   # VM Hardware
 
   cores                     = "${var.cores}"
   memory                    = "${var.memory}"
-  disks {
-    disk_size               = "${var.disk_size}"
-    storage_pool            = "${var.storage_pool}"
-    type                    = "scsi"
-  }
-  network_adapters {
-    model                   = "${var.network_model}"
-    bridge                  = "${var.network_bridge}"
-  }
-  vm_interface              = "ens18"
 
   # ---------------------------------------------------------------
-  # STEP 2 — Proxmox downloads the ISO over HTTPS
-  #          Stored at: /var/lib/vz/template/iso/ on the Proxmox Machine
-  #          iso_checksum verifies the download wasn't corrupted
+  # STEP 2 — Proxmox downloads the LXC template tarball
+  #          Stored at: /var/lib/vz/template/cache/ on the Proxmox machine
   # ---------------------------------------------------------------
 
   # ----------------------------------------
-  # Source Image (ISO)
+  # OS Template
 
-  # Using iso_url (download) - needs iso_storage_pool to know where to store it
-  #boot_iso {
-  #  iso_url                = "${var.iso_url}"
-  #  iso_checksum           = "${var.iso_checksum}"
-  #  iso_storage_pool       = "local"
-  #  unmount                = true
-  #}
+  ostemplate                = "local:vztmpl/debian-12-standard_12.12-1_amd64.tar.zst"
+  ostemplate_storage        = "local"
+  ostemplate_url            = "http://download.proxmox.com/images/system/debian-12-standard_12.12-1_amd64.tar.zst"
 
-  # Using iso_file (already on Proxmox) - no iso_storage_pool needed
-  boot_iso {
-    iso_file                = "local:iso/6a41473a3ae3f4b08ae6fad7ca5085979c1f4fd9.iso"
-    iso_checksum            = "${var.iso_checksum}"
-    unmount                 = true
+  # ----------------------------------------
+  # Root Filesystem
+
+  rootfs_storage_pool       = "${var.storage_pool}"
+  rootfs_size               = "${var.disk_size}"
+
+  # ---------------------------------------------------------------
+  # STEP 3 — Proxmox creates and starts the container directly
+  #          No ISO boot, no HTTP server, no boot commands needed
+  # ---------------------------------------------------------------
+
+  network_interfaces {
+    name                    = "eth0"
+    bridge                  = "vmbr0"
+    ip                      = "${var.network_ip}"
+    gw                      = "${var.network_gw}"
   }
 
   # ---------------------------------------------------------------
-  # STEP 3 — Packer calls API again to power on the VM
-  #          VM boots from the ISO like a bare metal server
-  #          booting from a USB stick for the first time
-  # ---------------------------------------------------------------
-
-  # ---------------------------------------------------------------
-  # STEP 4 — Packer spins up a temporary HTTP server on YOUR machine
-  #          serving the http/ folder (user-data and meta-data)
-  #          This happens before boot commands are sent
-  # ---------------------------------------------------------------
-
-  http_directory            = "http"
-  http_bind_address         = "${var.http_bind_address}"
-
-  # ---------------------------------------------------------------
-  # STEP 5 — Packer sends boot commands via VNC to the VM console
-  #          This is literally Packer sitting at the keyboard for you,
-  #          typing keystrokes into the VM console to trigger autoinstall
-  # ---------------------------------------------------------------
-
-  # ---------------------------------------------------------------
-  # STEP 6 — VM fetches /user-data over HTTP from your machine
-  #          The URL in the boot command tells the Ubuntu installer
-  #          where to get its config (disk, username, password, etc.)
-  #          This replaces clicking through the Ubuntu setup screens
-  # ---------------------------------------------------------------
-
-  boot_wait                 = "20s"
-  boot_command              = [
-    "<esc><wait>",                                         # interrupt GRUB menu
-    "e<wait>",                                             # edit the boot entry
-    "<down><down><down><end>",                             # navigate to end of kernel line
-    "<bs><bs><bs><bs><wait>",                              # delete existing "---" at end of line
-    "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
-    "<f10><wait>"                                          # boot with modified command
-  ]
-
-  # ---------------------------------------------------------------
-  # STEP 7 — VM reboot
-  # ---------------------------------------------------------------
-
-  # ---------------------------------------------------------------
-  # STEP 8 — Packer SSHes into the VM
-  #          Uses SSH key auth set in user-data authorized-keys
-  #          20 minute timeout gives the installer time to finish
-  #          before Packer starts trying to connect
+  # STEP 4 — Packer SSHes into the container
+  #          Uses SSH key auth
   #          Once connected, the build block provisioners take over
   # ---------------------------------------------------------------
 
@@ -257,24 +205,18 @@ source "proxmox-iso" "jeffs-ubuntu" {
 
   communicator              = "ssh"
   ssh_username              = "${var.ssh_username}"
-  ssh_private_key_file      = "~/.ssh/id_rsa"
+  ssh_private_key_file = "${var.user_home}/${var.ssh_private_key_file}"
+  ssh_public_keys      = file("${var.user_home}/${var.ssh_public_key_file}")
   ssh_host                  = "${var.ssh_host}"
-  ssh_timeout               = "90m"
+  ssh_timeout               = "10m"
   ssh_pty                   = true
   ssh_agent_auth            = false
 
   # ---------------------------------------------------------------
-  # STEP 9 — After build block finishes, Packer calls API one more time
-  #          to convert the VM into a Proxmox template
-  #          Ready to clone into new VMs via Proxmox UI or Terraform
+  # STEP 5 — After build block finishes, Packer calls API one more time
+  #          to convert the container into a Proxmox template
+  #          Ready to clone into new containers via Proxmox UI or Terraform
   # ---------------------------------------------------------------
-
-  # ----------------------------------------
-  # CLOUD INIT
-  # Adds a cloud-init drive to the template so when you clone it
-  # you can inject SSH keys, username, IP config without rebuilding
-  cloud_init                = true
-  cloud_init_storage_pool   = "${var.storage_pool}"
 
 }
 
@@ -292,7 +234,7 @@ source "proxmox-iso" "jeffs-ubuntu" {
 
 build {
 
-  sources = ["source.proxmox-iso.jeffs-ubuntu"]
+  sources = ["source.proxmox-lxc.jeffs-lxc-debian"]
 
   # ---------------------------------------------------------------
   # STEP 1 — Pause
@@ -316,11 +258,6 @@ build {
   # ---------------------------------------------------------------
 
   provisioner "file" {
-    destination             = "/tmp/proxmox_universal.pub"
-    source                  = "${var.user_home}/.ssh/proxmox_universal.pub"
-  }
-
-  provisioner "file" {
     destination             = "/tmp/packer_github_temp"
     source                  = "${var.user_home}/.ssh/packer_github_temp"
   }
@@ -341,11 +278,6 @@ build {
   }
 
   provisioner "file" {
-    destination             = "/tmp/settings.json"
-    source                  = "./install-files/settings.json"
-  }
-
-  provisioner "file" {
   destination               = "/tmp/hello-go.service"
   source                    = "./install-files/hello-go.service"
   }
@@ -358,7 +290,7 @@ build {
   # ---------------------------------------------------------------
 
   provisioner "shell" {
-    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -E {{ .Path }}"
+    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} {{ .Path }}"
     pause_before    = "4s"
     scripts         = [
 
@@ -366,14 +298,11 @@ build {
       "./install-scripts/user-setup-jeff.sh",
 
       # SECURITY (SSH KEYS)
-      "./install-scripts/security-prepend-proxmox-universal-key-to-authorized-keys-jeff.sh",
       "./install-scripts/security-move-packer-github-temp-keys-to-jeff.sh",
 
       # PROVISIONING (SYSTEM LEVEL)
       "./install-scripts/provisioning-update-upgrade.sh",
       "./install-scripts/provisioning-install-packages.sh",
-      "./install-scripts/provisioning-install-docker.sh",
-      "./install-scripts/provisioning-run-a-dockerhub-image-at-boot.sh",
       "./install-scripts/provisioning-install-go-and-configure-for-root.sh",
 
       # CONFIGURE (USER LEVEL)
@@ -384,7 +313,6 @@ build {
       "./install-scripts/configure-dircolors-for-jeff.sh",
       "./install-scripts/configure-prompt-for-jeff.sh",
       "./install-scripts/configure-go-for-jeff.sh",
-      "./install-scripts/configure-move-vscode-server-settings-file-to-jeff.sh",
       "./install-scripts/configure-pull-repos-for-jeff.sh",
 
       # SERVICES
