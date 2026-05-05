@@ -94,29 +94,44 @@ packer build \
 Check that the image was created at proxmox,
 
 ```bash
-qmlist
+qm list
 ```
 
 ## CLONE IMAGE
 
+In Proxmox UI, clone VM 500 as a full clone.
+Set cloud-init IP to `192.168.20.250/24`, gateway `192.168.20.1`, then boot.
 
+SSH in as jeff,
 
+```bash
 ssh -i ~/.ssh/proxmox_universal jeff@192.168.20.250
+```
 
-Chenage password
+Set a password for jeff (jeff has no password by default),
 
-=== SET A PASSWORD FOR JEFF ===
+```bash
 ssh -i ~/.ssh/id_rsa packer@192.168.20.250
 sudo passwd jeff
+```
 
-=== VIEW SERVICE OUTPUT ===
+View service output,
+
+```bash
 journalctl -u hello-go.service -f
 docker logs hello-go-deploy-gce -f
+```
 
-=== STOP SERVICES ===
+Stop services,
+
+```bash
 sudo systemctl stop hello-go.service
 sudo docker stop hello-go-deploy-gce
+```
 
-=== PERMANENTLY DISABLE SERVICES AT BOOT ===
+Permanently disable services at boot,
+
+```bash
 sudo systemctl disable hello-go.service
 sudo docker stop hello-go-deploy-gce && sudo docker rm hello-go-deploy-gce
+```
