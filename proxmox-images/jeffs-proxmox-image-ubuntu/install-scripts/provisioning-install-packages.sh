@@ -1,14 +1,14 @@
 #!/bin/sh -e
-# install-packages.sh
+# provisioning-install-packages.sh
 
 echo " "
 echo "************************************************************************"
-echo "********************************************* add-user-jeff.sh (START) *"
+echo "***************************** provisioning-install-packages.sh (START) *"
 echo "Running as $(whoami) in $(pwd)"
 echo " "
 
 echo "Installing packages..."
-apt-get -qq -y install \
+apt-get -q -y install \
   nano \
   net-tools \
   tmux \
@@ -21,6 +21,6 @@ apt-get -qq -y install \
   build-essential
 echo " "
 
-echo "******************************************** install-packages.sh (END) *"
+echo "******************************* provisioning-install-packages.sh (END) *"
 echo "************************************************************************"
 echo " "

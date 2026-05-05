@@ -1,9 +1,9 @@
-#!/bin/sh
-# update-upgrade-system.sh
+#!/bin/sh -e
+# provisioning-update-upgrade.sh
 
 echo " "
 echo "************************************************************************"
-echo "********************************************* add-user-jeff.sh (START) *"
+echo "******************************* provisioning-update-upgrade.sh (START) *"
 echo "Running as $(whoami) in $(pwd)"
 echo " "
 
@@ -40,6 +40,6 @@ echo " "
 #echo "fs.inotify.max_user_watches=100000" >> /etc/sysctl.conf
 #echo " "
 
-echo "*************************************** update-upgrade-system.sh (END) *"
+echo "********************************* provisioning-update-upgrade.sh (END) *"
 echo "************************************************************************"
 echo " "
