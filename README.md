@@ -85,17 +85,11 @@ _You can also build gce images using gcloud cli or the gce gui._
 
 _You can also build proxmox images._
 
-* [jeffs-proxmox-image-ubuntu](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-proxmox-image-ubuntu)
+* [jeffs-proxmox-image-ubuntu](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/proxmox-images/jeffs-proxmox-image-ubuntu)
 
   _Using packer to remotely build a proxmox image
   containing the ubuntu OS
   for proxmox on linux._
-
-* [jeffs-proxmox-image-lxc-debian](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/google-compute-engine-images/jeffs-proxmox-image-lxc-debian)
-
-  _Using packer to remotely build a proxmox image
-  containing the debian OS
-  for proxmox container on linux._
 
 ## VAGRANT IMAGES (BOX)
 
