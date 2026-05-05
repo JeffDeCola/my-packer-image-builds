@@ -31,59 +31,51 @@ Documentation and Reference
   * [user-setup-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/user-setup-jeff.sh)
 * SECURITY (SSH KEYS)
   * [security-prepend-proxmox-universal-key-to-authorized-keys-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/security-prepend-proxmox-universal-key-to-authorized-keys-jeff.sh)
-    * Prepend
-      [proxmox-universal.pub](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/proxmox-universal.pub)
-      file to /home/jeff/.ssh/authorized_keys
+    (Prepend [proxmox-universal.pub](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/proxmox-universal.pub)
+    to /home/jeff/.ssh/authorized_keys)
   * [security-move-packer-github-temp-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/security-move-packer-github-temp-keys-to-jeff.sh)
-    * Move
-      [packer-github-temp](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/packer-github-temp)
-      and
-      [packer-github-temp.pub](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/packer-github-temp.pub)
-      file to /home/jeff/.ssh
+    (Move [packer_github_temp](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/packer-github-temp)
+    and [packer_github_temp.pub](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/packer-github-temp.pub)
+    to /home/jeff/.ssh)
 * PROVISIONING (SYSTEM LEVEL)
   * [provisioning-update-upgrade.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/provisioning-update-upgrade.sh)
-    * option to turn off periodic updates and auto-upgrades
+    (option to turn off periodic updates and auto-upgrades)
   * [provisioning-install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/provisioning-install-packages.sh)
-    * htop, tmux, unzip, etc.
+    (htop, tmux, unzip, etc.)
   * [provisioning-install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/provisioning-install-docker.sh)
   * [provisioning-run-a-dockerhub-image-at-boot.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/provisioning-run-a-dockerhub-image-at-boot.sh)
   * [provisioning-install-go-and-configure-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/provisioning-install-go-and-configure-for-root.sh)
 * CONFIGURE (USER LEVEL)
   * [configure-move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-move-welcome-file-to-jeff.sh)
-    * Move
-      [welcome.txt](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/welcome.txt)
-      file to /home/jeff
-  * [configure-bashrc-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure--bashrc-for-root.sh)
+    (Move [welcome.txt](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/welcome.txt)
+    to /home/jeff)
+  * [configure-bashrc-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-bashrc-for-root.sh)
   * [configure-bashrc-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-bashrc-for-jeff.sh)
   * [configure-git-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-git-for-jeff.sh)
   * [configure-dircolors-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-dircolors-for-jeff.sh)
-    * Move
-      [.dircolors](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/.dircolors)
-      file to /home/jeff
-  * [configure-prompt-for-jeff](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-prompt-for-jeff.sh)
+    (Move [.dircolors](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/.dircolors)
+    to /home/jeff)
+  * [configure-prompt-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-prompt-for-jeff.sh)
   * [configure-go-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-go-for-jeff.sh)
-  * [configure-move-vscode-server-settings-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-move-vscode-esrver-settings-file-to-jeff.sh)
-    * Move
-      [settings.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/settings.json)
-      to /home/jeff/.vscode-server/data/Machine
+  * [configure-move-vscode-server-settings-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-move-vscode-server-settings-file-to-jeff.sh)
+    (Move [settings.json](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/settings.json)
+    to /home/jeff/.vscode-server/data/Machine)
   * [configure-pull-repos-for-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/configure-pull-repos-for-jeff.sh)
 * SERVICES
   * [services-install-hello-go.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/services-install-hello-go.sh)
-    * Create executable /root/bin/hello-go from
-      [hello-go-deploy-gce](https://github.com/JeffDeCola/hello-go-deploy-gce#hello-go-deploy-gce)
+    (Build /home/jeff/hello-go binary from
+    [hello-go-deploy-gce](https://github.com/JeffDeCola/hello-go-deploy-gce#hello-go-deploy-gce))
   * [services-enable-at-boot.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/services-enable-at-boot.sh)
-    * Move
-      [hello-go.service](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files//hello-go.service)
-      to /lib/systemd/system/
+    (Move [hello-go.service](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-files/hello-go.service)
+    to /lib/systemd/system/)
 * CLEANUP
   * [cleanup-packer-github-temp-keys.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/proxmox-images/jeffs-proxmox-image-ubuntu/install-scripts/cleanup-packer-github-temp-keys.sh)
 * APPS
   * docker: 29.4.2
   * go: 1.26.2
 * SERVICES
-  * [hello-go-deploy-gce](https://hub.docker.com/r/jeffdecola/hello-go-deploy-gce)
-    dockerhub image runs at boot
-  * A binary /usr/bin/hello-go executable runs at boot
+  * [hello-go-deploy-gce](https://hub.docker.com/r/jeffdecola/hello-go-deploy-gce) dockerhub image runs at boot
+  * /home/jeff/hello-go binary runs at boot
 
 ## BUILD IMAGE
 
@@ -122,6 +114,26 @@ Check that the image was created at proxmox,
 qmlist
 ```
 
-## TEST IMAGE
+## CLONE IMAGE
 
-The image is located....
+
+
+ssh -i ~/.ssh/proxmox_universal jeff@192.168.20.250
+
+Chenage password
+
+=== SET A PASSWORD FOR JEFF ===
+ssh -i ~/.ssh/id_rsa packer@192.168.20.250
+sudo passwd jeff
+
+=== VIEW SERVICE OUTPUT ===
+journalctl -u hello-go.service -f
+docker logs hello-go-deploy-gce -f
+
+=== STOP SERVICES ===
+sudo systemctl stop hello-go.service
+sudo docker stop hello-go-deploy-gce
+
+=== PERMANENTLY DISABLE SERVICES AT BOOT ===
+sudo systemctl disable hello-go.service
+sudo docker stop hello-go-deploy-gce && sudo docker rm hello-go-deploy-gce

@@ -1,1 +1,17 @@
-Hi Everyone.  This is a test of packer provisioning for jeffs-proxmox-image-ubuntu
+Welcome to Jeff's Ubuntu Template!
+
+=== SET A PASSWORD FOR JEFF ===
+ssh -i ~/.ssh/id_rsa packer@192.168.20.250
+sudo passwd jeff
+
+=== VIEW SERVICE OUTPUT ===
+journalctl -u hello-go.service -f
+docker logs hello-go-deploy-gce -f
+
+=== STOP SERVICES ===
+sudo systemctl stop hello-go.service
+sudo docker stop hello-go-deploy-gce
+
+=== PERMANENTLY DISABLE SERVICES AT BOOT ===
+sudo systemctl disable hello-go.service
+sudo docker stop hello-go-deploy-gce && sudo docker rm hello-go-deploy-gce

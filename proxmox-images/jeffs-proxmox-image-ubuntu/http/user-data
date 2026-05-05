@@ -43,11 +43,13 @@ autoinstall:
   # Packer user
   # Password creates a valid unlocked user account
   # SSH login uses key auth not this password
+  # NOTE: allow-pw: false means this password cannot be used for SSH login
+  # It exists only to satisfy the Ubuntu installer requirement for a valid account
 
   identity:
     hostname: ubuntu-template
     username: packer
-    password: "$6$saltsalt$eWwzB8NsnzXoqwWcOO6uEVzQ5ZohAdKgL6rIPMq5OgmNbHSyBHrDQkOZzqKKHa/F9Mp7rYyAiHB.reGkw.iqL1"
+    password: "$6$6TBZaDE+RPk9zNpY$dl.kZbiqivLCk33ZlCgRdolJTFBY0QU7TvHzZIka2HDzvOerZqgREPLDihYNN7Pnw2iM18bT7Zi233dUhrmpz/"
 
   # ----------------------------------------
   # SSH - key auth only, no password auth
