@@ -321,34 +321,34 @@ build {
   }
 
   provisioner "file" {
-    destination             = "/tmp/proxmox-universal_id_rsa"
+    destination             = "/tmp/packer_github_temp"
     source                  = "${var.user_home}/.ssh/packer_github_temp"
   }
 
   provisioner "file" {
-    destination             = "/tmp/proxmox-github-vm.pub"
+    destination             = "/tmp/packer_github_temp.pub"
     source                  = "${var.user_home}/.ssh/packer_github_temp.pub"
   }
 
-  #provisioner "file" {
-  #  destination             = "/tmp/welcome.txt"
-  #  source                  = "./install-files/welcome.txt"
-  #}
+  provisioner "file" {
+    destination             = "/tmp/welcome.txt"
+    source                  = "./install-files/welcome.txt"
+  }
 
-  #provisioner "file" {
-  #  destination             = "/tmp/hello-go.service"
-  #  source                  = "./install-files/hello-go.service"
-  #}
+  provisioner "file" {
+    destination             = "/tmp/.dircolors"
+    source                  = "./install-files/.dircolors"
+  }
 
-  #provisioner "file" {
-  #  destination             = "/tmp/.dircolors"
-  #  source                  = "./install-files/.dircolors"
-  #}
+  provisioner "file" {
+    destination             = "/tmp/settings.json"
+    source                  = "./install-files/settings.json"
+  }
 
-  #provisioner "file" {
-  #  destination             = "/tmp/settings.json"
-  #  source                  = "./install-files/settings.json"
-  #}
+    provisioner "file" {
+    destination             = "/tmp/hello-go.service"
+    source                  = "./install-files/hello-go.service"
+  }
 
   # ---------------------------------------------------------------
   # STEP 3 — Install Scripts (run inside VM over SSH in order)
@@ -363,36 +363,36 @@ build {
     scripts         = [
 
       # USER SETUP
-      # "./install-scripts/add-user-jeff.sh",
+      "./install-scripts/user-setup-jeff.sh",
 
       # SECURITY (SSH KEYS)
-      # "./install-scripts/add-proxmox-universal-ssh-keys-to-authorized-keys-jeff.sh",
-      # "./install-scripts/add-packer-github-temp-ssh-keys-to-jeff.sh",
+      "./install-scripts/security-prepend-proxmox-universal-key-to-authorized-keys-jeff.sh",
+      "./install-scripts/security-move-packer-github-temp-keys-to-jeff.sh",
 
       # PROVISIONING (SYSTEM LEVEL)
-      "./install-scripts/update-upgrade-system.sh",
-      "./install-scripts/install-packages.sh",
-      # "./install-scripts/install-docker.sh",
-      # "./install-scripts/run-dockerhub-image-at-boot.sh",
-      # "./install-scripts/install-go-and-config-for-root.sh",
-      # "./install-scripts/install-protocol-buffers-for-go.sh",
+      "./install-scripts/provisioning-update-upgrade.sh",
+      "./install-scripts/provisioning-install-packages.sh",
+      "./install-scripts/provisioning-install-docker.sh",
+      "./install-scripts/provisioning-run-a-dockerhub-image-at-boot.sh",
+      "./install-scripts/provisioning-install-go-and-configure-for-root.sh",
 
       # CONFIGURE (USER LEVEL)
-      # "./install-scripts/move-welcome-file-to-jeff.sh",
-      # "./install-scripts/edit-bashrc-for-root.sh",
-      # "./install-scripts/edit-bashrc-for-jeff.sh",
-      # "./install-scripts/add-colors-for-jeff.sh",
-      # "./install-scripts/config-go-for-jeff.sh",
-      # "./install-scripts/clone-git-aware-prompt-for-jeff.sh",
-      # "./install-scripts/add-vscode-settings-json-file.sh",
-      # "./install-scripts/pull-private-repos-for-jeff.sh",
+      "./install-scripts/configure-move-welcome-file-to-jeff.sh",
+      "./install-scripts/configure-bashrc-for-root.sh",
+      "./install-scripts/configure-bashrc-for-jeff.sh",
+      "./install-scripts/configure-git-for-jeff.sh",
+      "./install-scripts/configure-dircolors-for-jeff.sh",
+      "./install-scripts/configure-prompt-for-jeff.sh",
+      "./install-scripts/configure-go-for-jeff.sh",
+      "./install-scripts/configure-move-vscode-server-settings-file-to-jeff.sh",
+      "./install-scripts/configure-pull-repos-for-jeff.sh",
 
       # SERVICES
-      # "./install-scripts/service-install.sh",
-      # "./install-scripts/service-enable-at-boot.sh",
+      "./install-scripts/services-install-hello-go.sh",
+      "./install-scripts/services-enable-at-boot.sh",
 
-      # CLEAN UP
-      # "./install-scripts/remove-github-ssh-keys.sh"
+      # CLEANUP
+      "./install-scripts/cleanup-packer-github-temp-keys.sh"
 
     ]
   }

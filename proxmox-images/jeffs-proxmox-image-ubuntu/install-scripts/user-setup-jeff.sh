@@ -1,9 +1,9 @@
 #!/bin/sh -e
-# add-user-jeff.sh
+# user-setup-jeff.sh
 
 echo " "
 echo "************************************************************************"
-echo "********************************************* add-user-jeff.sh (START) *"
+echo "******************************************* user-setup-jeff.sh (START) *"
 echo "Running as $(whoami) in $(pwd)"
 echo " "
 
@@ -25,7 +25,8 @@ echo " "
 
 echo " Verify jeff is in sudo group"
 groups jeff
+echo " "
 
-echo "*********************************************** add-user-jeff.sh (END) *"
+echo "********************************************* user-setup-jeff.sh (END) *"
 echo "************************************************************************"
 echo " "
