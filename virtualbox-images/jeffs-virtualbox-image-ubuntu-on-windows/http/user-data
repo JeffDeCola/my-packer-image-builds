@@ -1,0 +1,79 @@
+#cloud-config
+# =============================================================================
+# user-data - jeffs-proxmox-image-ubuntu
+# =============================================================================
+# This file is served by Packer's temporary HTTP server during the build.
+# It's the info used during the first time you boot up ubuntu
+# =============================================================================
+
+autoinstall:
+  version: 1
+
+  # ----------------------------------------
+  # Locale / Keyboard
+
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+
+  # ----------------------------------------
+  # Network - Static IP used during Packer build only
+  # This IP is temporary - wiped when template is cloned
+
+  network:
+    network:
+      version: 2
+      ethernets:
+        ens18:
+          dhcp4: false
+          addresses:
+            - 192.168.20.250/24
+          gateway4: 192.168.20.1
+          nameservers:
+            addresses: [8.8.8.8]
+
+  # ----------------------------------------
+  # Disk
+
+  storage:
+    layout:
+      name: direct
+
+  # ----------------------------------------
+  # Packer user
+  # Password creates a valid unlocked user account
+  # SSH login uses key auth not this password
+  # NOTE: allow-pw: false means this password cannot be used for SSH login
+  # It exists only to satisfy the Ubuntu installer requirement for a valid account
+
+  identity:
+    hostname: ubuntu-template
+    username: packer
+    password: "$6$6TBZaDE+RPk9zNpY$dl.kZbiqivLCk33ZlCgRdolJTFBY0QU7TvHzZIka2HDzvOerZqgREPLDihYNN7Pnw2iM18bT7Zi233dUhrmpz/"
+
+  # ----------------------------------------
+  # SSH - key auth only, no password auth
+
+  ssh:
+    install-server: true
+    allow-pw: false
+    authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCZkygIcn0UekHQNNbDalejfMy0rc0MXnWJo+WR8MgJHMmaE7zJOJKT/VLrWA0s3+mgnQVeCrejxHtYiLQpFrnqCnxfyGL/W3klKw5b+Y1Tls795kfAUWs6dqwA2mMlwFf2RlDQQnR3Kg9K7bVsUZ+gMkxLeKdY+XOigwFOBfGPWc6z/uC/xZC7vALgaVqd71K/Zg76hOzPFGc58kznr78piZGBjeTfrF2ekWzn8FuZx0yzcNUfxZZw0KpjmsB3fncKNBvFnhCPrSc9SdpuWVGcTHprsbL4jFditCwvKMFqSqKh30i8plwpiHRNuANSbZdDSbnjl9/l8Vf+B6JzXv3Pc1VZzsJnNawRiN7LDXvIvijbbByOlRmjCnWe0wxCjGwc6yNz6n0/vj2qBI4oiCqqP1DJ73dGMkvWmOL1auwn0z0iZrflQOsz9FMRH8nKukQcJgzgmlslUPJWfCOfSlCB2+nyo6tKvUuMzW3rDcgzaVu3cQEIHXOnAclymQM8+zm+Qs3xDUKe9K9aHmEABDoRX8C3OWAxdtDHNuLvBfhY8gdd4jCLt5Cjas27pCW4u94bk3kgfoUdserzAKukT8mQsykQhCO/3N6mA+IzZUGbR9nHJG+gX54BGWQglfzgPO4QaObPP+LyE68deKA2pultUlcbSHgz2OizrqN86RvPbw== Keys for Github (TK3-PC (WSL2))
+
+  # ----------------------------------------
+  # Packages
+
+  packages:
+    - qemu-guest-agent
+
+  # ----------------------------------------
+  # Late commands
+
+  late-commands:
+    - echo 'packer ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/packer
+    - chmod 440 /target/etc/sudoers.d/packer
+
+  # ----------------------------------------
+  # Force reboot after install completes
+
+  shutdown: reboot
