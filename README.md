@@ -83,7 +83,7 @@ _You can also build gce images using gcloud cli or the gce gui._
 
 ## PROXMOX IMAGES
 
-_You can also build proxmox images._
+_You can run packer on a different machine._
 
 * [jeffs-proxmox-image-ubuntu](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/proxmox-images/jeffs-proxmox-image-ubuntu)
 
@@ -93,6 +93,8 @@ _You can also build proxmox images._
 
 ## VAGRANT IMAGES (BOX)
 
+_Legacy code._
+
 * [jeffs-vagrant-image-ubuntu-2204-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/vagrant-images/jeffs-vagrant-image-ubuntu-2204-for-virtualbox)
 
   _Using packer to build a vagrant image (box)
@@ -101,7 +103,7 @@ _You can also build proxmox images._
 
 ## VIRTUALBOX IMAGES
 
-_It's nice using packer because you don't have to use the virtualbox gui._
+_You must run packer on the same machine._
 
 * [jeffs-virtualbox-image-ubuntu-2204-for-virtualbox](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-2204-for-virtualbox)
 
@@ -109,3 +111,10 @@ _It's nice using packer because you don't have to use the virtualbox gui._
   from an ubuntu 20.04 iso
   containing the ubuntu 22.04 OS
   for virtualbox on linux or windows._
+
+* [jeffs-virtualbox-image-ubuntu-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows)
+
+  _Using packer to build a virtualbox image
+  from an ubuntu 26.04 iso
+  containing the ubuntu 26.04 OS
+  for virtualbox on windows._
