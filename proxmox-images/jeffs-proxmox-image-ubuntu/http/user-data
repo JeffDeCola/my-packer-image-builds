@@ -75,4 +75,3 @@ autoinstall:
   # Force reboot after install completes
 
   shutdown: reboot
-  

@@ -95,7 +95,7 @@ _You can also build proxmox images._
 
   _Using packer to remotely build a proxmox image
   containing the debian OS
-  for proxmox on linux._
+  for proxmox container on linux._
 
 ## VAGRANT IMAGES (BOX)
 
