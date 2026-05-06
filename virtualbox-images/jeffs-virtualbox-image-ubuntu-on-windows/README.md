@@ -83,7 +83,7 @@ Prerequisites on windows machine
 ## BUILD IMAGE
 
 No environment variables or tokens are needed for the VirtualBox build —
-unlike the Proxmox build, there's no API to authenticate against. Packer
+unlike the Proxmox build, there is no API to authenticate against. Packer
 talks to VirtualBox locally via `VBoxManage.exe`.
 
 Make sure `VBoxManage.exe` is on your PATH, or that VirtualBox is
