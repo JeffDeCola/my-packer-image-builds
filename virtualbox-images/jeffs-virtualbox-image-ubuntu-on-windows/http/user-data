@@ -1,6 +1,6 @@
 #cloud-config
 # =============================================================================
-# user-data - jeffs-proxmox-image-ubuntu
+# user-data - jeffs-virtualbox-image-ubuntu
 # =============================================================================
 # This file is served by Packer's temporary HTTP server during the build.
 # It's the info used during the first time you boot up ubuntu
@@ -8,6 +8,9 @@
 
 autoinstall:
   version: 1
+
+  # add this near the top
+  interactive-sections: []
 
   # ----------------------------------------
   # Locale / Keyboard
@@ -17,20 +20,16 @@ autoinstall:
     layout: us
 
   # ----------------------------------------
-  # Network - Static IP used during Packer build only
-  # This IP is temporary - wiped when template is cloned
+  # Network - DHCP via NAT
+  # VirtualBox handles networking automatically via NAT
+  # No static IP needed unlike Proxmox
 
   network:
     network:
       version: 2
       ethernets:
-        ens18:
-          dhcp4: false
-          addresses:
-            - 192.168.20.250/24
-          gateway4: 192.168.20.1
-          nameservers:
-            addresses: [8.8.8.8]
+        enp0s3:
+          dhcp4: true
 
   # ----------------------------------------
   # Disk
@@ -41,13 +40,9 @@ autoinstall:
 
   # ----------------------------------------
   # Packer user
-  # Password creates a valid unlocked user account
-  # SSH login uses key auth not this password
-  # NOTE: allow-pw: false means this password cannot be used for SSH login
-  # It exists only to satisfy the Ubuntu installer requirement for a valid account
 
   identity:
-    hostname: ubuntu-template
+    hostname: ubuntu-vb-template
     username: packer
     password: "$6$6TBZaDE+RPk9zNpY$dl.kZbiqivLCk33ZlCgRdolJTFBY0QU7TvHzZIka2HDzvOerZqgREPLDihYNN7Pnw2iM18bT7Zi233dUhrmpz/"
 
@@ -58,13 +53,7 @@ autoinstall:
     install-server: true
     allow-pw: false
     authorized-keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCZkygIcn0UekHQNNbDalejfMy0rc0MXnWJo+WR8MgJHMmaE7zJOJKT/VLrWA0s3+mgnQVeCrejxHtYiLQpFrnqCnxfyGL/W3klKw5b+Y1Tls795kfAUWs6dqwA2mMlwFf2RlDQQnR3Kg9K7bVsUZ+gMkxLeKdY+XOigwFOBfGPWc6z/uC/xZC7vALgaVqd71K/Zg76hOzPFGc58kznr78piZGBjeTfrF2ekWzn8FuZx0yzcNUfxZZw0KpjmsB3fncKNBvFnhCPrSc9SdpuWVGcTHprsbL4jFditCwvKMFqSqKh30i8plwpiHRNuANSbZdDSbnjl9/l8Vf+B6JzXv3Pc1VZzsJnNawRiN7LDXvIvijbbByOlRmjCnWe0wxCjGwc6yNz6n0/vj2qBI4oiCqqP1DJ73dGMkvWmOL1auwn0z0iZrflQOsz9FMRH8nKukQcJgzgmlslUPJWfCOfSlCB2+nyo6tKvUuMzW3rDcgzaVu3cQEIHXOnAclymQM8+zm+Qs3xDUKe9K9aHmEABDoRX8C3OWAxdtDHNuLvBfhY8gdd4jCLt5Cjas27pCW4u94bk3kgfoUdserzAKukT8mQsykQhCO/3N6mA+IzZUGbR9nHJG+gX54BGWQglfzgPO4QaObPP+LyE68deKA2pultUlcbSHgz2OizrqN86RvPbw== Keys for Github (TK3-PC (WSL2))
-
-  # ----------------------------------------
-  # Packages
-
-  packages:
-    - qemu-guest-agent
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDsF0+wNvw32mG8XGAldIMZUaMl1TzAw8w9BYLIbAoN3r/2E5jyw+UCXlxpfkMPwuP8wQJcuQOa18VXRe16SsWBLtwyERCgIcA9s5aFWquTA/jEHwaMc75ZDQlxBU4w0IB2jZdVYgi9Q1vRf+XWeS2/wnDsWFMD36pT0IPH2ecKmH2FLYX7LoOEUknGrSWKd2XHxNTsZXwdEjpOdd+r0HFnGXxYjPqOGwxDWvsVhf8YMAMQc7nI94Jr+T6h2pdAJkXNalC0RMO1wI0W7mgCID2Nie+FMnvtxamtv6S9y3D3qoDUQudBvywBo9upLdasHb1HADOVwFoVS+7vq1gp1+ZzNqBIqlcIA81BYcwsPblIDwmJIFbv09sxzcbbT3nL1l5j3s3WqZU36fYyU88Bvv3EM4FRUs2kUjGNqTejorAvA0wlkhf8AxDK7NkXNOymk0X62BlA5N82fC1UFs9xVaQRg1MVS5b9jsTZQXaXG+rUvN3ZKl3IOKVvQSMT57fxofVQUrQHO6jft/yZ99gh6pgKyE9PzGTJPi2bWovYbt8P/ogspHiakieyKZYaAZi5p+Z50vTsFJy6GQt2lnreUw1PeGNYBTe73STPru4FvdWyf6eSQpgI4GdCWKEwwpCxuVqNj3yOpkproDvj37u9NBl0YYzfxDKm1F7+GInv09XXvw== virtualbox universal keys
 
   # ----------------------------------------
   # Late commands

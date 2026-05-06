@@ -29,10 +29,6 @@ variable "image_name" {  # FROM COMMAND
   type    = string
   default = ""
 }
-variable "image_description" {
-  type    = string
-  default = "VirtualBox custom machine image for Jeffs Repo my-packer-image-builds"
-}
 
 # ----------------------------------------
 # VM Hardware
@@ -107,7 +103,13 @@ source "virtualbox-iso" "jeffs-ubuntu" {
   # VM Identity
 
   vm_name                   = "${local.vm_name}"
-  description               = "${var.image_description}"
+
+  # ----------------------------------------
+  # Guest OS Type
+  # Tells VirtualBox what kind of guest this is so it picks
+  # sane chipset, audio, and controller defaults
+
+  guest_os_type             = "Ubuntu_64"
 
   # ----------------------------------------
   # VM Hardware
@@ -115,6 +117,17 @@ source "virtualbox-iso" "jeffs-ubuntu" {
   cpus                      = "${var.cores}"
   memory                    = "${var.memory}"
   disk_size                 = "${var.disk_size}"
+
+  # ----------------------------------------
+  # Storage Controllers
+  # Attach both the install ISO and the virtual hard disk via SATA
+  # instead of the default IDE. IDE attachment of the ISO has been
+  # unreliable on recent VirtualBox versions - the ISO ends up not
+  # mounted in the VM, GRUB can't find /casper/vmlinuz, and the
+  # boot_command silently fails at the rescue prompt
+
+  iso_interface             = "sata"
+  hard_drive_interface      = "sata"
 
   # ----------------------------------------
   # VM Storage Location
@@ -143,7 +156,7 @@ source "virtualbox-iso" "jeffs-ubuntu" {
   # ---------------------------------------------------------------
   # STEP 3 — Packer spins up a temporary HTTP server on TK3-PC
   #          serving the http/ folder (user-data and meta-data)
-  #          This happens before boot commands are sent
+  #          Ubuntu installer fetches user-data from this server
   # ---------------------------------------------------------------
 
   http_directory            = "http"
@@ -154,14 +167,14 @@ source "virtualbox-iso" "jeffs-ubuntu" {
   #          autoinstall and point it at the HTTP server
   # ---------------------------------------------------------------
 
-  boot_wait                 = "20s"
-  boot_command              = [
-    "<esc><wait>",
-    "e<wait>",
-    "<down><down><down><end>",
-    "<bs><bs><bs><bs><wait>",
-    "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
-    "<f10><wait>"
+  # must time this correctly or you miss the grub menu
+  boot_wait = "10s"
+  boot_command = [
+    "c<wait5>",
+    "set root=(cd)<enter><wait>",
+    "linux /casper/vmlinuz autoinstall ds=\"nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/\" ---<enter><wait5>",
+    "initrd /casper/initrd<enter><wait5>",
+    "boot<enter>"
   ]
 
   # ---------------------------------------------------------------
@@ -176,7 +189,7 @@ source "virtualbox-iso" "jeffs-ubuntu" {
 
   communicator              = "ssh"
   ssh_username              = "${var.ssh_username}"
-  ssh_private_key_file      = "~/.ssh/id_rsa"
+  ssh_private_key_file      = "~/.ssh/virtualbox_universal"
   ssh_timeout               = "90m"
   ssh_agent_auth            = false
 
@@ -187,9 +200,27 @@ source "virtualbox-iso" "jeffs-ubuntu" {
 
   guest_additions_mode      = "disable"
 
+  # ----------------------------------------
+  # Shutdown
+
+  shutdown_command          = "echo 'packer' | sudo -S shutdown -P now"
+
+  # ----------------------------------------
+  # Output Format
+  # By default, the virtualbox-iso builder exports the VM as an OVF
+  # appliance at the end of the build, which then has to be imported
+  # back into VirtualBox to use. Setting skip_export = true keeps the
+  # VM registered directly in VirtualBox at the end of the build, ready
+  # to clone from. The VM appears in the VirtualBox Manager UI sidebar
+  # automatically.
+
+  format                    = "ovf"
+  skip_export               = true
+
   # ---------------------------------------------------------------
   # STEP 6 — After build block finishes, Packer shuts down the VM
-  #          VirtualBox keeps it registered and ready to start
+  #          With skip_export = true, VirtualBox keeps it registered
+  #          in the Manager UI and ready to clone from
   #          No template conversion needed unlike Proxmox
   # ---------------------------------------------------------------
 
@@ -263,8 +294,8 @@ build {
   }
 
   provisioner "file" {
-  destination               = "/tmp/hello-go.service"
-  source                    = "./install-files/hello-go.service"
+    destination             = "/tmp/hello-go.service"
+    source                  = "./install-files/hello-go.service"
   }
 
   # ---------------------------------------------------------------

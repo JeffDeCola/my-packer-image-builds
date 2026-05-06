@@ -1,4 +1,4 @@
-# jeffs-proxmox-image-ubuntu
+# jeffs-virtualbox-image-ubuntu-on-windows
 
 [![jeffdecola.com](https://img.shields.io/badge/website-jeffdecola.com-blue)](https://jeffdecola.com)
 [![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
@@ -8,7 +8,7 @@ from an ubuntu iso
 containing the ubuntu 26.04 OS
 for virtualbox on windows._
 
-Table on Contents
+Table of Contents
 
 * [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#packer-template-file)
 * [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#build-image)
@@ -31,10 +31,12 @@ Git Bash (Windows) → Packer (Windows) → VirtualBox (Windows)
 
 * PACKER FILE
   * [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows/template.pkr.hcl)
+* AUTOINSTALL
+  * [http/user-data](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows/http/user-data)
 * HARDWARE
-  * CPU: 2 Cores
-  * RAM: 2GB
-  * Disk Size: 30 GB
+  * CPU: 4 Cores
+  * MEMORY: 8GB
+  * Disk Size: 40GB
 * USER SETUP
   * [user-setup-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows/install-scripts/user-setup-jeff.sh)
 * SECURITY (SSH KEYS)
@@ -70,56 +72,104 @@ Git Bash (Windows) → Packer (Windows) → VirtualBox (Windows)
 
 ## BUILD IMAGE
 
-You will need to set the following environment variables (I added mine in ~/.bashrx-secrets and source in ~/.bashrc),
+No environment variables or tokens are needed for the VirtualBox build —
+unlike the Proxmox build, there's no API to authenticate against. Packer
+talks to VirtualBox locally via `VBoxManage.exe`.
 
-```txt
-PROXMOX_TOKEN_ID=packer@pam!mytoken
-PROXMOX_TOKEN_SECRET=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```
+Make sure `VBoxManage.exe` is on your PATH, or that VirtualBox is
+installed at `C:\Program Files\Oracle\VirtualBox\` (the default location
+that Packer will find on its own).
 
 To validate your packer template file,
 
 ```bash
+./build-image.sh -v
+```
+
+Which runs,
+
+```bash
 packer validate \
-    -var "image_name=proxmox-image-ubuntu" \
-    -var "proxmox_token_id=$PROXMOX_TOKEN_ID" \
-    -var "proxmox_token_secret=$PROXMOX_TOKEN_SECRET" \
+    -var "image_name=virtualbox-image-ubuntu" \
     template.pkr.hcl
 ```
 
-To
-[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows/build-image.sh)
-on proxmox,
+To build the image using
+[build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows/build-image.sh),
 
 ```bash
-packer build \
-    -var "image_name=proxmox-image-ubuntu" \
-    -var "proxmox_token_id=$PROXMOX_TOKEN_ID" \
-    -var "proxmox_token_secret=$PROXMOX_TOKEN_SECRET" \
+./build-image.sh
+```
+
+Which runs,
+
+```bash
+packer build -force \
+    -var "image_name=virtualbox-image-ubuntu" \
     template.pkr.hcl
 ```
 
-Check that the image was created at proxmox,
+The build takes ~15-20 minutes total — about 10 minutes for the Ubuntu
+autoinstall and reboot, then a few more minutes for the provisioning
+scripts to run inside the VM.
+
+Check that the VM was created in VirtualBox,
 
 ```bash
-qm list
+"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" list vms
 ```
+
+You should see your new VM named `jeffs-virtualbox-image-ubuntu-YYYYMMDD`.
+You can also open the VirtualBox Manager UI to see it in the list.
 
 ## CLONE IMAGE
 
-In Proxmox UI, clone VM 500 as a full clone.
-Set cloud-init IP to `192.168.20.250/24`, gateway `192.168.20.1`, then boot.
+In the VirtualBox Manager UI, right-click your template VM
+(`jeffs-virtualbox-image-ubuntu-YYYYMMDD`) and select **Clone**.
 
-SSH in as jeff,
+* Name: pick something descriptive (e.g. `my-ubuntu-vm-01`)
+* MAC Address Policy: **Generate new MAC addresses for all network adapters**
+* Clone type: **Full Clone**
+
+Or from git bash,
 
 ```bash
-ssh -i ~/.ssh/proxmox_universal jeff@192.168.20.250
+"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" clonevm \
+    "jeffs-virtualbox-image-ubuntu-20260506" \
+    --name "my-ubuntu-vm-01" \
+    --register \
+    --mode all
+```
+
+Start the clone,
+
+```bash
+"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" startvm "my-ubuntu-vm-01"
+```
+
+The clone uses NAT networking by default, so it gets a private IP
+(typically `10.0.2.15`) reachable only from the host via port forwarding.
+You will need to add an SSH port forward to reach it,
+
+```bash
+"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" modifyvm "my-ubuntu-vm-01" \
+    --natpf1 "ssh,tcp,127.0.0.1,2222,,22"
+```
+
+Or change networking to bridged in the VirtualBox UI
+(Settings → Network → Adapter 1 → Attached to: Bridged Adapter)
+to put the VM on your LAN with its own IP.
+
+SSH in as jeff (using the NAT port forward example above),
+
+```bash
+ssh -i ~/.ssh/virtualbox_universal -p 2222 jeff@127.0.0.1
 ```
 
 Set a password for jeff (jeff has no password by default),
 
 ```bash
-ssh -i ~/.ssh/id_rsa packer@192.168.20.250
+ssh -i ~/.ssh/virtualbox_universal -p 2222 packer@127.0.0.1
 sudo passwd jeff
 ```
 
