@@ -205,18 +205,6 @@ source "virtualbox-iso" "jeffs-ubuntu" {
 
   shutdown_command          = "echo 'packer' | sudo -S shutdown -P now"
 
-  # ----------------------------------------
-  # Output Format
-  # By default, the virtualbox-iso builder exports the VM as an OVF
-  # appliance at the end of the build, which then has to be imported
-  # back into VirtualBox to use. Setting skip_export = true keeps the
-  # VM registered directly in VirtualBox at the end of the build, ready
-  # to clone from. The VM appears in the VirtualBox Manager UI sidebar
-  # automatically.
-
-  format                    = "ovf"
-  skip_export               = true
-
   # ---------------------------------------------------------------
   # STEP 6 — After build block finishes, Packer shuts down the VM
   #          With skip_export = true, VirtualBox keeps it registered
