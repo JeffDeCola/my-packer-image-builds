@@ -7,7 +7,7 @@ _Using packer to remotely build a proxmox image
 containing the ubuntu OS
 for proxmox on linux._
 
-Table on Contents
+Table of Contents
 
 * [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/proxmox-images/jeffs-proxmox-image-ubuntu#packer-template-file)
 * [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/proxmox-images/jeffs-proxmox-image-ubuntu#build-image)

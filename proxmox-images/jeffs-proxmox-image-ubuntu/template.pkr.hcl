@@ -346,8 +346,8 @@ build {
   }
 
   provisioner "file" {
-  destination               = "/tmp/hello-go.service"
-  source                    = "./install-files/hello-go.service"
+    destination             = "/tmp/hello-go.service"
+    source                  = "./install-files/hello-go.service"
   }
 
   # ---------------------------------------------------------------
