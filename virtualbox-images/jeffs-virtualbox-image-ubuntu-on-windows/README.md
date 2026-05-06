@@ -10,9 +10,11 @@ for virtualbox on windows._
 
 Table of Contents
 
+* [OVERVIEW](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#overview)
 * [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#packer-template-file)
 * [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#build-image)
 * [CLONE IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#clone-image)
+* [INSTALL GNOME DESKTOP (OPTIONAL)](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#install-gnome-desktop-optional)
 
 Documentation and Reference
 
@@ -26,6 +28,13 @@ We will run packer on a windows machine using git bash.
 ```text
 Git Bash (Windows) → Packer (Windows) → VirtualBox (Windows)
 ```
+
+Prerequisites on windows machine
+
+* [git bash](https://git-scm.com/downloads/win)
+* [packer](https://developer.hashicorp.com/packer/install)
+* [virtualbox](https://www.virtualbox.org/wiki/Downloads)
+* SSH keypair `~/.ssh/virtualbox_universal` and `~/.ssh/virtualbox_universal.pub`
 
 ## PACKER TEMPLATE FILE
 
@@ -67,7 +76,8 @@ Git Bash (Windows) → Packer (Windows) → VirtualBox (Windows)
   * docker: 29.4.2
   * go: 1.26.2
 * SERVICES
-  * [hello-go-deploy-gce](https://hub.docker.com/r/jeffdecola/hello-go-deploy-gce) dockerhub image runs at boot
+  * [hello-go-deploy-gce](https://hub.docker.com/r/jeffdecola/hello-go-deploy-gce)
+    dockerhub image runs at boot
   * /home/jeff/hello-go binary runs at boot
 
 ## BUILD IMAGE
@@ -122,55 +132,55 @@ Check that the VM was created in VirtualBox,
 You should see your new VM named `jeffs-virtualbox-image-ubuntu-YYYYMMDD`.
 You can also open the VirtualBox Manager UI to see it in the list.
 
-## CLONE IMAGE
+## USE IMAGE
 
-In the VirtualBox Manager UI, right-click your template VM
-(`jeffs-virtualbox-image-ubuntu-YYYYMMDD`) and select **Clone**.
-
-* Name: pick something descriptive (e.g. `my-ubuntu-vm-01`)
-* MAC Address Policy: **Generate new MAC addresses for all network adapters**
-* Clone type: **Full Clone**
-
-Or from git bash,
+After `./build-image.sh` completes, the VM exists as an .ovf file on
+disk but isn't yet registered in VirtualBox. Convert it,
 
 ```bash
-"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" clonevm \
-    "jeffs-virtualbox-image-ubuntu-20260506" \
-    --name "my-ubuntu-vm-01" \
-    --register \
-    --mode all
+./convert-ovf-to-vbox.sh
 ```
 
-Start the clone,
+This imports the OVF into VirtualBox so the VM appears in the Manager
+UI sidebar and is ready to run. See
+[convert-ovf-to-vbox.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows/convert-ovf-to-vbox.sh)
+for details.
+
+Start the VM from the VirtualBox Manager UI, or from git bash,
 
 ```bash
-"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" startvm "my-ubuntu-vm-01"
+"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" startvm \
+    "jeffs-virtualbox-image-ubuntu-20260506"
 ```
 
-The clone uses NAT networking by default, so it gets a private IP
+The VM uses NAT networking by default, so it gets a private IP
 (typically `10.0.2.15`) reachable only from the host via port forwarding.
-You will need to add an SSH port forward to reach it,
+Add an SSH port forward to reach it,
 
-```bash
-"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" modifyvm "my-ubuntu-vm-01" \
-    --natpf1 "ssh,tcp,127.0.0.1,2222,,22"
-```
-
-Or change networking to bridged in the VirtualBox UI
+Change networking to bridged in the VirtualBox UI
 (Settings → Network → Adapter 1 → Attached to: Bridged Adapter)
 to put the VM on your LAN with its own IP.
 
-SSH in as jeff (using the NAT port forward example above),
+Goto router and get tht IP. I was having trouble login into packer.
 
 ```bash
-ssh -i ~/.ssh/virtualbox_universal -p 2222 jeff@127.0.0.1
+
+SSH in as packer,
+
+```bash
+ssh -i ~/.ssh/virtualbox_universal packer@<IP_ADDRESS>
 ```
 
-Set a password for jeff (jeff has no password by default),
+Set a password for jeff,
 
 ```bash
-ssh -i ~/.ssh/virtualbox_universal -p 2222 packer@127.0.0.1
 sudo passwd jeff
+```
+
+Exit and login to jeff,
+
+```bash
+ssh -i ~/.ssh/virtualbox_universal jeff@<IP_ADDRESS>
 ```
 
 View service output,
@@ -193,3 +203,21 @@ Permanently disable services at boot,
 sudo systemctl disable hello-go.service
 sudo docker stop hello-go-deploy-gce && sudo docker rm hello-go-deploy-gce
 ```
+
+## INSTALL DESKTOP (OPTIONAL)
+
+The image is a server build (no GUI). To add the GNOME desktop
+environment to the VM,
+
+```bash
+sudo apt update
+sudo apt install -y ubuntu-desktop-minimal
+sudo systemctl set-default graphical.target
+sudo reboot
+```
+
+After reboot, the VirtualBox window will show a graphical login. Use
+the `jeff` user (set a password first if you haven't — see CLONE IMAGE).
+
+For a lighter alternative, swap `ubuntu-desktop-minimal` for `xubuntu-core`
+(XFCE, ~500MB instead of ~2GB) or `lubuntu-core` (LXQt, even lighter).

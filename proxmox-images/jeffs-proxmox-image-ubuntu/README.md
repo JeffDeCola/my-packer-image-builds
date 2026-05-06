@@ -102,17 +102,22 @@ qm list
 In Proxmox UI, clone VM 500 as a full clone.
 Set cloud-init IP to `192.168.20.250/24`, gateway `192.168.20.1`, then boot.
 
-SSH in as jeff,
+SSH in as packer,
+
+```bash
+ssh -i ~/.ssh/proxmox_universal packer@192.168.20.250
+```
+
+Set a password for jeff,
+
+```bash
+sudo passwd jeff
+```
+
+Exit and login to jeff,
 
 ```bash
 ssh -i ~/.ssh/proxmox_universal jeff@192.168.20.250
-```
-
-Set a password for jeff (jeff has no password by default),
-
-```bash
-ssh -i ~/.ssh/id_rsa packer@192.168.20.250
-sudo passwd jeff
 ```
 
 View service output,
