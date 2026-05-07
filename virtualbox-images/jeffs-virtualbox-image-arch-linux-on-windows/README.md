@@ -4,8 +4,8 @@
 [![MIT License](https://img.shields.io/:license-mit-blue.svg)](https://jeffdecola.mit-license.org)
 
 _Using packer to build a virtualbox image
-from an archi linux iso
-containing the archi linux 26.04 OS
+from an Arch Linux iso
+containing the Arch Linux rolling-release OS
 for virtualbox on windows._
 
 Table of Contents
@@ -15,7 +15,6 @@ Table of Contents
 * [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows#build-image)
 * [USE IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows#use-image)
 * [SOME OTHER CONFIGURATIONS TO DO](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows#some-other-configurations-to-do)
-* [INSTALL GNOME DESKTOP (OPTIONAL)](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows#install-gnome-desktop-optional)
 
 Documentation and Reference
 
@@ -41,24 +40,26 @@ Prerequisites on windows machine
 
 * PACKER FILE
   * [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/template.pkr.hcl)
-* AUTOINSTALL
-  * [http/user-data](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/http/user-data)
-  * hostname: `arch-linux-vb-template`
+* BOOTSTRAP
+  * [http/bootstrap.sh](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/http/bootstrap.sh)
+  * Served by Packer's HTTP server during live ISO boot to create the `packer`
+    user with the universal SSH key
+  * hostname: `arch-vb-template`
 * HARDWARE
   * CPU: 4 Cores
   * MEMORY: 8GB
   * Disk Size: 40GB
-* USER SETUP
-  * [user-setup-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/user-setup-jeff.sh)
+* INSTALLER (RUNS IN LIVE ISO ENVIRONMENT)
+  * [arch-install.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/arch-install.sh)
+  * Partitions disk, runs `pacstrap` for base system + Go + Docker + dev tools,
+    configures locale/timezone/hostname, installs GRUB, creates `packer` and `jeff`
+    users, configures SSH, reboots into installed system
 * SECURITY (SSH KEYS)
   * [security-prepend-virtualbox-universal-key-to-authorized-keys-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/security-prepend-virtualbox-universal-key-to-authorized-keys-jeff.sh)
   * [security-move-packer-github-temp-keys-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/security-move-packer-github-temp-keys-to-jeff.sh)
 * PROVISIONING (SYSTEM LEVEL)
   * [provisioning-update-upgrade.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/provisioning-update-upgrade.sh)
-  * [provisioning-install-packages.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/provisioning-install-packages.sh)
-  * [provisioning-install-docker.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/provisioning-install-docker.sh)
   * [provisioning-run-a-dockerhub-image-at-boot.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/provisioning-run-a-dockerhub-image-at-boot.sh)
-  * [provisioning-install-go-and-configure-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/provisioning-install-go-and-configure-for-root.sh)
 * CONFIGURE (USER LEVEL)
   * [configure-move-welcome-file-to-jeff.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/configure-move-welcome-file-to-jeff.sh)
   * [configure-bashrc-for-root.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/install-scripts/configure-bashrc-for-root.sh)
@@ -83,6 +84,13 @@ Prerequisites on windows machine
   * /home/jeff/hello-go binary runs at boot
 
 ## BUILD IMAGE
+
+Build the OVF appliance with packer, then import it into VirtualBox.
+
+* [build-image.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/build-image.sh)
+  runs packer and produces an OVF in `D:/virtualbox/<vm-name>/`
+* [convert-ovf-to-vbox.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/convert-ovf-to-vbox.sh)
+  imports the most recent OVF into VirtualBox so it appears in the Manager UI
 
 No environment variables or tokens are needed for the VirtualBox build —
 unlike the Proxmox build, there is no API to authenticate against. Packer
@@ -121,18 +129,30 @@ packer build -force \
     template.pkr.hcl
 ```
 
-The build takes ~15-20 minutes total — about 10 minutes for the arch-linux
-autoinstall and reboot, then a few more minutes for the provisioning
-scripts to run inside the VM.
+The build takes ~15-20 minutes total — about 10 minutes for the Arch Linux
+install (pacstrap + GRUB) and reboot, then a few more minutes for the
+provisioning scripts to run inside the installed system.
 
-Check that the VM was created in VirtualBox,
+The build produces an OVF appliance in `D:/virtualbox/<vm-name>/` rather
+than a registered VM. To import it into VirtualBox so it appears in the
+Manager UI, run:
+
+```bash
+./convert-ovf-to-vbox.sh
+```
+
+This script finds the most recently built OVF matching the project's
+naming pattern and imports it via `VBoxManage import`.
+
+Check that the VM is registered in VirtualBox,
 
 ```bash
 "/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" list vms
 ```
 
-You should see your new VM named `jeffs-virtualbox-image-arch-linux-YYYYMMDD`.
-You can also open the VirtualBox Manager UI to see it in the list.
+You should see your VM named `jeffs-virtualbox-image-arch-linux-YYYYMMDD`
+(date in UTC). You can also open the VirtualBox Manager UI to see it in
+the list.
 
 ## USE IMAGE
 
@@ -155,35 +175,48 @@ Start the VM from the VirtualBox Manager UI, or from git bash,
     "jeffs-virtualbox-image-arch-linux-20260506"
 ```
 
-The VM uses NAT networking by default, so it gets a private IP
+### Networking
+
+The VM uses NAT networking by default, which gives it a private IP
 (typically `10.0.2.15`) reachable only from the host via port forwarding.
-Add an SSH port forward to reach it,
+The simplest way to reach it from your LAN is to switch to a bridged
+adapter so the VM gets its own IP from your router:
 
-Change networking to bridged in the VirtualBox UI
-(Settings → Network → Adapter 1 → Attached to: Bridged Adapter)
-to put the VM on your LAN with its own IP.
+VirtualBox Manager UI → Settings → Network → Adapter 1 →
+Attached to: Bridged Adapter
 
-Goto router and get tht IP. I was having trouble login into packer.
+Then check your router's DHCP client list to find the VM's IP.
 
-```bash
+### SSH in
 
-SSH in as packer,
+SSH in as the `packer` user (the universal key was installed during
+the build),
 
 ```bash
 ssh -i ~/.ssh/virtualbox_universal packer@<IP_ADDRESS>
 ```
 
-Set a password for jeff,
+The `jeff` user account has its password locked by the installer, so
+you can't `su` or log in directly as jeff yet. Set a password from the
+packer session,
 
 ```bash
 sudo passwd jeff
 ```
 
-Exit and login to jeff,
+Then log out and SSH in as jeff (the universal key was also added to
+jeff's authorized_keys),
 
 ```bash
 ssh -i ~/.ssh/virtualbox_universal jeff@<IP_ADDRESS>
 ```
+
+### Services
+
+Two `hello-go` services are configured to run at boot:
+
+* `hello-go.service` — runs the locally-built `/home/jeff/hello-go` binary
+* `hello-go-deploy-gce` — runs the dockerhub image as a docker container
 
 View service output,
 
@@ -192,14 +225,14 @@ journalctl -u hello-go.service -f
 docker logs hello-go-deploy-gce -f
 ```
 
-Stop services,
+Stop services (this run only),
 
 ```bash
 sudo systemctl stop hello-go.service
 sudo docker stop hello-go-deploy-gce
 ```
 
-Permanently disable services at boot,
+Permanently disable services so they don't come back at boot,
 
 ```bash
 sudo systemctl disable hello-go.service
@@ -208,34 +241,26 @@ sudo docker stop hello-go-deploy-gce && sudo docker rm hello-go-deploy-gce
 
 ## SOME OTHER CONFIGURATIONS TO DO
 
-Probably also want to change the hostname from `arch-linux-vb-template`,
+The hostname baked into the image is `arch-vb-template`. Change it to
+something specific to this VM,
 
 ```bash
 sudo hostnamectl set-hostname <NEW_HOSTNAME>
 ```
 
-Also want to create some id_rsa keys,
+Also update `/etc/hosts` so the new hostname resolves locally,
+
+```bash
+sudo sed -i "s/arch-vb-template/<NEW_HOSTNAME>/g" /etc/hosts
+```
+
+Generate fresh SSH keys for jeff (the build doesn't create personal
+keypairs, only installs the universal key for remote access),
 
 ```bash
 /home/jeff/development/my-linux-shell-scripts/linux/generate-ssh-keys/generate-ssh-keys.sh
 ```
 
-Update the `~/.ssh/authorized_keys` file with the new public keys.
-
-## INSTALL DESKTOP (OPTIONAL)
-
-The image is a server build (no GUI). To add the GNOME desktop
-environment to the VM,
-
-```bash
-sudo apt update
-sudo apt install -y arch-linux-desktop-minimal
-sudo systemctl set-default graphical.target
-sudo reboot
-```
-
-After reboot, the VirtualBox window will show a graphical login. Use
-the `jeff` user (set a password first if you haven't — see CLONE IMAGE).
-
-For a lighter alternative, swap `arch-linux-desktop-minimal` for `xarch-linux-core`
-(XFCE, ~500MB instead of ~2GB) or `larch-linux-core` (LXQt, even lighter).
+Add the new public key to `~/.ssh/authorized_keys` on whatever remote
+hosts you want to SSH to from this VM, and to your GitHub account if
+you'll be pushing from here.
