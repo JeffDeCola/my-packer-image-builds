@@ -129,25 +129,10 @@ packer build -force \
     template.pkr.hcl
 ```
 
-The build takes ~15-20 minutes total — about 10 minutes for the Arch Linux
-install (pacstrap + GRUB) and reboot, then a few more minutes for the
-provisioning scripts to run inside the installed system.
-
-The build produces an OVF appliance in `D:/virtualbox/<vm-name>/` rather
-than a registered VM. To import it into VirtualBox so it appears in the
-Manager UI, run:
+The build produces an OVF file.
 
 ```bash
 ./convert-ovf-to-vbox.sh
-```
-
-This script finds the most recently built OVF matching the project's
-naming pattern and imports it via `VBoxManage import`.
-
-Check that the VM is registered in VirtualBox,
-
-```bash
-"/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" list vms
 ```
 
 You should see your VM named `jeffs-virtualbox-image-arch-linux-YYYYMMDD`
@@ -156,17 +141,11 @@ the list.
 
 ## USE IMAGE
 
-After `./build-image.sh` completes, the VM exists as an .ovf file on
-disk but isn't yet registered in VirtualBox. Convert it,
+Convert to vbox.
 
 ```bash
 ./convert-ovf-to-vbox.sh
 ```
-
-This imports the OVF into VirtualBox so the VM appears in the Manager
-UI sidebar and is ready to run. See
-[convert-ovf-to-vbox.sh](https://github.com/JeffDeCola/my-packer-image-builds/blob/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows/convert-ovf-to-vbox.sh)
-for details.
 
 Start the VM from the VirtualBox Manager UI, or from git bash,
 
@@ -176,11 +155,6 @@ Start the VM from the VirtualBox Manager UI, or from git bash,
 ```
 
 ### Networking
-
-The VM uses NAT networking by default, which gives it a private IP
-(typically `10.0.2.15`) reachable only from the host via port forwarding.
-The simplest way to reach it from your LAN is to switch to a bridged
-adapter so the VM gets its own IP from your router:
 
 VirtualBox Manager UI → Settings → Network → Adapter 1 →
 Attached to: Bridged Adapter
@@ -196,9 +170,7 @@ the build),
 ssh -i ~/.ssh/virtualbox_universal packer@<IP_ADDRESS>
 ```
 
-The `jeff` user account has its password locked by the installer, so
-you can't `su` or log in directly as jeff yet. Set a password from the
-packer session,
+Add password for jeff,
 
 ```bash
 sudo passwd jeff

@@ -112,6 +112,13 @@ _You must run packer on the same machine._
   containing the Arch Linux rolling-release OS
   for virtualbox on windows._
 
+* [jeffs-virtualbox-image-debian-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-debian-on-windows)
+
+  _Using packer to build a virtualbox image
+  from a Debian iso
+  containing the Debian 13 (Trixie) OS
+  for virtualbox on windows._
+
 * [jeffs-virtualbox-image-ubuntu-on-windows](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows)
 
   _Using packer to build a virtualbox image
