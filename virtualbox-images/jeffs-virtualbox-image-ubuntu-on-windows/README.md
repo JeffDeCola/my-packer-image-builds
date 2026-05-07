@@ -13,7 +13,8 @@ Table of Contents
 * [OVERVIEW](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#overview)
 * [PACKER TEMPLATE FILE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#packer-template-file)
 * [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#build-image)
-* [CLONE IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#clone-image)
+* [USE IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#use-image)
+* [SOME OTHER CONFIGURATIONS TO DO](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#some-other-configurations-to-do)
 * [INSTALL GNOME DESKTOP (OPTIONAL)](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows#install-gnome-desktop-optional)
 
 Documentation and Reference
@@ -42,6 +43,7 @@ Prerequisites on windows machine
   * [template.pkr.hcl](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows/template.pkr.hcl)
 * AUTOINSTALL
   * [http/user-data](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-ubuntu-on-windows/http/user-data)
+  * hostname: `ubuntu-vb-template`
 * HARDWARE
   * CPU: 4 Cores
   * MEMORY: 8GB
@@ -203,6 +205,22 @@ Permanently disable services at boot,
 sudo systemctl disable hello-go.service
 sudo docker stop hello-go-deploy-gce && sudo docker rm hello-go-deploy-gce
 ```
+
+## SOME OTHER CONFIGURATIONS TO DO
+
+Probably also want to change the hostname from `ubuntu-vb-template`,
+
+```bash
+sudo hostnamectl set-hostname <NEW_HOSTNAME>
+```
+
+Also want to create some id_rsa keys,
+
+```bash
+/home/jeff/development/my-linux-shell-scripts/linux/generate-ssh-keys/generate-ssh-keys.sh
+```
+
+Update the `~/.ssh/authorized_keys` file with the new public keys.
 
 ## INSTALL DESKTOP (OPTIONAL)
 
