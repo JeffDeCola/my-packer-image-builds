@@ -36,7 +36,8 @@ echo " "
 # CLONE ALL REPOS AND SET DEVELOP BRANCH
 
 echo "Running git-clone-all-repos-and-set-develop-branch.bash..."
-runuser -l jeff -c 'GIT_SSH_COMMAND="ssh -i ~/.ssh/packer_github_temp -o IdentitiesOnly=yes" \
+echo "Added TERM=dumb to disable output since its just noise"
+runuser -l jeff -c 'TERM=dumb GIT_SSH_COMMAND="ssh -i ~/.ssh/packer_github_temp -o IdentitiesOnly=yes" \
     bash /home/jeff/development/my-linux-shell-scripts-private/git/git-clone-all-repos-and-set-develop-branch.bash'
 echo " "
 
