@@ -58,6 +58,7 @@ pacstrap /mnt \
   htop \
   btop \
   unzip \
+  bash-completion \
   go
 echo " "
 
