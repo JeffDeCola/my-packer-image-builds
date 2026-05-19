@@ -1,4 +1,4 @@
-# repo-my-packer-image-builds-.gitignore
+# .gitignore
 
 # CONCOURSE SECRETS
 .concourse-secrets.yml
@@ -9,12 +9,12 @@ id_rsa*
 # PGP KEYS
 *.pgp
 
-# macOS
-.DS_Store
-
 # SFTP EXTENSION
 .vscode/
 sftp.json
+
+# macOS
+.DS_Store
 
 # WINDOWS
 *:Zone.Identifier
@@ -22,6 +22,8 @@ sftp.json
 # TAR FILES
 *.tar.gz
 *.tar.gz.gpg
+
+# repo-my-packer-image-builds.gitignore SPECIFIC BELOW ---------------------------------------------
 
 # PACKER
 **/packer_cache
