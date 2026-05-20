@@ -59,6 +59,7 @@ pacstrap /mnt \
   btop \
   unzip \
   bash-completion \
+  rsync \
   go
 echo " "
 

@@ -18,7 +18,8 @@ apt-get -q -y install \
   git \
   unzip \
   curl \
-  build-essential
+  build-essential \
+  rsync
 echo " "
 
 echo "******************************* provisioning-install-packages.sh (END) *"
