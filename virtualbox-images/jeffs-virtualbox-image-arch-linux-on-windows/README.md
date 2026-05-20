@@ -15,6 +15,7 @@ Table of Contents
 * [BUILD IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows#build-image)
 * [USE IMAGE](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows#use-image)
 * [SOME OTHER CONFIGURATIONS TO DO](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows#some-other-configurations-to-do)
+* [FIX SLOW SUDO](https://github.com/JeffDeCola/my-packer-image-builds/tree/master/virtualbox-images/jeffs-virtualbox-image-arch-linux-on-windows#fix-slow-sudo)
 
 Documentation and Reference
 
@@ -236,3 +237,23 @@ keypairs, only installs the universal key for remote access),
 Add the new public key to `~/.ssh/authorized_keys` on whatever remote
 hosts you want to SSH to from this VM, and to your GitHub account if
 you'll be pushing from here.
+
+## FIX SLOW SUDO
+
+* Symptom: `sudo true` takes ~25s,
+  `ssh <host> true` takes ~50s,
+  scp crawls at ~190 kB/s.
+Cause: `pam_systemd_home.so` in `/etc/pam.d/system-auth`
+  waits on `systemd-homed.service`
+  which ships disabled by default. Every PAM auth pays the dbus timeout.
+
+Fix (pick one):
+
+```bash
+sudo systemctl enable --now systemd-homed.service
+```
+
+Or, if not using systemd-homed, remove the four
+`pam_systemd_home.so` lines from `/etc/pam.d/system-auth`.
+
+Bake into Packer provisioner for new Arch VMs.
